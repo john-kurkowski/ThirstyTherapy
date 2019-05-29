@@ -1,68 +1,19 @@
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# svelte app template
 
----
+This is a project template for [Svelte](https://svelte.dev) apps on Glitch.
+The original lives [on GitHub](https://github.com/sveltejs/template).
 
-# svelte app
+[![Remix This Project on Glitch](https://cdn.gomix.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/sveltejs-template-starter)
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+[📐 Examples](https://svelte.dev/examples)
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
+[📚 Svelte Documentation](https://svelte.dev/docs)
 
 ## Get started
 
-Install the dependencies...
+The primary files for this project live in `src/`. `App.svelte` is a sample component, and the primary component of this app.
+main.js is the entry-point for the application, and instantiates the `App` component.
 
-```bash
-cd svelte-app
-npm install
-```
+If you'd like to change the outer wrapper of the page, you can edit `public/index.html`.
 
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+The project will automatically rebuild if you change files in the `src/` directory.
