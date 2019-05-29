@@ -13,8 +13,9 @@
     "include": [
       "rollup.config.js$",
       "\\.json",
+      "\\.svelte",
       "\\.js"
     ]
   },
-  "throttle": 100
+  "throttle": 1000
 }
