@@ -1,6 +1,9 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "rollup": "^1.10.1",
@@ -16,7 +19,7 @@
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
-    "start": "npm-run-all build serve",
-    "serve": "sirv public --port \"$PORT\""
+    "start": "run-p build serve",
+    "serve": "node server/index.js"
   }
 }
