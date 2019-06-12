@@ -3,7 +3,7 @@ const express = require('express');
 const app = express()
 const port = process.env.PORT
 
-app.use(express.static())
+app.use(express.static('../public'));
 
 app.get('/', (req, res) => {
   console.log(process.env.HOME + '/public/index.html');
