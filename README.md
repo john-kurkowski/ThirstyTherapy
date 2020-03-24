@@ -1,3 +1,7 @@
+Need more power?  
+[Boost your Glitch apps for improved performance!](https://glitch.com/boost)  
+------------
+***
 # svelte app template
 
 This is a project template for [Svelte](https://svelte.dev) apps on Glitch.
