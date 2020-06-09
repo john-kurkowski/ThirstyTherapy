@@ -3,38 +3,50 @@
 </script>
 
 <style>
-  input[type="checkbox"] {
-/*     display: inline; */
+  li[tabindex]:hover {
+    cursor: pointer;
   }
   
-  li[tabindex] {
-    cursor: pointer;
+  input:checked + label {
+    color: lightgray;
+    text-decoration: line-through;
   }
 </style>
 
 <form>
   <ol>
     <li tabindex="0">
-      Springtime for Whiskey Sour
+      <input type="checkbox"/>
+      <label>Springtime for Whiskey Sour</label>
       <ul>
         <li tabindex="0">
           <input type="checkbox"/>
           <label>¾oz aquafaba</label>
         </li>
-        <li tabindex="0">1oz lemon juice</li>
-        <li tabindex="0">1oz bay leaf syrup</li>
-        <li tabindex="0">5 leaves marmajam</li>
-        <li tabindex="0">2oz bourbon</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>1oz lemon juice</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>1oz bay leaf syrup</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>5 leaves marmajam</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>2oz bourbon</li>
       </ul>
     </li>
     <li tabindex="0">
-      Bramble
+      <input type="checkbox"/>
+      <label>Bramble</label>
       <ul>
-        <li tabindex="0">2 hood strawberries</li>
-        <li tabindex="0">0.5oz bay leaf syrup</li>
-        <li tabindex="0">1/2 dropper grapefruit bitters</li>
-        <li tabindex="0">Pinch sea salt</li>
-        <li tabindex="0">2oz bourbon</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>2 hood strawberries</label></li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>0.5oz bay leaf syrup</label></li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>1/2 dropper grapefruit bitters</li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>Pinch sea salt</label></li>
+        <li tabindex="0"><input type="checkbox"/>
+          <label>2oz bourbon</label></li>
       </ul>
     </li>
   </ol>
