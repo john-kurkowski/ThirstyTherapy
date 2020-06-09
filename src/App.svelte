@@ -3,7 +3,7 @@
 </script>
 
 <style>
-  li[tabindex]:hover {
+  label:hover {
     cursor: pointer;
   }
   
@@ -21,14 +21,14 @@
       <ul>
         <li tabindex="0">
           <input type="checkbox"/>
-          <label>¾oz aquafaba</label>
+          <label style="color: tomato;">¾oz aquafaba</label>
         </li>
         <li tabindex="0"><input type="checkbox"/>
           <label>1oz lemon juice</li>
         <li tabindex="0"><input type="checkbox"/>
           <label>1oz bay leaf syrup</li>
         <li tabindex="0"><input type="checkbox"/>
-          <label>5 leaves marmajam</li>
+          <label>5 leaves marjoram</li>
         <li tabindex="0"><input type="checkbox"/>
           <label>2oz bourbon</li>
       </ul>
