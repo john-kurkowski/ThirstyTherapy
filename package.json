@@ -18,5 +18,6 @@
     "dev": "run-p start:dev autobuild",
     "start": "npm-run-all build serve",
     "serve": "sirv public --port \"$PORT\""
-  }
+  },
+  "license": "MIT"
 }
