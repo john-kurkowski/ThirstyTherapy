@@ -3,9 +3,13 @@
 </script>
 
 <style>
-	h1 {
-		color: purple;
-	}
+  input[type="checkbox"] {
+/*     display: inline; */
+  }
+  
+  li[tabindex] {
+    cursor: pointer;
+  }
 </style>
 
 <form>
@@ -13,7 +17,10 @@
     <li tabindex="0">
       Springtime for Whiskey Sour
       <ul>
-        <li tabindex="0">¾oz aquafaba</li>
+        <li tabindex="0">
+          <input type="checkbox"/>
+          <label>¾oz aquafaba</label>
+        </li>
         <li tabindex="0">1oz lemon juice</li>
         <li tabindex="0">1oz bay leaf syrup</li>
         <li tabindex="0">5 leaves marmajam</li>
