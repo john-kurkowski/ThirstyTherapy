@@ -21,7 +21,7 @@
       <ul>
         <li tabindex="0">
           <input type="checkbox"/>
-          <label style="color: tomato;">¾oz aquafaba</label>
+          <label>¾oz aquafaba</label>
         </li>
         <li tabindex="0"><input type="checkbox"/>
           <label>1oz lemon juice</li>
