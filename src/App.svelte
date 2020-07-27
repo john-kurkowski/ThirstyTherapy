@@ -1,8 +1,6 @@
 <script>
-  import Tailwindcss from './Tailwindcss.svelte';
+  import Tailwindcss from "./Tailwindcss.svelte";
 </script>
-
-<Tailwindcss />
 
 <style>
   .font-display {
@@ -19,40 +17,61 @@
   }
 </style>
 
+<Tailwindcss />
+
 <form>
   <ol>
     <li tabindex="0">
-      <input type="checkbox"/>
-      <label class='font-display'>Springtime for Whiskey Sour</label>
+      <input type="checkbox" />
+      <label class="font-display">Springtime for Whiskey Sour</label>
+
       <ul>
         <li tabindex="0">
-          <input type="checkbox"/>
+          <input type="checkbox" />
           <label>¾oz aquafaba</label>
         </li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>1oz lemon juice</li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>1oz bay leaf syrup</li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>5 leaves marjoram</li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>2oz bourbon</li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>1oz lemon juice</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>1oz bay leaf syrup</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>5 leaves marjoram</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>2oz bourbon</label>
+        </li>
       </ul>
     </li>
     <li tabindex="0">
-      <input type="checkbox"/>
-      <label class='font-display'>Bramble</label>
+      <input type="checkbox" />
+      <label class="font-display">Bramble</label>
       <ul>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>2 hood strawberries</label></li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>0.5oz bay leaf syrup</label></li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>1/2 dropper grapefruit bitters</li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>Pinch sea salt</label></li>
-        <li tabindex="0"><input type="checkbox"/>
-          <label>2oz bourbon</label></li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>2 hood strawberries</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>0.5oz bay leaf syrup</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>1/2 dropper grapefruit bitters</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>Pinch sea salt</label>
+        </li>
+        <li tabindex="0">
+          <input type="checkbox" />
+          <label>2oz bourbon</label>
+        </li>
       </ul>
     </li>
   </ol>

@@ -18,7 +18,8 @@
     "lint-staged": "^10.2.11",
     "postcss": "^7.0.32",
     "postcss-load-config": "^2.1.0",
-    "prettier-standard": "^16.4.1",
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0",
     "rollup": "^2.3.4",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
@@ -40,11 +41,14 @@
   "lint-staged": {
     "*.css": [
       "stylelint --fix",
-      "prettier-standard"
+      "prettier --write"
+    ],
+    "*.html": [
+      "prettier --write"
     ],
     "*.{js,svelte}": [
       "eslint --cache --fix --max-warnings=0",
-      "prettier-standard"
+      "prettier --write"
     ]
   }
 }
