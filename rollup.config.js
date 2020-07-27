@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import sveltePreprocess from 'svelte-preprocess'
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
@@ -8,7 +9,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -43,7 +44,8 @@ export default {
 			// a separate file - better for performance
 			css: css => {
 				css.write('public/build/bundle.css');
-			}
+			},
+      preprocess: sveltePreprocess({ postcss: true }),
 		}),
 
 		// If you have external dependencies installed from
