@@ -7,6 +7,10 @@
     @apply text-3xl;
   }
 
+  label {
+    @apply ml-3;
+  }
+
   label:hover {
     cursor: pointer;
   }
@@ -19,13 +23,15 @@
 
 <Tailwindcss />
 
-<form>
+<form class="px-4 py-2">
   <ol>
     <li tabindex="0">
-      <input type="checkbox" />
-      <label class="font-display">Springtime for Whiskey Sour</label>
+      <div class="flex items-center">
+        <input type="checkbox" />
+        <label class="font-display">Springtime for Whiskey Sour</label>
+      </div>
 
-      <ul>
+      <ul class="ml-4">
         <li tabindex="0">
           <input type="checkbox" />
           <label>¾oz aquafaba</label>
@@ -49,9 +55,12 @@
       </ul>
     </li>
     <li tabindex="0">
-      <input type="checkbox" />
-      <label class="font-display">Bramble</label>
-      <ul>
+      <div class="flex items-center">
+        <input type="checkbox" />
+        <label class="font-display">Bramble</label>
+      </div>
+
+      <ul class="ml-4">
         <li tabindex="0">
           <input type="checkbox" />
           <label>2 hood strawberries</label>
