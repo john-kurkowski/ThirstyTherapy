@@ -43,7 +43,7 @@
       "prettier-standard"
     ],
     "*.{js,svelte}": [
-      "eslint --cache --fix",
+      "eslint --cache --fix --max-warnings=0",
       "prettier-standard"
     ]
   }
