@@ -6,7 +6,7 @@
   label:hover {
     cursor: pointer;
   }
-  
+
   input:checked + label {
     color: lightgray;
     text-decoration: line-through;
