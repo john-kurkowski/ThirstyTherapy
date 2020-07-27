@@ -7,6 +7,10 @@
 <Tailwindcss />
 
 <style>
+  .font-display {
+    @apply text-3xl;
+  }
+
   label:hover {
     cursor: pointer;
   }
@@ -21,7 +25,7 @@
   <ol>
     <li tabindex="0">
       <input type="checkbox"/>
-      <label>Springtime for Whiskey Sour</label>
+      <label class='font-display'>Springtime for Whiskey Sour</label>
       <ul>
         <li tabindex="0">
           <input type="checkbox"/>
@@ -39,7 +43,7 @@
     </li>
     <li tabindex="0">
       <input type="checkbox"/>
-      <label>Bramble</label>
+      <label class='font-display'>Bramble</label>
       <ul>
         <li tabindex="0"><input type="checkbox"/>
           <label>2 hood strawberries</label></li>
