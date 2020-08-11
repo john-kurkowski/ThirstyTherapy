@@ -1,7 +1,27 @@
 <script>
-  const fetchImage = (async () => {
-    const response = await fetch("https://dog.ceo/api/breeds/image/random");
-    return await response.json();
+  const SPACE_ID = "nc2tnr0lufn7";
+  const ENVIRONMENT_ID = "master";
+  const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
+
+  // TODO: redact from source control
+  const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
+
+  const fetchData = (async () => {
+    // TODO: allow runtime selection
+    const entryId = "65xkMwKUpnwuXZVv0kvTjZ";
+
+    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
+    const resp = await fetch(url);
+    const entries = await resp.json();
+
+    const data = JSON.parse(
+      JSON.stringify(entries.items.find((entry) => entry.sys.id === entryId))
+    );
+    data.fields.agendaItems = data.fields.agendaItems.map((item) =>
+      entries.items.find((entry) => entry.sys.id === item.sys.id)
+    );
+
+    return data;
   })();
 </script>
 
@@ -24,67 +44,26 @@
   }
 </style>
 
-{#await fetchImage then data}
-  <img src={data.message} alt="A random dog" />
-
+{#await fetchData then data}
   <ol>
-    <li tabindex="0">
-      <div class="flex items-center">
-        <input type="checkbox" />
-        <label class="font-display">Springtime for Whiskey Sour</label>
-      </div>
+    {#each data.fields.agendaItems as entry}
+      <li tabindex="0">
+        <div class="flex items-center">
+          <input type="checkbox" />
+          <label class="font-display">{entry.fields.title}</label>
+        </div>
 
-      <ul class="ml-4">
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>¾oz aquafaba</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>1oz lemon juice</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>1oz bay leaf syrup</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>5 leaves marjoram</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>2oz bourbon</label>
-        </li>
-      </ul>
-    </li>
-    <li tabindex="0">
-      <div class="flex items-center">
-        <input type="checkbox" />
-        <label class="font-display">Bramble</label>
-      </div>
-
-      <ul class="ml-4">
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>2 hood strawberries</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>0.5oz bay leaf syrup</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>1/2 dropper grapefruit bitters</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>Pinch sea salt</label>
-        </li>
-        <li tabindex="0">
-          <input type="checkbox" />
-          <label>2oz bourbon</label>
-        </li>
-      </ul>
-    </li>
+        {#if entry.fields.steps && entry.fields.steps.length}
+          <ul class="ml-4">
+            {#each entry.fields.steps as step}
+              <li tabindex="0">
+                <input type="checkbox" />
+                <label>{step}</label>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+      </li>
+    {/each}
   </ol>
 {/await}
