@@ -44,26 +44,28 @@
   }
 </style>
 
-{#await fetchData then data}
-  <ol>
-    {#each data.fields.agendaItems as entry}
-      <li tabindex="0">
-        <div class="flex items-center">
-          <input type="checkbox" />
-          <label class="font-display">{entry.fields.title}</label>
-        </div>
+<form>
+  {#await fetchData then data}
+    <ol>
+      {#each data.fields.agendaItems as entry}
+        <li tabindex="0">
+          <div class="flex items-center">
+            <input type="checkbox" />
+            <label class="font-display">{entry.fields.title}</label>
+          </div>
 
-        {#if entry.fields.steps && entry.fields.steps.length}
-          <ul class="ml-4">
-            {#each entry.fields.steps as step}
-              <li tabindex="0">
-                <input type="checkbox" />
-                <label>{step}</label>
-              </li>
-            {/each}
-          </ul>
-        {/if}
-      </li>
-    {/each}
-  </ol>
-{/await}
+          {#if entry.fields.steps && entry.fields.steps.length}
+            <ul class="ml-4">
+              {#each entry.fields.steps as step}
+                <li tabindex="0">
+                  <input type="checkbox" />
+                  <label>{step}</label>
+                </li>
+              {/each}
+            </ul>
+          {/if}
+        </li>
+      {/each}
+    </ol>
+  {/await}
+</form>

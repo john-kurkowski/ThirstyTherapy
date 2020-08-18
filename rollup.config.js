@@ -49,6 +49,7 @@ export default {
       css: (css) => {
         css.write("public/build/bundle.css");
       },
+      hydratable: true,
       preprocess: sveltePreprocess({ postcss: true }),
     }),
 
