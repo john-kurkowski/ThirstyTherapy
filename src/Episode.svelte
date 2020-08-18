@@ -7,15 +7,12 @@
   const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
   const fetchData = (async () => {
-    // TODO: allow runtime selection
-    const entryId = "65xkMwKUpnwuXZVv0kvTjZ";
-
     const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
     const resp = await fetch(url);
     const entries = await resp.json();
 
     const data = JSON.parse(
-      JSON.stringify(entries.items.find((entry) => entry.sys.id === entryId))
+      JSON.stringify(entries.items.find((entry) => entry.sys.id === id))
     );
     data.fields.agendaItems = data.fields.agendaItems.map((item) =>
       entries.items.find((entry) => entry.sys.id === item.sys.id)
@@ -23,6 +20,9 @@
 
     return data;
   })();
+
+  export let id;
+  export const location = "";
 </script>
 
 <style>
