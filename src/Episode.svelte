@@ -1,4 +1,6 @@
 <script>
+  import { pageName } from "./stores";
+
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
@@ -17,6 +19,8 @@
     data.fields.agendaItems = data.fields.agendaItems.map((item) =>
       entries.items.find((entry) => entry.sys.id === item.sys.id)
     );
+
+    pageName.set(data.fields.title);
 
     return data;
   })();

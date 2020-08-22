@@ -1,5 +1,7 @@
 <script>
   import { Link } from "svelte-routing";
+  import { onMount } from "svelte";
+  import { pageName } from "./stores";
 
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
@@ -17,6 +19,10 @@
       (entry) => entry.sys.contentType.sys.id === "episode"
     );
   })();
+
+  onMount(function () {
+    pageName.set("Select episode");
+  });
 
   export const location = "";
 </script>
