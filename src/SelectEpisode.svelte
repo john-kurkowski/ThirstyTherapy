@@ -3,6 +3,12 @@
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
+  const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "America/Los_Angeles",
+  });
+
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
@@ -21,7 +27,7 @@
   })();
 
   onMount(function () {
-    pageName.set("Select episode");
+    pageName.set("Episodes");
   });
 
   export const location = "";
@@ -34,16 +40,33 @@
 </style>
 
 {#await fetchData then data}
-  <label class="font-display">Select episode</label>
-  <ol class="list-disc list-inside">
-    {#each data as entry}
-      <li>
-        <Link to={`/episode/${entry.sys.id}`}>
-          <span class="hover:text-gray-500 text-gray-200 underline">
-            {entry.fields.title}
-          </span>
-        </Link>
-      </li>
-    {/each}
-  </ol>
+  <label class="font-display">Episodes</label>
+  <table class="mt-4">
+    <thead>
+      <tr>
+        <th class="py-2">Date</th>
+        <th class="pl-4 py-2">Title</th>
+        <th class="pl-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each data as entry}
+        <tr>
+          <td class="py-2">
+            <time datetime={entry.fields.broadcast}>
+              {DATETIME_FORMAT.format(new Date(entry.fields.broadcast))}
+            </time>
+          </td>
+          <td class="pl-4 py-2">{entry.fields.title}</td>
+          <td class="pl-4 py-2">
+            <Link to={`/episode/${entry.sys.id}`}>
+              <span class="hover:text-gray-500 text-gray-200 underline">
+                View
+              </span>
+            </Link>
+          </td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
 {/await}
