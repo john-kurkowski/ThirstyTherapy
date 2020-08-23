@@ -1,4 +1,5 @@
 <script>
+  import Collapsible from "./Collapsible.svelte";
   import { pageName } from "./stores";
 
   const SPACE_ID = "nc2tnr0lufn7";
@@ -34,6 +35,19 @@
     @apply text-3xl;
   }
 
+  .icon {
+    display: inline-block;
+    transition: all 0.3s ease-out;
+  }
+
+  .icon-collapse {
+    transform: rotate(90deg);
+  }
+
+  .icon-expand {
+    transform: rotate(-90deg);
+  }
+
   label {
     @apply ml-3;
   }
@@ -48,7 +62,7 @@
   }
 </style>
 
-<form>
+<form on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
@@ -56,17 +70,26 @@
           <div class="flex items-center">
             <input type="checkbox" />
             <label class="font-display">{entry.fields.title}</label>
+            {#if entry.fields.steps && entry.fields.steps.length}
+              <button
+                class={`icon ml-4 text-3xl ${entry._isExpanded ? 'icon-expand' : 'icon-collapse'}`}
+                on:click={() => (entry._isExpanded = !entry._isExpanded)}>
+                »
+              </button>
+            {/if}
           </div>
 
           {#if entry.fields.steps && entry.fields.steps.length}
-            <ul class="ml-4">
-              {#each entry.fields.steps as step}
-                <li tabindex="0">
-                  <input type="checkbox" />
-                  <label>{step}</label>
-                </li>
-              {/each}
-            </ul>
+            <Collapsible isExpanded={entry._isExpanded}>
+              <ul class="ml-4">
+                {#each entry.fields.steps as step}
+                  <li tabindex="0">
+                    <input type="checkbox" />
+                    <label>{step}</label>
+                  </li>
+                {/each}
+              </ul>
+            </Collapsible>
           {/if}
         </li>
       {/each}
