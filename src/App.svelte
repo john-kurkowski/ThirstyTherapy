@@ -11,11 +11,31 @@
     document.title = title;
   }
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const isBroadcast = urlParams.get("isBroadcast");
+
   export let url = "";
 </script>
 
 <svelte:head>
   <title>{title}</title>
+
+  <style>
+    html,
+    body {
+      margin: 0 auto;
+      overflow: hidden;
+      font-size: 32px;
+    }
+  </style>
+  {#if isBroadcast}
+    <style>
+      html,
+      body {
+        background-color: rgba(0, 0, 0, 0) !important;
+      }
+    </style>
+  {/if}
 </svelte:head>
 
 <Tailwindcss />
