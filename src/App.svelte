@@ -28,6 +28,10 @@
 
       font-size: 32px;
     }
+
+    .font-display {
+      @apply text-3xl;
+    }
   </style>
   {#if isBroadcast}
     <style>

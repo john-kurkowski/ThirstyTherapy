@@ -6,6 +6,9 @@
         "screen",
         "tailwind"
       ]
+    }],
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global"]
     }]
   }
 }

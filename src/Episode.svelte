@@ -1,4 +1,5 @@
 <script>
+  import AgendaItem from "./AgendaItem.svelte";
   import Collapsible from "./Collapsible.svelte";
   import { pageName } from "./stores";
 
@@ -31,34 +32,8 @@
 </script>
 
 <style>
-  .font-display {
-    @apply text-3xl;
-  }
-
-  .icon {
-    display: inline-block;
-    transition: all 0.3s ease-out;
-  }
-
-  .icon-collapse {
-    transform: rotate(90deg);
-  }
-
-  .icon-expand {
-    transform: rotate(-90deg);
-  }
-
-  label {
-    @apply ml-3;
-  }
-
-  label:hover {
-    cursor: pointer;
-  }
-
-  input:checked + label {
-    color: lightgray;
-    text-decoration: line-through;
+  :global(.step.EXPANDED) {
+    @apply shadow-outline;
   }
 </style>
 
@@ -66,31 +41,26 @@
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
-        <li tabindex="0">
-          <div class="flex items-center">
-            <input type="checkbox" />
-            <label class="font-display">{entry.fields.title}</label>
-            {#if entry.fields.steps && entry.fields.steps.length}
-              <button
-                class={`icon ml-4 text-3xl ${entry._isExpanded ? 'icon-expand' : 'icon-collapse'}`}
-                on:click={() => (entry._isExpanded = !entry._isExpanded)}>
-                »
-              </button>
-            {/if}
-          </div>
+        <li>
+          <AgendaItem class="agenda-item focus:outline-none">
+            <span slot="button">{entry.fields.title}</span>
 
-          {#if entry.fields.steps && entry.fields.steps.length}
-            <Collapsible isExpanded={entry._isExpanded}>
-              <ul class="ml-4">
-                {#each entry.fields.steps as step}
-                  <li tabindex="0">
-                    <input type="checkbox" />
-                    <label>{step}</label>
-                  </li>
-                {/each}
-              </ul>
-            </Collapsible>
-          {/if}
+            <div slot="state" let:state>
+              {#if entry.fields.steps && entry.fields.steps.length}
+                <Collapsible isExpanded={state === 'EXPANDED'}>
+                  <ul class="ml-4">
+                    {#each entry.fields.steps as step}
+                      <li>
+                        <AgendaItem class="agenda-item step">
+                          <span slot="button">{step}</span>
+                        </AgendaItem>
+                      </li>
+                    {/each}
+                  </ul>
+                </Collapsible>
+              {/if}
+            </div>
+          </AgendaItem>
         </li>
       {/each}
     </ol>
