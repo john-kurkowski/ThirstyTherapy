@@ -32,7 +32,12 @@
 </script>
 
 <style>
-  :global(.step.EXPANDED) {
+  .COMPLETE {
+    color: lightgray;
+    text-decoration: line-through;
+  }
+
+  .step.EXPANDED {
     @apply shadow-outline;
   }
 </style>
@@ -42,24 +47,28 @@
     <ol>
       {#each data.fields.agendaItems as entry}
         <li>
-          <AgendaItem class="agenda-item focus:outline-none">
-            <span slot="button">{entry.fields.title}</span>
+          <AgendaItem let:state let:toggle>
+            <button class={`font-display ${state}`} on:click={toggle}>
+              {entry.fields.title}
+            </button>
 
-            <div slot="state" let:state>
-              {#if entry.fields.steps && entry.fields.steps.length}
-                <Collapsible isExpanded={state === 'EXPANDED'}>
-                  <ul class="ml-4">
-                    {#each entry.fields.steps as step}
-                      <li>
-                        <AgendaItem class="agenda-item step">
-                          <span slot="button">{step}</span>
-                        </AgendaItem>
-                      </li>
-                    {/each}
-                  </ul>
-                </Collapsible>
-              {/if}
-            </div>
+            {#if entry.fields.steps && entry.fields.steps.length}
+              <Collapsible isExpanded={state === 'EXPANDED'}>
+                <ul class="ml-4">
+                  {#each entry.fields.steps as step}
+                    <li>
+                      <AgendaItem let:state let:toggle>
+                        <button
+                          class={`font-display step ${state}`}
+                          on:click={toggle}>
+                          {step}
+                        </button>
+                      </AgendaItem>
+                    </li>
+                  {/each}
+                </ul>
+              </Collapsible>
+            {/if}
           </AgendaItem>
         </li>
       {/each}
