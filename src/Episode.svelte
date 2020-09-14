@@ -31,86 +31,29 @@
   export const location = "";
 </script>
 
-<style>
-  .COMPLETE {
-    color: lightgray;
-    text-decoration: line-through;
-  }
-
-  .item {
-    @apply whitespace-no-wrap;
-  }
-
-  .item:not(.EXPANDED) {
-    @apply text-left;
-    @apply truncate;
-    @apply w-full;
-  }
-
-  .step.EXPANDED {
-    @apply shadow-outline;
-
-    /* TODO: only if it's truncated */
-    animation: backAndForth 10s linear infinite;
-  }
-
-  @keyframes backAndForth {
-    0% {
-      transform: translateX(0);
-    }
-
-    10% {
-      transform: translateX(0);
-    }
-
-    45% {
-      transform: translateX(calc(-100% + 80vw));
-    }
-
-    55% {
-      transform: translateX(calc(-100% + 80vw));
-    }
-
-    90% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-</style>
-
 <form on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
         <li>
-          <AgendaItem let:state let:toggle>
-            <button
-              class={`font-display item ${state}`}
-              class:step={!(entry.fields.steps || []).length}
-              on:click={toggle}>
-              {entry.fields.title}
-            </button>
+          <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
+            <span slot="button">{entry.fields.title}</span>
 
-            {#if (entry.fields.steps || []).length}
-              <Collapsible isExpanded={state === 'EXPANDED'}>
-                <ul class="ml-4">
-                  {#each entry.fields.steps as step}
-                    <li>
-                      <AgendaItem let:state let:toggle>
-                        <button
-                          class={`font-display item step ${state}`}
-                          on:click={toggle}>
-                          {step}
-                        </button>
-                      </AgendaItem>
-                    </li>
-                  {/each}
-                </ul>
-              </Collapsible>
-            {/if}
+            <div slot="rest" let:state>
+              {#if (entry.fields.steps || []).length}
+                <Collapsible isExpanded={state === 'EXPANDED'}>
+                  <ul class="ml-4">
+                    {#each entry.fields.steps as step}
+                      <li>
+                        <AgendaItem isAnimatable={true}>
+                          <span slot="button">{step}</span>
+                        </AgendaItem>
+                      </li>
+                    {/each}
+                  </ul>
+                </Collapsible>
+              {/if}
+            </div>
           </AgendaItem>
         </li>
       {/each}
