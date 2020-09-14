@@ -12,7 +12,13 @@
    */
 
   export let isAnimatable = false;
+  let button;
+  let isTruncated;
   let state;
+
+  $: if (button) {
+    isTruncated = button.offsetWidth < button.scrollWidth;
+  }
 
   function toggle() {
     if (state === "EXPANDED") {
@@ -43,8 +49,9 @@
 
   .isAnimatable.EXPANDED {
     @apply shadow-outline;
+  }
 
-    /* TODO: only if it's truncated */
+  .isAnimatable.isTruncated.EXPANDED {
     animation: backAndForth 10s linear infinite;
   }
 
@@ -76,8 +83,10 @@
 </style>
 
 <button
+  bind:this={button}
   class={`button font-display ${state}`}
   class:isAnimatable
+  class:isTruncated
   on:click={toggle}>
   <slot name="button" />
 </button>
