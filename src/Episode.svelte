@@ -38,6 +38,10 @@
   }
 
   .item {
+    @apply whitespace-no-wrap;
+  }
+
+  .item:not(.EXPANDED) {
     @apply text-left;
     @apply truncate;
     @apply w-full;
@@ -45,6 +49,35 @@
 
   .step.EXPANDED {
     @apply shadow-outline;
+
+    /* TODO: only if it's truncated */
+    animation: backAndForth 10s linear infinite;
+  }
+
+  @keyframes backAndForth {
+    0% {
+      transform: translateX(0);
+    }
+
+    10% {
+      transform: translateX(0);
+    }
+
+    45% {
+      transform: translateX(calc(-100% + 80vw));
+    }
+
+    55% {
+      transform: translateX(calc(-100% + 80vw));
+    }
+
+    90% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
   }
 </style>
 
