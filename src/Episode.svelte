@@ -48,11 +48,14 @@
       {#each data.fields.agendaItems as entry}
         <li>
           <AgendaItem let:state let:toggle>
-            <button class={`font-display ${state}`} on:click={toggle}>
+            <button
+              class={`font-display ${state}`}
+              class:step={!(entry.fields.steps || []).length}
+              on:click={toggle}>
               {entry.fields.title}
             </button>
 
-            {#if entry.fields.steps && entry.fields.steps.length}
+            {#if (entry.fields.steps || []).length}
               <Collapsible isExpanded={state === 'EXPANDED'}>
                 <ul class="ml-4">
                   {#each entry.fields.steps as step}
