@@ -31,44 +31,29 @@
   export const location = "";
 </script>
 
-<style>
-  .COMPLETE {
-    color: lightgray;
-    text-decoration: line-through;
-  }
-
-  .step.EXPANDED {
-    @apply shadow-outline;
-  }
-</style>
-
 <form on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
         <li>
-          <AgendaItem let:state let:toggle>
-            <button class={`font-display ${state}`} on:click={toggle}>
-              {entry.fields.title}
-            </button>
+          <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
+            <span slot="button">{entry.fields.title}</span>
 
-            {#if entry.fields.steps && entry.fields.steps.length}
-              <Collapsible isExpanded={state === 'EXPANDED'}>
-                <ul class="ml-4">
-                  {#each entry.fields.steps as step}
-                    <li>
-                      <AgendaItem let:state let:toggle>
-                        <button
-                          class={`font-display step ${state}`}
-                          on:click={toggle}>
-                          {step}
-                        </button>
-                      </AgendaItem>
-                    </li>
-                  {/each}
-                </ul>
-              </Collapsible>
-            {/if}
+            <div slot="rest" let:state>
+              {#if (entry.fields.steps || []).length}
+                <Collapsible isExpanded={state === 'EXPANDED'}>
+                  <ul class="ml-4">
+                    {#each entry.fields.steps as step}
+                      <li>
+                        <AgendaItem isAnimatable={true}>
+                          <span slot="button">{step}</span>
+                        </AgendaItem>
+                      </li>
+                    {/each}
+                  </ul>
+                </Collapsible>
+              {/if}
+            </div>
           </AgendaItem>
         </li>
       {/each}

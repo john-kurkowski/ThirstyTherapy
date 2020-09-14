@@ -1,4 +1,10 @@
 <script>
+  /**
+   * Vertically animate the collapse and expansion of the given children.
+   *
+   * @component Collapsible
+   */
+
   export let isExpanded = false;
 </script>
 
