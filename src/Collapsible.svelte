@@ -15,6 +15,6 @@
   }
 </style>
 
-<div class={isExpanded ? 'expand' : 'collapse'}>
+<div class:collapse={!isExpanded} class:expand={isExpanded}>
   <slot />
 </div>
