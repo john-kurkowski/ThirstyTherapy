@@ -37,6 +37,12 @@
     text-decoration: line-through;
   }
 
+  .item {
+    @apply text-left;
+    @apply truncate;
+    @apply w-full;
+  }
+
   .step.EXPANDED {
     @apply shadow-outline;
   }
@@ -49,7 +55,7 @@
         <li>
           <AgendaItem let:state let:toggle>
             <button
-              class={`font-display ${state}`}
+              class={`font-display item ${state}`}
               class:step={!(entry.fields.steps || []).length}
               on:click={toggle}>
               {entry.fields.title}
@@ -62,7 +68,7 @@
                     <li>
                       <AgendaItem let:state let:toggle>
                         <button
-                          class={`font-display step ${state}`}
+                          class={`font-display item step ${state}`}
                           on:click={toggle}>
                           {step}
                         </button>

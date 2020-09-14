@@ -23,9 +23,6 @@
   <style>
     html,
     body {
-      @apply overflow-x-hidden;
-      @apply whitespace-no-wrap;
-
       font-size: 32px;
     }
 
