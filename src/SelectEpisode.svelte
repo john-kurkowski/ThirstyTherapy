@@ -3,6 +3,9 @@
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
+  const urlParams = new window.URLSearchParams(window.location.search);
+  const qs = urlParams.toString() ? `?${urlParams.toString()}` : "";
+
   const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
     dateStyle: "short",
     timeStyle: "short",
@@ -59,7 +62,7 @@
           </td>
           <td class="pl-4 py-2">{entry.fields.title}</td>
           <td class="pl-4 py-2">
-            <Link to={`/episode/${entry.sys.id}`}>
+            <Link to={`/episode/${entry.sys.id}${qs}`}>
               <span class="hover:text-gray-500 text-gray-200 underline">
                 View
               </span>
