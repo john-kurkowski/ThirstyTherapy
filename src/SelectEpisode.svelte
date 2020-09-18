@@ -43,7 +43,7 @@
 </style>
 
 {#await fetchData then data}
-  <label class="font-display">Episodes</label>
+  <h2 class="font-display">Episodes</h2>
   <table class="mt-4">
     <thead>
       <tr>
