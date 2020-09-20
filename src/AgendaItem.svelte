@@ -38,6 +38,7 @@
   }
 
   .button {
+    @apply outline-none;
     @apply text-left;
     @apply whitespace-no-wrap;
   }
