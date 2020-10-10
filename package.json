@@ -4,7 +4,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --single"
+    "start": "sirv public --single",
+    "validate": "svelte-check"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -12,6 +13,8 @@
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@tsconfig/svelte": "^1.0.0",
     "eslint": "^7.11.0",
     "eslint-plugin-svelte3": "^2.7.3",
     "husky": "^4.3.0",
@@ -27,16 +30,19 @@
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "svelte": "^3.29.0",
+    "svelte-check": "^1.0.0",
     "svelte-preprocess": "^4.5.1",
     "svelte-routing": "^1.4.2",
-    "tailwindcss": "^1.8.13"
+    "tailwindcss": "^1.8.13",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
   },
   "dependencies": {
     "sirv-cli": "^1.0.6"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run validate"
     }
   },
   "lint-staged": {

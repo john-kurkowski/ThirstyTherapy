@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Episode from "./Episode.svelte";
   import SelectEpisode from "./SelectEpisode.svelte";
   import Tailwindcss from "./Tailwindcss.svelte";
@@ -19,7 +19,6 @@
 
 <svelte:head>
   <title>{title}</title>
-
   <style>
     html,
     body {
@@ -29,8 +28,7 @@
     .font-display {
       @apply text-3xl;
     }
-  </style>
-  {#if isBroadcast}
+  </style>{#if isBroadcast}
     <style>
       html,
       body {
