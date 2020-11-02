@@ -1,6 +1,12 @@
-<script>
+<script lang="ts">
   import AgendaItem from "./AgendaItem.svelte";
   import Collapsible from "./Collapsible.svelte";
+  import type {
+    AgendaItemModel,
+    ContentfulEntry,
+    ContentfulResponse,
+    EpisodeModel,
+  } from "./models";
   import { pageName } from "./stores";
 
   const SPACE_ID = "nc2tnr0lufn7";
@@ -13,21 +19,36 @@
   const fetchData = (async () => {
     const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
     const resp = await fetch(url);
-    const entries = await resp.json();
+    const entries = (await resp.json()) as ContentfulResponse<AgendaItemModel | EpisodeModel>;
 
-    const data = JSON.parse(
-      JSON.stringify(entries.items.find((entry) => entry.sys.id === id))
+    const entry = entries.items.find((entry) => entry.sys.id === id);
+    if (!entry) {
+      throw new Error(`Not found: ${id}`);
+    }
+
+    const data: ContentfulEntry<EpisodeModel> = JSON.parse(
+      JSON.stringify(entry)
     );
-    data.fields.agendaItems = data.fields.agendaItems.map((item) =>
-      entries.items.find((entry) => entry.sys.id === item.sys.id)
-    );
+
+    const allAgendaItems = data.fields.agendaItems
+      .filter((item): item is AgendaItemModel => !!item.steps)
+      .map((item) =>
+        entries.items.find((entry) => entry.sys.id === item.sys.id)
+      )
+      .filter((item): item is AgendaItemModel => !!item)
+
+    data.fields.agendaItems = allAgendaItems
+      .reduce<ContentfulEntry<EpisodeModel>[]>(
+        (acc, entry) => (entry ? [...acc, entry] : acc),
+        []
+      );
 
     pageName.set(data.fields.title);
 
     return data;
   })();
 
-  export let id;
+  export let id: string;
   export const location = "";
 </script>
 
