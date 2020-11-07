@@ -40,7 +40,7 @@
 
 <Tailwindcss />
 
-<div class="px-4 py-2">
+<div class="">
   <Router {url}>
     <Route path="/" component={SelectEpisode} />
     <Route path="/episode/:id" component={Episode} />
