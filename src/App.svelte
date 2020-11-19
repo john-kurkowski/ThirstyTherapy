@@ -26,7 +26,7 @@
     }
 
     .font-display {
-      @apply text-3xl;
+      @apply text-lg;
     }
   </style>{#if isBroadcast}
     <style>
