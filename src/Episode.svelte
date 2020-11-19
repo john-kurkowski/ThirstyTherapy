@@ -31,7 +31,9 @@
   export const location = "";
 </script>
 
-<form on:submit={(event) => event.preventDefault()}>
+<form
+  class="flex flex-col justify-end min-h-screen"
+  on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
