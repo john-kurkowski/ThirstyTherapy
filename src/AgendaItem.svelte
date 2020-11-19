@@ -51,36 +51,6 @@
   .isAnimatable.EXPANDED {
     @apply shadow-outline;
   }
-
-  .isAnimatable.isTruncated.EXPANDED {
-    animation: backAndForth 10s linear infinite;
-  }
-
-  @keyframes backAndForth {
-    0% {
-      transform: translateX(0);
-    }
-
-    10% {
-      transform: translateX(0);
-    }
-
-    45% {
-      transform: translateX(calc(-100% + 80vw));
-    }
-
-    55% {
-      transform: translateX(calc(-100% + 80vw));
-    }
-
-    90% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
 </style>
 
 <button
