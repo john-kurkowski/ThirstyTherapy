@@ -22,7 +22,7 @@
       entries.items.find((entry) => entry.sys.id === item.sys.id)
     );
 
-    pageName.set(data.fields.title);
+    pageName.set(data.fields.displayTitle || data.fields.title);
 
     return data;
   })();
@@ -39,7 +39,8 @@
       {#each data.fields.agendaItems as entry}
         <li>
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
-            <span slot="button">{entry.fields.title}</span>
+            <span
+              slot="button">{entry.fields.displayTitle || entry.fields.title}</span>
 
             <div slot="rest" let:state>
               {#if (entry.fields.steps || []).length}
