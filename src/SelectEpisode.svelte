@@ -20,13 +20,10 @@
   const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
   const fetchData = (async () => {
-    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
+    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}&content_type=episode&order=-fields.broadcast`;
     const resp = await fetch(url);
     const entries = await resp.json();
-
-    return entries.items.filter(
-      (entry) => entry.sys.contentType.sys.id === "episode"
-    );
+    return entries.items;
   })();
 
   onMount(function () {
