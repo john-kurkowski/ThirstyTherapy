@@ -17,6 +17,19 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Display:ital@0;1"
     />
     <style>
+      .after-gradient::after {
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.225) 0%,
+          rgba(0, 0, 0, 0.001) 100%
+        );
+        bottom: -20%;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+      }
       .font-body {
         font-family: "DM Sans", sans-serif;
       }
@@ -28,12 +41,12 @@
   </head>
   <body class="font-body text-center text-purple-100">
     <header
-      class="bg-purple-600 border-b-2 border-indigo-800 mb-20 px-8 py-4 relative"
+      class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative"
     >
       <h1 class="font-bold font-brand mb-10 text-4xl">Thirsty Therapy</h1>
       <img
         alt="Thirsty Therapy logo: a bright red cocktail in a rocks glass, lined with a Hood strawberry"
-        class="absolute border-indigo-800 border-2 left-0 mx-auto my-1 right-0 rounded-full"
+        class="absolute border-gray-800 border-2 left-0 mx-auto my-1 right-0 rounded-full z-20"
         height="100"
         src="./logo.png"
         style="top: 76px"
