@@ -31,13 +31,19 @@
   export const location = "";
 </script>
 
+<style>
+  .agenda-item + .agenda-item {
+    @apply mt-1;
+  }
+</style>
+
 <form
   class="flex flex-col justify-end min-h-screen"
   on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
     <ol>
       {#each data.fields.agendaItems as entry}
-        <li>
+        <li class="agenda-item">
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
             <span
               slot="button">{entry.fields.displayTitle || entry.fields.title}</span>

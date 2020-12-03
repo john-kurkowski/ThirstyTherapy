@@ -32,14 +32,9 @@
   }
 
   .button {
+    @apply leading-5;
     @apply outline-none;
     @apply text-left;
-    @apply whitespace-no-wrap;
-  }
-
-  .button:not(.EXPANDED) {
-    @apply truncate;
-    @apply w-full;
   }
 
   .isAnimatable.EXPANDED {

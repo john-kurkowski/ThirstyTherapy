@@ -22,6 +22,8 @@
   <style>
     html,
     body {
+      @apply max-w-xs;
+
       font-size: 32px;
     }
 
