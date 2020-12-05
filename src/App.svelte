@@ -22,7 +22,7 @@
   <style>
     html,
     body {
-      @apply max-w-xs;
+      @apply max-w-sm;
 
       font-size: 32px;
     }
