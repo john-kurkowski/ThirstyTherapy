@@ -1,7 +1,9 @@
 {
-  "name": "TODO",
+  "name": "thirstytherapy.com",
   "description": "TODO",
   "version": "0.0.1",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
