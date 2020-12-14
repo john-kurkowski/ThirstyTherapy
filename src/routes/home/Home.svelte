@@ -1,0 +1,68 @@
+<script>
+  import HookDetail from '../../components/HookDetail.svelte';
+  import BlogTeaser from '../../components/BlogTeaser.svelte';
+  import Clock from '../../components/Clock.svelte';
+  export let data, helpers;
+
+  export let foo;
+
+  // add permalinks to the hook list so we can link to the posts.
+  const hooks = data.hookInterface.map((hook) => ({ ...hook, link: helpers.permalinks.hooks({ slug: hook.hook }) }));
+</script>
+
+<style>
+</style>
+
+<svelte:head>
+  <html class="bg-purple-900" lang="en-US" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Thirsty Therapy</title>
+  <meta name="description" content="You are worthy of good drinks." />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Display:ital@0;1" />
+</svelte:head>
+
+<div class="font-body text-center text-purple-100">
+  <header class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative">
+    <h1 class="font-bold font-brand mb-10 text-4xl">Thirsty Therapy</h1>
+
+    <img
+      alt="Thirsty Therapy logo: a bright red cocktail in a rocks glass, lined with a Hood strawberry"
+      class="absolute border-gray-800 border-2 left-0 mx-auto my-1 right-0 rounded-full z-20"
+      height="100"
+      src="./logo.png"
+      style="bottom: -56px"
+      width="100" />
+  </header>
+
+  <main>
+    <p class="mb-6">You are worthy of good drinks.</p>
+  </main>
+
+  <footer class="mt-8 px-8 py-4">
+    <p class="mb-6">Billy Noble</p>
+
+    <ul class="flex justify-center mb-6">
+      <li><a href="mailto:ThirstyTherapy@gmail.com"> <img src="./iconmonstr-email-3.svg" alt="Email" /> </a></li>
+      <li class="ml-8">
+        <a href="https://instagram.com/thirstytherapy"> <img src="./iconmonstr-instagram-11.svg" alt="Instagram" /> </a>
+      </li>
+      <li class="ml-8">
+        <a href="https://twitch.tv/thirstytherapy"> <img src="./iconmonstr-twitch-1.svg" alt="Twitch" /> </a>
+      </li>
+      <li class="ml-8">
+        <a href="https://venmo.com/thirstytherapy">
+          <img alt="Venmo" class="icon-venmo" height="24" src="./venmo-icon.svg" width="24" />
+        </a>
+      </li>
+    </ul>
+
+    <p>
+      <a
+        class="underline"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe-jauZKAnpo3PD2MOahCj62Ss9f73QH3XSAaiPOfZFXtN0Zw/viewform?usp=sf_link">Survey</a>
+    </p>
+  </footer>
+</div>
