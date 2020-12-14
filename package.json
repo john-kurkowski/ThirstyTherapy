@@ -1,5 +1,5 @@
 {
-  "name": "elderjs-template",
+  "name": "thirstytherapy.com",
   "version": "1.2.0",
   "description": "This is a project template for [Elder.js](https://elderguide.com/tech/elderjs/) apps. The template lives at https://github.com/elderjs/template and the Elder.js source is here: https://github.com/elderjs/elderjs",
   "main": "./src/build.js",
@@ -50,8 +50,8 @@
     "prettier-plugin-svelte": "^1.4.2",
     "rollup": "^2.34.2"
   },
-  "author": "Nick Reese",
-  "license": "MIT",
+  "author": "Thirsty Therapy",
+  "license": "UNLICENSED",
   "files": [
     "index.js",
     "elderjs"

@@ -1,5 +1,5 @@
 module.exports = {
-  origin: '', // TODO: update this.
+  origin: 'thirstytherapy.com',
   lang: 'en',
   srcDir: 'src',
   distDir: 'public',
