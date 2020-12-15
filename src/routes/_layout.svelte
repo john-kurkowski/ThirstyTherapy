@@ -1,10 +1,8 @@
 <script>
-  import Tailwindcss from "../Tailwindcss.svelte";
-  /*
   import Nav from "../components/Nav.svelte";
+  import Tailwindcss from "../Tailwindcss.svelte";
 
   export let segment;
-  */
 </script>
 
 <style>
@@ -42,9 +40,9 @@
       width="100" />
   </header>
 
-  <!-- Nav {segment} /-->
+  <Nav {segment} />
 
-  <main>
+  <main class="mb-8">
     <slot />
   </main>
 
