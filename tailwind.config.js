@@ -1,8 +1,15 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
-  purge: ['./src/**/*.css', './src/**/*.svelte'],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ["DM Sans", ...defaultTheme.fontFamily.sans],
+        display: ["DM Serif Display", ...defaultTheme.fontFamily.serif],
+      },
+    },
   },
   variants: {
     extend: {},

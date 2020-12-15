@@ -1,25 +1,17 @@
-require('dotenv').config();
-const polka = require('polka');
-const cors = require('cors');
-const compression = require('compression');
-const bodyParser = require('body-parser');
-const sirv = require('sirv');
-const dev = process.env.NODE_ENV === 'development';
+import sirv from 'sirv';
+import polka from 'polka';
+import compression from 'compression';
+import * as sapper from '@sapper/server';
 
-const { Elder } = require('@elderjs/elderjs');
-const elder = new Elder({ context: 'server' });
+const { PORT, NODE_ENV } = process.env;
+const dev = NODE_ENV === 'development';
 
-const server = polka();
-server.use(cors());
-server.use(compression({ level: 6 }));
-server.use(bodyParser.urlencoded({ extended: false }), bodyParser.json());
-server.use(elder.server);
-server.use(sirv(elder.settings.distDir, { dev }));
-
-const SERVER_PORT = process.env.SERVER_PORT || 3000;
-server.listen(SERVER_PORT, (err) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log(`> Elder.js running on http://localhost:${SERVER_PORT}`);
-});
+polka() // You can also use Express
+	.use(
+		compression({ threshold: 0 }),
+		sirv('static', { dev }),
+		sapper.middleware()
+	)
+	.listen(PORT, err => {
+		if (err) console.log('error', err);
+	});
