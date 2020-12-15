@@ -1,4 +1,5 @@
 <script>
+  import Tailwindcss from "../Tailwindcss.svelte";
   /*
   import Nav from "../components/Nav.svelte";
 
@@ -29,6 +30,8 @@
     font-family: "DM Serif Display", serif;
   }
 </style>
+
+<Tailwindcss />
 
 <svelte:head>
   <html class="bg-purple-900" lang="en-US" />

@@ -30,6 +30,8 @@
     "eslint-plugin-svelte3": "^3.0.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
+    "postcss": "^8.2.1",
+    "postcss-load-config": "^3.0.0",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^1.4.2",
     "rollup": "^2.3.4",
@@ -38,7 +40,9 @@
     "sapper": "^0.28.0",
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0",
-    "svelte": "^3.31.0"
+    "svelte": "^3.31.0",
+    "svelte-preprocess": "^4.6.1",
+    "tailwindcss": "^2.0.2"
   },
   "husky": {
     "hooks": {
