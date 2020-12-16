@@ -26,16 +26,15 @@
       2020</time>, for our last stream for the year!
   </p>
 
-  <figure class="mb-6">
+  <figure class="max-w-lg mb-6 mx-auto">
     <a href="https://twitch.tv/thirstytherapy">
       <img
         alt="Screenshot of Billy and John bartending remotely during a 2020 livestream"
-        class="max-w-lg mx-auto"
         src="./stream.png" />
     </a>
   </figure>
 
-  <ul class="list-disc">
+  <ul class="list-disc list-inside">
     <li>
       <a
         class="underline"
