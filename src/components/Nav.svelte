@@ -3,14 +3,6 @@
 </script>
 
 <style>
-  :global(.badge) {
-    @apply align-middle;
-    @apply bg-pink-600;
-    @apply px-2;
-    @apply text-sm;
-    @apply rounded-lg;
-  }
-
   [aria-current] {
     position: relative;
     display: inline-block;
