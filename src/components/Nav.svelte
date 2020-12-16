@@ -1,60 +1,62 @@
 <script>
-	export let segment;
+  export let segment;
 </script>
 
 <style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
-	}
+  a {
+    position: relative;
+    display: inline-block;
+  }
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
+  a:hover::after {
+    @apply bg-gray-300;
+  }
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
+  [aria-current]::after {
+    @apply bg-purple-600;
+  }
 
-	li {
-		display: block;
-		float: left;
-	}
-
-	[aria-current] {
-		position: relative;
-		display: inline-block;
-	}
-
-	[aria-current]::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+  a:hover::after,
+  [aria-current]::after {
+    bottom: -4px;
+    content: "";
+    display: block;
+    height: 4px;
+    position: absolute;
+    width: 100%;
+  }
 </style>
 
-<nav>
-	<ul>
-		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">about</a></li>
+<nav class="mb-12">
+  <ul class="flex justify-center mb-4">
+    <li>
+      <a aria-current={segment === undefined ? 'page' : undefined} href=".">
+        home
+      </a>
+    </li>
+    <li class="ml-6">
+      <a
+        aria-current={segment === 'classes' ? 'page' : undefined}
+        href="classes">
+        classes
+      </a>
+    </li>
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
-	</ul>
+    <li class="ml-6">
+      <a
+        aria-current={segment === 'livestream' ? 'page' : undefined}
+        href="livestream"
+        rel="prefetch">
+        livestream
+      </a>
+
+      <span class="badge ml-1">next:
+        <time datetime="2020-12-19T:18:00:00.000Z-08:00">Dec 19</time>
+      </span>
+    </li>
+  </ul>
+
+  <hr class="border-purple-600 border-1 md:w-1/3 mx-auto w-5/6" />
 </nav>
