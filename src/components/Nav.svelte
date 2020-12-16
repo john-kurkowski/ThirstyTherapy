@@ -3,20 +3,27 @@
 </script>
 
 <style>
-  [aria-current] {
+  a {
     position: relative;
     display: inline-block;
   }
 
+  a:hover::after {
+    @apply bg-gray-300;
+  }
+
   [aria-current]::after {
     @apply bg-purple-600;
+  }
 
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 4px;
-    display: block;
+  a:hover::after,
+  [aria-current]::after {
     bottom: -4px;
+    content: "";
+    display: block;
+    height: 4px;
+    position: absolute;
+    width: 100%;
   }
 </style>
 
