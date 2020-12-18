@@ -25,6 +25,17 @@
       @apply max-w-sm;
 
       font-size: 32px;
+
+      /* Hide scroll bar. */
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+
+    body::-webkit-scrollbar {
+      /* WebKit */
+      height: 0;
+      width: 0;
     }
 
     .font-display {
