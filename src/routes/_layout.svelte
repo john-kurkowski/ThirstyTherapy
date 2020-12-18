@@ -42,7 +42,7 @@
 
   <Nav {segment} />
 
-  <main class="max-w-screen-sm mb-8 mx-auto px-4">
+  <main class="mb-8 mx-auto px-4">
     <slot />
   </main>
 

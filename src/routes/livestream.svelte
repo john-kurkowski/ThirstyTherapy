@@ -1,46 +1,155 @@
+<style>
+  .cards {
+    @apply flex;
+    @apply flex-wrap;
+    @apply justify-between;
+  }
+
+  .card {
+    @apply bg-pink-100;
+    @apply m-2;
+    @apply px-4;
+    @apply py-2;
+    @apply rounded-lg;
+    @apply text-gray-700;
+
+    width: theme("width.80");
+  }
+
+  .card header {
+    @apply mx-auto;
+    @apply text-center;
+  }
+
+  .card h2,
+  .card h3,
+  .card h4 {
+    @apply font-bold;
+  }
+
+  .card h2,
+  .card h3 {
+    @apply font-display;
+  }
+
+  .card h2 {
+    @apply text-2xl;
+  }
+
+  .card h3 {
+    @apply text-xl;
+  }
+</style>
+
 <svelte:head>
   <title>Livestream | Thirsty Therapy</title>
 </svelte:head>
 
 <div class="text-left">
-  <blockquote class="border-l-2 border-purple-600 italic mb-6 pl-2">
-    Welcome in, folks, to the socially safe cocktail bar! Approved for 2020. Sit
-    at the bar with Billy the master bartender and alchemist, and his apprentice
-    John. Follow along to put fresh spins on your favorite spirits. You are
-    <span>#worthyofgooddrinks</span>.
-  </blockquote>
+  <div class="max-w-2xl mx-auto">
+    <blockquote class="border-l-2 border-purple-600 italic mb-6 pl-2">
+      Welcome in, folks, to the socially safe cocktail bar! Approved for 2020.
+      Sit at the bar with Billy the master bartender and alchemist, and his
+      apprentice John. Follow along to put fresh spins on your favorite spirits.
+      You are
+      <span>#worthyofgooddrinks</span>.
+    </blockquote>
 
-  <p class="mb-6">
-    <a class="underline" href="https://twitch.tv/thirstytherapy">
-      We stream every other Saturday, 6-8pm Pacific, on Twitch.
-      <img
-        class="inline-block ml-2"
-        src="./iconmonstr-twitch-1.svg"
-        alt="Twitch" />
-    </a>
-  </p>
-
-  <p class="mb-6">
-    Join us
-    <time class="badge" datetime="2020-12-19T:18:00:00.000Z-08:00">December 19,
-      2020</time>, for our last stream for the year!
-  </p>
-
-  <figure class="max-w-lg mb-6 mx-auto">
-    <a href="https://twitch.tv/thirstytherapy">
-      <img
-        alt="Screenshot of Billy and John bartending remotely during a 2020 livestream"
-        src="./stream.png" />
-    </a>
-  </figure>
-
-  <ul class="list-disc list-inside">
-    <li>
-      <a
-        class="underline"
-        href="https://www.youtube.com/channel/UC_t71znatwtjEPL3i1MiutA">
-        YouTube archive
+    <p class="mb-6">
+      <a class="underline" href="https://twitch.tv/thirstytherapy">
+        We stream every other Saturday, 6-8pm Pacific, on Twitch.
+        <img
+          class="inline-block ml-2"
+          src="./iconmonstr-twitch-1.svg"
+          alt="Twitch" />
       </a>
-    </li>
-  </ul>
+    </p>
+
+    <p class="mb-6">
+      Join us
+      <time class="badge" datetime="2020-12-19T:18:00:00.000Z-08:00">December
+        19, 2020</time>, for our last stream for the year!
+    </p>
+  </div>
+
+  <div class="cards justify-between max-w-2xl mb-6 mx-auto xl:max-w-5xl">
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2>Upcoming Ingredients</h2>
+      </header>
+
+      <h3 class="mb-4">Dec 19, 2020</h3>
+
+      <ul class="justify-around mb-4 md:flex">
+        <li class="mb-4">
+          <h4>Manhattan</h4>
+          <ul class="list-disc list-inside pl-2 text-sm">
+            <li>Rye</li>
+            <li>Sweet vermouth</li>
+            <li>Angostura bitters</li>
+            <li>Cherry</li>
+          </ul>
+        </li>
+        <li class="mb-4">
+          <h4>Vieux Carré</h4>
+          <ul class="list-disc list-inside pl-2 text-sm">
+            <li>Rye</li>
+            <li>Cognac</li>
+            <li>Sweet vermouth</li>
+            <li>Bénédictine</li>
+            <li>Angostura bitters</li>
+            <li>Peychaud's bitters</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="mb-4">Happy New Year!</h3>
+    </div>
+
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2 class="mb-2">About Billy</h2>
+        <img
+          alt="Billy the bartender, smiling"
+          class="w-full"
+          src="./billy.png" />
+      </header>
+      <p class="mb-4">
+        Billy is a professional bartender in Portland, OR, USA. He's obsessed
+        with hospitality and alchemy, applying culinary techniques to his drinks
+        and making his own bitters.
+      </p>
+    </div>
+
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2 class="mb-2">About John</h2>
+        <img alt="John the barback, thinking" class="w-full" src="./john.png" />
+      </header>
+      <p class="mb-4">
+        John is Billy's long time guest sitting at the bar. One day John asked,
+        how to take his home bartending to the next level? Billy told him, put
+        on the apron, get behind the bar.
+      </p>
+    </div>
+
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2 class="mb-2">More</h2>
+        <img
+          alt="Screenshot of Billy and John bartending remotely during a 2020 livestream"
+          src="./stream.png" />
+      </header>
+
+      <ul class="list-disc list-inside mb-4">
+        <li>
+          <a
+            class="underline"
+            href="https://www.youtube.com/channel/UC_t71znatwtjEPL3i1MiutA">
+            YouTube archive
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
