@@ -123,7 +123,7 @@
         </li>
       </ul>
 
-      <h3 class="mb-4">Happy New Year!</h3>
+      <h3 class="mb-4"><s>Jan 2, 2020</s> Happy New Year!</h3>
     </div>
 
     <div class="card mb-6">
