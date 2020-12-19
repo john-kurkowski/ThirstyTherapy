@@ -38,7 +38,7 @@
   }
 
   .isAnimatable.EXPANDED {
-    @apply shadow-outline;
+    @apply ring;
   }
 </style>
 
