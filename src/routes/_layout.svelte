@@ -1,6 +1,10 @@
 <script>
+  import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte";
   import Nav from "../components/Nav.svelte";
   import Tailwindcss from "../Tailwindcss.svelte";
+  import { stores } from "@sapper/app";
+
+  let ga_measurment_id = "G-KC8DC5DEDS";
 
   export let segment;
 </script>
@@ -20,6 +24,8 @@
     top: 100%;
   }
 </style>
+
+<GoogleAnalytics {stores} id={ga_measurment_id} />
 
 <Tailwindcss />
 
