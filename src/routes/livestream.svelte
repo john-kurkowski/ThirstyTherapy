@@ -1,4 +1,19 @@
 <style>
+  .button {
+    @apply bg-pink-100;
+    @apply border-2;
+    @apply border-gray-900;
+    @apply px-3;
+    @apply py-1.5;
+    @apply rounded-md;
+    @apply text-gray-900;
+  }
+
+  .button:hover {
+    @apply bg-purple-600;
+    @apply text-purple-100;
+  }
+
   .cards {
     @apply flex;
     @apply flex-wrap;
@@ -55,14 +70,19 @@
       <span>#worthyofgooddrinks</span>.
     </blockquote>
 
-    <p class="mb-6">
-      <a class="underline" href="https://twitch.tv/thirstytherapy">
-        We stream every other Saturday, 6-8pm Pacific, on Twitch.
+    <p class="mb-6 text-center text-lg">
+      <a class="align-middle button" href="https://twitch.tv/thirstytherapy">
+        Watch on Twitch
         <img
           class="inline-block ml-2"
           src="./iconmonstr-twitch-1.svg"
-          alt="Twitch" />
+          alt="Twitch logo" />
       </a>
+    </p>
+
+    <p class="mb-6">
+      We stream every other Saturday, 6-8pm Pacific,
+      <a class="underline" href="https://twitch.tv/thirstytherapy">on Twitch</a>.
     </p>
 
     <p class="mb-6">
