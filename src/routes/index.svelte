@@ -4,7 +4,7 @@
   <meta property="og:image" content="https://thirstytherapy.com/logo.png" />
   <meta property="og:title" content="Livestream | Thirsty Therapy" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thirstytherapy.com/livestream" />
+  <meta property="og:url" content="https://thirstytherapy.com/" />
 </svelte:head>
 
 <p class="mb-12">You are worthy of good drinks.</p>

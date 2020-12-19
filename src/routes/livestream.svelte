@@ -65,7 +65,7 @@
   <meta property="og:image" content="https://thirstytherapy.com/stream.png" />
   <meta property="og:title" content="Thirsty Therapy" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thirstytherapy.com/" />
+  <meta property="og:url" content="https://thirstytherapy.com/livestream" />
 </svelte:head>
 
 <div class="text-left">
