@@ -2,7 +2,7 @@
   <title>Thirsty Therapy</title>
   <meta property="og:description" content="You are worthy of good drinks." />
   <meta property="og:image" content="https://thirstytherapy.com/logo.png" />
-  <meta property="og:title" content="Livestream | Thirsty Therapy" />
+  <meta property="og:title" content="Thirsty Therapy" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thirstytherapy.com/" />
 </svelte:head>
