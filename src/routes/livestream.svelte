@@ -94,9 +94,12 @@
     </p>
 
     <p class="mb-6">
-      Join us
-      <time class="badge" datetime="2020-12-19T:18:00:00.000Z-08:00">December
-        19, 2020</time>, for our last stream for the year!
+      <s>Join us
+        <time datetime="2020-12-19T:18:00:00.000Z-08:00">December 19, 2020</time>,
+        for our last stream of the year!</s>
+      By popular demand, join us
+      <time class="badge" datetime="2020-12-31T:18:00:00.000Z-08:00">December
+        31, 2020</time>for our last stream for the year!
     </p>
   </div>
 
@@ -131,7 +134,21 @@
         </li>
       </ul>
 
-      <h3 class="mb-4"><s>Jan 2, 2020</s> Happy New Year!</h3>
+      <h3 class="mb-4">Dec 31, 2020 ‼️ Special</h3>
+
+      <ul class="justify-around mb-4 md:flex">
+        <h4>Moroccan Coffee</h4>
+        <h4>French 75</h4>
+      </ul>
+
+      <h3 class="mb-4"><s>Jan 2, 2021</s> Happy New Year!</h3>
+
+      <h3 class="mb-4">Jan xx, 2021</h3>
+
+      <ul class="justify-around mb-4 md:flex">
+        <h4>Quick Egg Nog</h4>
+        <h4>Tom & Jerry</h4>
+      </ul>
     </div>
 
     <div class="card mb-6">
