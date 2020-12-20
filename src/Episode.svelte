@@ -41,7 +41,7 @@
   class="flex flex-col justify-end min-h-screen"
   on:submit={(event) => event.preventDefault()}>
   {#await fetchData then data}
-    <ol>
+    <ol class="self-end">
       {#each data.fields.agendaItems as entry}
         <li class="agenda-item">
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>

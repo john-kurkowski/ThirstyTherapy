@@ -11,6 +11,7 @@
 <style>
   .collapse {
     max-height: 0;
+    max-width: 0;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
   }
