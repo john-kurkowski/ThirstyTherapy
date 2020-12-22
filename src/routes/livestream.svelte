@@ -37,13 +37,8 @@
   }
 
   .card h2,
-  .card h3,
-  .card h4 {
-    @apply font-bold;
-  }
-
-  .card h2,
   .card h3 {
+    @apply font-bold;
     @apply font-display;
   }
 
@@ -99,7 +94,7 @@
         for our last stream of the year!</s>
       By popular demand, join us
       <time class="badge" datetime="2020-12-31T:18:00:00.000Z-08:00">December
-        31, 2020</time>for our last stream for the year!
+        31, 2020</time>for our last stream of the year!
     </p>
   </div>
 
@@ -109,45 +104,36 @@
         <h2>Upcoming Ingredients</h2>
       </header>
 
-      <h3 class="mb-4">Dec 19, 2020</h3>
+      <h3 class="mb-4">
+        <time datetime="2020-12-19T:18:00:00.000Z-08:00">Dec 19, 2020, 6pm PST</time>
+        ✅
+      </h3>
 
-      <ul class="justify-around mb-4 md:flex">
-        <li class="mb-4">
-          <h4>Manhattan</h4>
-          <ul class="list-disc list-inside pl-2 text-sm">
-            <li>Rye</li>
-            <li>Sweet vermouth</li>
-            <li>Angostura bitters</li>
-            <li>Cherry</li>
-          </ul>
-        </li>
-        <li class="mb-4">
-          <h4>Vieux Carré</h4>
-          <ul class="list-disc list-inside pl-2 text-sm">
-            <li>Rye</li>
-            <li>Cognac</li>
-            <li>Sweet vermouth</li>
-            <li>Bénédictine</li>
-            <li>Angostura bitters</li>
-            <li>Peychaud's bitters</li>
-          </ul>
-        </li>
+      <ul class="flex-wrap justify-between mb-4 md:flex">
+        <li class="font-bold mb-4">Manhattan</li>
+        <li class="font-bold mb-4">Vieux Carré</li>
       </ul>
 
-      <h3 class="mb-4">Dec 31, 2020 ‼️ Special</h3>
+      <h3 class="mb-4">
+        <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
+        ‼️
+      </h3>
 
-      <ul class="justify-around mb-4 md:flex">
-        <h4>Moroccan Coffee</h4>
-        <h4>French 75</h4>
+      <p class="mb-4">NYE Special</p>
+
+      <ul class="flex-wrap justify-around mb-4 md:flex">
+        <li class="font-bold mb-4">Moroccan Coffee</li>
+        <li class="font-bold mb-4">Something for the kids</li>
+        <li class="font-bold mb-4">French 75</li>
       </ul>
 
       <h3 class="mb-4"><s>Jan 2, 2021</s> Happy New Year!</h3>
 
       <h3 class="mb-4">Jan xx, 2021</h3>
 
-      <ul class="justify-around mb-4 md:flex">
-        <h4>Quick Egg Nog</h4>
-        <h4>Tom & Jerry</h4>
+      <ul class="flex-wrap justify-around mb-4 md:flex">
+        <li class="font-bold mb-4">Quick Egg Nog</li>
+        <li class="font-bold mb-4">Tom & Jerry</li>
       </ul>
     </div>
 
