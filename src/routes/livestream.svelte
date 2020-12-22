@@ -109,9 +109,9 @@
         ✅
       </h3>
 
-      <ul class="flex-wrap justify-between mb-4 md:flex">
-        <li class="font-bold mb-4">Manhattan</li>
-        <li class="font-bold mb-4">Vieux Carré</li>
+      <ul class="list-disc list-inside mb-4">
+        <li class="font-bold">Manhattan</li>
+        <li class="font-bold">Vieux Carré</li>
       </ul>
 
       <h3 class="mb-4">
@@ -121,19 +121,20 @@
 
       <p class="mb-4">NYE Special</p>
 
-      <ul class="flex-wrap justify-around mb-4 md:flex">
-        <li class="font-bold mb-4">Moroccan Coffee</li>
-        <li class="font-bold mb-4">Something for the kids</li>
-        <li class="font-bold mb-4">French 75</li>
+      <!-- TODO: flex and remove bullets when list is not flat, i.e. when there are nested lists. -->
+      <ul class="list-disc list-inside mb-4">
+        <li class="font-bold">Moroccan Coffee</li>
+        <li class="font-bold">Something for the kids</li>
+        <li class="font-bold">French 75</li>
       </ul>
 
       <h3 class="mb-4"><s>Jan 2, 2021</s> Happy New Year!</h3>
 
       <h3 class="mb-4">Jan xx, 2021</h3>
 
-      <ul class="flex-wrap justify-around mb-4 md:flex">
-        <li class="font-bold mb-4">Quick Egg Nog</li>
-        <li class="font-bold mb-4">Tom & Jerry</li>
+      <ul class="list-disc list-inside mb-4">
+        <li class="font-bold">Quick Egg Nog</li>
+        <li class="font-bold">Tom & Jerry</li>
       </ul>
     </div>
 
