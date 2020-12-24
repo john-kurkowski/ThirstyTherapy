@@ -56,5 +56,7 @@
     </li>
   </ul>
 
-  <hr class="border-purple-600 border-1 md:w-1/3 mx-auto w-5/6" />
+  <hr
+    aria-hidden="true"
+    class="border-purple-600 border-1 md:w-1/3 mx-auto w-5/6" />
 </nav>
