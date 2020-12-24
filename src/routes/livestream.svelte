@@ -89,10 +89,9 @@
     </p>
 
     <p class="mb-6">
-      <s>Join us
-        <time datetime="2020-12-19T:18:00:00.000Z-08:00">December 19, 2020</time>,
-        for our last stream of the year!</s>
-      By popular demand, join us
+      Join us
+      <time datetime="2020-12-19T:18:00:00.000Z-08:00">December 19, 2020</time>,
+      <s>for our last stream of the year</s>! By popular demand, join us
       <time class="badge" datetime="2020-12-31T:18:00:00.000Z-08:00">December
         31, 2020</time>for our last stream of the year!
     </p>
@@ -105,7 +104,8 @@
       </header>
 
       <h3 class="mb-4">
-        <time datetime="2020-12-19T:18:00:00.000Z-08:00">Dec 19, 2020, 6pm PST</time>
+        <s><time datetime="2020-12-19T:18:00:00.000Z-08:00">Dec 19, 2020, 6pm
+            PST</time></s>
         ✅
       </h3>
 
@@ -116,7 +116,7 @@
 
       <h3 class="mb-4">
         <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
-        ‼️
+        🍾
       </h3>
 
       <p class="mb-4">NYE Special</p>
@@ -128,7 +128,7 @@
         <li class="font-bold">French 75</li>
       </ul>
 
-      <h3 class="mb-4"><s>Jan 2, 2021</s> Happy New Year!</h3>
+      <h3 class="mb-4"><s>Jan 2, 2021</s> ❌ Happy New Year!</h3>
 
       <h3 class="mb-4">Jan xx, 2021</h3>
 
