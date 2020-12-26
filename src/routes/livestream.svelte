@@ -104,17 +104,6 @@
       </header>
 
       <h3 class="mb-4">
-        <s><time datetime="2020-12-19T:18:00:00.000Z-08:00">Dec 19, 2020, 6pm
-            PST</time></s>
-        ✅
-      </h3>
-
-      <ul class="list-disc list-inside mb-4">
-        <li class="font-bold">Manhattan</li>
-        <li class="font-bold">Vieux Carré</li>
-      </ul>
-
-      <h3 class="mb-4">
         <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
         🍾
       </h3>
@@ -122,19 +111,49 @@
       <p class="mb-4">NYE Special</p>
 
       <!-- TODO: flex and remove bullets when list is not flat, i.e. when there are nested lists. -->
-      <ul class="list-disc list-inside mb-4">
-        <li class="font-bold">Moroccan Coffee</li>
-        <li class="font-bold">Something for the kids</li>
-        <li class="font-bold">French 75</li>
+      <ul class="flex flex-wrap mb-4">
+        <li class="mb-4">
+          <span class="font-bold">Moroccan Coffee</span>
+          <ul class="list-disc list-inside ml-4">
+            <li>151 rum</li>
+            <li>Orange liqueur</li>
+            <li>(Turkish) coffee liqueur</li>
+            <li>Cynar 70</li>
+            <li>Coffee</li>
+            <li>Cardamom bitters</li>
+            <li>Lemon wedge</li>
+            <li>Spiced sugar</li>
+          </ul>
+        </li>
+        <li class="mb-4">
+          <span class="font-bold">Something for the kids</span>
+          <ul class="list-disc list-inside ml-4">
+            <li>Martinelli's Sparkling Cider</li>
+            <li>Hibiscus</li>
+            <li>Honey</li>
+            <li>Lemon juice</li>
+            <li>Candied cranberry</li>
+          </ul>
+        </li>
+        <li class="mb-4">
+          <span class="font-bold">French 75</span>
+          <ul class="list-disc list-inside ml-4">
+            <li>Gin</li>
+            <li>Lemon juice</li>
+            <li>Simple syrup</li>
+            <li>Sparkling wine</li>
+            <li>Lemon twist</li>
+          </ul>
+        </li>
       </ul>
 
       <h3 class="mb-4"><s>Jan 2, 2021</s> ❌ Happy New Year!</h3>
 
       <h3 class="mb-4">Jan xx, 2021</h3>
 
-      <ul class="list-disc list-inside mb-4">
-        <li class="font-bold">Quick Egg Nog</li>
-        <li class="font-bold">Tom & Jerry</li>
+      <ul class="mb-4">
+        <li class="font-bold mb-4">Quick Egg Nog</li>
+        <li class="font-bold mb-4">Tom & Jerry</li>
       </ul>
     </div>
 
