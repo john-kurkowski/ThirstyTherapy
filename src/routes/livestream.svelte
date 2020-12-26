@@ -15,8 +15,9 @@
   }
 
   .cards {
-    @apply flex;
     @apply flex-wrap;
+    @apply flex;
+    @apply items-start;
     @apply justify-between;
   }
 
