@@ -48,10 +48,6 @@
         href="livestream"
         rel="prefetch">
         <span class="tab-title">livestream</span>
-
-        <span class="badge ml-1">next:
-          <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31</time>
-        </span>
       </a>
     </li>
   </ul>

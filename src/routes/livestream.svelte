@@ -88,14 +88,6 @@
       We stream every other Saturday, 6-8pm Pacific,
       <a class="underline" href="https://twitch.tv/thirstytherapy">on Twitch</a>.
     </p>
-
-    <p class="mb-6">
-      Join us
-      <time datetime="2020-12-19T:18:00:00.000Z-08:00">December 19, 2020</time>,
-      <s>for our last stream of the year</s>! By popular demand, join us
-      <time class="badge" datetime="2020-12-31T:18:00:00.000Z-08:00">December
-        31, 2020</time>for our last stream of the year!
-    </p>
   </div>
 
   <div class="cards justify-between max-w-2xl mb-6 mx-auto xl:max-w-5xl">
@@ -105,8 +97,11 @@
       </header>
 
       <h3 class="mb-4">
-        <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
-        🍾
+        <del>
+          <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
+          🍾
+        </del>
+        ✅
       </h3>
 
       <p class="mb-4">NYE Special</p>
@@ -123,7 +118,8 @@
             <li>Coffee</li>
             <li>Cardamom bitters</li>
             <li>Lemon wedge</li>
-            <li>Spiced sugar</li>
+            <li>Sugar</li>
+            <li>Whipped cream</li>
           </ul>
         </li>
         <li class="mb-4">
@@ -133,7 +129,7 @@
             <li>Hibiscus</li>
             <li>Honey</li>
             <li>Lemon juice</li>
-            <li>Candied cranberry</li>
+            <li>Dehydrated apple flower</li>
           </ul>
         </li>
         <li class="mb-4">
@@ -141,7 +137,7 @@
           <ul class="list-disc list-inside ml-4">
             <li>Gin</li>
             <li>Lemon juice</li>
-            <li>Simple syrup</li>
+            <li><del>Simple</del> <ins>honey</ins> syrup</li>
             <li>Sparkling wine</li>
             <li>Lemon twist</li>
           </ul>
