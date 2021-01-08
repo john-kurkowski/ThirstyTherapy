@@ -96,62 +96,78 @@
         <h2>Upcoming Ingredients</h2>
       </header>
 
-      <h3 class="mb-4">
-        <del>
-          <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm PST</time>
-          🍾
-        </del>
-        ✅
-      </h3>
+      <div>
+        <h3 class="mb-4">
+          <del class="opacity-50">
+            <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm
+              PST</time>
+            🍾
+          </del>
+          ✅
+        </h3>
 
-      <p class="mb-4">NYE Special</p>
+        <p class="mb-4 opacity-50">NYE Special</p>
 
-      <!-- TODO: flex and remove bullets when list is not flat, i.e. when there are nested lists. -->
-      <ul class="flex flex-wrap mb-4">
-        <li class="mb-4">
-          <span class="font-bold">Moroccan Coffee</span>
-          <ul class="list-disc list-inside ml-4">
-            <li>151 rum</li>
-            <li>Orange liqueur</li>
-            <li>(Turkish) coffee liqueur</li>
-            <li>Cynar 70</li>
-            <li>Coffee</li>
-            <li>Cardamom bitters</li>
-            <li>Lemon wedge</li>
-            <li>Sugar</li>
-            <li>Whipped cream</li>
-          </ul>
-        </li>
-        <li class="mb-4">
-          <span class="font-bold">Something for the kids</span>
-          <ul class="list-disc list-inside ml-4">
-            <li>Martinelli's Sparkling Cider</li>
-            <li>Hibiscus</li>
-            <li>Honey</li>
-            <li>Lemon juice</li>
-            <li>Dehydrated apple flower</li>
-          </ul>
-        </li>
-        <li class="mb-4">
-          <span class="font-bold">French 75</span>
-          <ul class="list-disc list-inside ml-4">
-            <li>Gin</li>
-            <li>Lemon juice</li>
-            <li><del>Simple</del> <ins>honey</ins> syrup</li>
-            <li>Sparkling wine</li>
-            <li>Lemon twist</li>
-          </ul>
-        </li>
-      </ul>
+        <!-- TODO: flex and remove bullets when list is not flat, i.e. when there are nested lists. -->
+        <ul class="mb-4 opacity-50">
+          <li class="mb-4">
+            <details>
+              <summary class="font-bold">Moroccan Coffee</summary>
+              <ul class="list-disc list-inside ml-4">
+                <li>151 rum</li>
+                <li>Orange liqueur</li>
+                <li>(Turkish) coffee liqueur</li>
+                <li>Cynar 70</li>
+                <li>Coffee</li>
+                <li>Cardamom bitters</li>
+                <li>Lemon wedge</li>
+                <li>Sugar</li>
+                <li>Whipped cream</li>
+              </ul>
+            </details>
+          </li>
+          <li class="mb-4">
+            <details>
+              <summary class="font-bold">Something for the kids</summary>
+              <ul class="list-disc list-inside ml-4">
+                <li>Martinelli's Sparkling Cider</li>
+                <li>Hibiscus</li>
+                <li>Honey</li>
+                <li>Lemon juice</li>
+                <li>Dehydrated apple flower</li>
+              </ul>
+            </details>
+          </li>
+          <li class="mb-4">
+            <details>
+              <summary class="font-bold">French 75</summary>
+              <ul class="list-disc list-inside ml-4">
+                <li>Gin</li>
+                <li>Lemon juice</li>
+                <li><del>Simple</del> <ins>honey</ins> syrup</li>
+                <li>Sparkling wine</li>
+                <li>Lemon twist</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
 
-      <h3 class="mb-4"><s>Jan 2, 2021</s> ❌ Happy New Year!</h3>
+      <div>
+        <h3 class="mb-4">
+          <del class="opacity-50">Jan 2, 2021</del>
+          ❌ Happy New Year!
+        </h3>
+      </div>
 
-      <h3 class="mb-4">Jan 16, 2021</h3>
+      <div>
+        <h3 class="mb-4">Jan 16, 2021</h3>
 
-      <ul class="mb-4">
-        <li class="font-bold mb-4">Quick Egg Nog</li>
-        <li class="font-bold mb-4">Tom & Jerry</li>
-      </ul>
+        <ul class="mb-4">
+          <li class="font-bold mb-4">Quick Egg Nog</li>
+          <li class="font-bold mb-4">Tom & Jerry</li>
+        </ul>
+      </div>
     </div>
 
     <div class="card mb-6">
