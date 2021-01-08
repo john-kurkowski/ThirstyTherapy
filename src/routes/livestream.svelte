@@ -146,7 +146,7 @@
 
       <h3 class="mb-4"><s>Jan 2, 2021</s> ❌ Happy New Year!</h3>
 
-      <h3 class="mb-4">Jan xx, 2021</h3>
+      <h3 class="mb-4">Jan 16, 2021</h3>
 
       <ul class="mb-4">
         <li class="font-bold mb-4">Quick Egg Nog</li>
