@@ -67,11 +67,10 @@
 <div class="text-left">
   <div class="max-w-2xl mx-auto">
     <blockquote class="border-l-2 border-purple-600 italic mb-6 pl-2">
-      Welcome in, folks, to the socially safe cocktail bar! Approved for 2020.
-      Sit at the bar with Billy the master bartender and alchemist, and his
-      apprentice John. Follow along to put fresh spins on your favorite spirits.
-      You are
-      <span>#worthyofgooddrinks</span>.
+      Welcome in, folks, to the socially safe cocktail bar! Sit at the bar with
+      Billy the master bartender and alchemist, and his apprentice John. Follow
+      along to put fresh spins on your favorite spirits. You are worthy of good
+      drinks.
     </blockquote>
 
     <p class="mb-6 text-center text-lg">
