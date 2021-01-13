@@ -96,75 +96,61 @@
       </header>
 
       <div>
-        <h3 class="mb-4">
-          <del class="opacity-50">
-            <time datetime="2020-12-31T:18:00:00.000Z-08:00">Dec 31, 2020, 6pm
-              PST</time>
-            🍾
-          </del>
-          ✅
-        </h3>
+        <h3 class="mb-4">Jan 16, 2021</h3>
 
-        <p class="mb-4 opacity-50">NYE Special</p>
-
-        <!-- TODO: flex and remove bullets when list is not flat, i.e. when there are nested lists. -->
-        <ul class="mb-4 opacity-50">
+        <ul class="mb-4">
           <li class="mb-4">
-            <details>
-              <summary class="font-bold">Moroccan Coffee</summary>
-              <ul class="list-disc list-inside ml-4">
-                <li>151 rum</li>
-                <li>Orange liqueur</li>
-                <li>(Turkish) coffee liqueur</li>
-                <li>Cynar 70</li>
-                <li>Coffee</li>
-                <li>Cardamom bitters</li>
-                <li>Lemon wedge</li>
-                <li>Sugar</li>
-                <li>Whipped cream</li>
-              </ul>
-            </details>
+            <h4 class="font-bold">Quick Egg Nog</h4>
+            <ul class="list-disc list-inside ml-4">
+              <li>2oz Japanese whiskey</li>
+              <li>.5oz Yellow Chartreuse</li>
+              <li>1oz clover honey syrup (3:1)</li>
+              <li>1tsp turmeric</li>
+              <li>1 dash cardamom bitters</li>
+              <li>1 whole egg</li>
+            </ul>
           </li>
           <li class="mb-4">
-            <details>
-              <summary class="font-bold">Something for the kids</summary>
-              <ul class="list-disc list-inside ml-4">
-                <li>Martinelli's Sparkling Cider</li>
-                <li>Hibiscus</li>
-                <li>Honey</li>
-                <li>Lemon juice</li>
-                <li>Dehydrated apple flower</li>
-              </ul>
-            </details>
-          </li>
-          <li class="mb-4">
-            <details>
-              <summary class="font-bold">French 75</summary>
-              <ul class="list-disc list-inside ml-4">
-                <li>Gin</li>
-                <li>Lemon juice</li>
-                <li><del>Simple</del> <ins>honey</ins> syrup</li>
-                <li>Sparkling wine</li>
-                <li>Lemon twist</li>
-              </ul>
-            </details>
+            <h4 class="font-bold">Tom & Jerry</h4>
+            <ul class="list-disc list-inside ml-4">
+              <li>
+                2oz Tom & Jerry batter
+                <div class="ml-4">
+                  (<a
+                    class="underline"
+                    href="https://drinkboy.com/pdf/TomAndJerry.pdf">Audrey
+                    Saunders's recipe</a>)
+                </div>
+              </li>
+              <li>1oz aged rum</li>
+              <li>1oz cognac</li>
+              <li>6oz boiling milk</li>
+              <li>Nutmeg</li>
+            </ul>
           </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="mb-4">
-          <del class="opacity-50">Jan 2, 2021</del>
-          ❌ Happy New Year!
-        </h3>
+        <h3 class="mb-4">Jan 30, 2021</h3>
+
+        <ul class="mb-4">
+          <li class="mb-4">
+            <h4 class="font-bold">Spicy hot drink to warm you up</h4>
+          </li>
+          <li class="mb-4">
+            <h4 class="font-bold">Spicy iced drink to warm you up</h4>
+          </li>
+        </ul>
       </div>
 
       <div>
-        <h3 class="mb-4">Jan 16, 2021</h3>
+        <h3 class="mb-4">Feb 13, 2021</h3>
 
         <ul class="mb-4">
-          <li class="font-bold mb-4">Quick Egg Nog</li>
-          <li class="font-bold mb-4">Tom & Jerry</li>
+          <li class="mb-4">
+            <h4 class="font-bold">NA drinks</h4>
+          </li>
         </ul>
       </div>
     </div>
