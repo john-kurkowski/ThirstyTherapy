@@ -73,6 +73,15 @@
         </a>
       </li>
       <li class="ml-8">
+        <a href="https://paypal.me/thirstytherapy">
+          <img
+            alt="PayPal"
+            height="24"
+            src="./iconmonstr-paypal-1.svg"
+            title="PayPal" />
+        </a>
+      </li>
+      <li class="ml-8">
         <a href="https://venmo.com/thirstytherapy">
           <img
             alt="Venmo"
