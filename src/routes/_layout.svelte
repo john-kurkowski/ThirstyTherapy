@@ -56,26 +56,29 @@
     <ul class="flex justify-center mb-6">
       <li>
         <a href="mailto:ThirstyTherapy@gmail.com">
-          <img src="./iconmonstr-email-3.svg" alt="Email" />
+          <img alt="Email" src="./iconmonstr-email-3.svg" title="Email" />
         </a>
       </li>
       <li class="ml-8">
         <a href="https://instagram.com/thirstytherapy">
-          <img src="./iconmonstr-instagram-11.svg" alt="Instagram" />
+          <img
+            alt="Instagram"
+            src="./iconmonstr-instagram-11.svg"
+            title="Instagram" />
         </a>
       </li>
       <li class="ml-8">
         <a href="https://twitch.tv/thirstytherapy">
-          <img src="./iconmonstr-twitch-1.svg" alt="Twitch" />
+          <img alt="Twitch" src="./iconmonstr-twitch-1.svg" title="Twitch" />
         </a>
       </li>
       <li class="ml-8">
         <a href="https://venmo.com/thirstytherapy">
           <img
             alt="Venmo"
-            class="icon-venmo"
             height="24"
             src="./venmo-icon.svg"
+            title="Venmo"
             width="24" />
         </a>
       </li>
