@@ -35,7 +35,7 @@
         <li>Gin</li>
         <li>Scotch bonnet syrup</li>
         <li>Rose-infused soju</li>
-        <li>Szechuan peppercorn bitters</li>
+        <li>Szechuan pepper vodka</li>
         <li>Soda</li>
         <li>Lemon peel</li>
       </ul>
