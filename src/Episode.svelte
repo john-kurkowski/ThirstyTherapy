@@ -3,6 +3,9 @@
   import Collapsible from "./Collapsible.svelte";
   import { pageName } from "./stores";
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const isBroadcast = urlParams.get("isBroadcast");
+
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
@@ -36,6 +39,18 @@
     @apply mt-1;
   }
 </style>
+
+{#if isBroadcast}
+  <style>
+    .agenda-item {
+      @apply bg-black;
+      @apply bg-opacity-50;
+      @apply px-1.5;
+      @apply py-0.5;
+      @apply rounded-md;
+    }
+  </style>
+{/if}
 
 <form
   class="flex flex-col justify-end min-h-screen"
