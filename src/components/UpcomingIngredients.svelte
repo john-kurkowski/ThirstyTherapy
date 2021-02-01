@@ -7,38 +7,50 @@
 </style>
 
 <div>
-  <h3 class="mb-4">Jan 30, 2021</h3>
+  <h3 class="mb-4"><del class="opacity-50">Jan 30, 2021</del> ✅</h3>
 
-  <ul class="mb-4">
+  <ul class="mb-4 opacity-50">
     <li class="mb-4">
-      <h4 class="font-bold">Some Like It Hot</h4>
-      <ul class="list-disc list-outside ml-4">
-        <li>Scotch</li>
-        <li>Espresso / coffee / reheated cold brew</li>
-        <li>Scotch bonnet syrup</li>
-        <li>Hot water</li>
-        <li>Whipped cream</li>
-      </ul>
+      <details>
+        <summary>
+          <h4 class="font-bold inline">Some Like It Hot</h4>
+        </summary>
+        <ul class="list-disc list-outside ml-4">
+          <li>Scotch</li>
+          <li>Espresso / coffee / reheated cold brew</li>
+          <li>Scotch bonnet syrup</li>
+          <li>Hot water</li>
+          <li>Whipped cream</li>
+        </ul>
+      </details>
     </li>
     <li class="mb-4">
-      <h4 class="font-bold">Some Like It Cold</h4>
-      <ul class="list-disc list-outside ml-4">
-        <li>Scotch</li>
-        <li>Leftover espresso / coffee / cold brew</li>
-        <li>Scotch bonnet syrup</li>
-        <li>Whipped cream</li>
-      </ul>
+      <details>
+        <summary>
+          <h4 class="font-bold inline">Some Like It Cold</h4>
+        </summary>
+        <ul class="list-disc list-outside ml-4">
+          <li>Scotch</li>
+          <li>Leftover espresso / coffee / cold brew</li>
+          <li>Scotch bonnet syrup</li>
+          <li>Whipped cream</li>
+        </ul>
+      </details>
     </li>
     <li class="mb-4">
-      <h4 class="font-bold">Some Like It Highball</h4>
-      <ul class="list-disc list-outside ml-4">
-        <li>Gin</li>
-        <li>Scotch bonnet syrup</li>
-        <li>Rose-infused soju</li>
-        <li>Szechuan pepper vodka</li>
-        <li>Soda</li>
-        <li>Lemon peel</li>
-      </ul>
+      <details>
+        <summary>
+          <h4 class="font-bold inline">Sterling</h4>
+        </summary>
+        <ul class="list-disc list-outside ml-4">
+          <li>Gin</li>
+          <li>Scotch bonnet syrup</li>
+          <li>Rose-infused soju</li>
+          <li>Szechuan pepper vodka</li>
+          <li>Soda</li>
+          <li>Lemon peel</li>
+        </ul>
+      </details>
     </li>
   </ul>
 </div>
