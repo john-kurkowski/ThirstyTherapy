@@ -40,3 +40,21 @@
     </li>
   </ul>
 </div>
+
+<div>
+  <h3 class="mb-4">Feb 27, 2021</h3>
+
+  <ul class="mb-4">
+    <li class="mb-4">
+      <h4 class="font-bold">Penicillin</h4>
+
+      <ul class="list-disc list-outside ml-4" />
+    </li>
+
+    <li class="mb-4">
+      <h4 class="font-bold">Martini</h4>
+
+      <ul class="list-disc list-outside ml-4" />
+    </li>
+  </ul>
+</div>
