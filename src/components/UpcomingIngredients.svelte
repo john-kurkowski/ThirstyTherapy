@@ -7,60 +7,36 @@
 </style>
 
 <div>
-  <h3 class="mb-4"><del class="opacity-50">Jan 30, 2021</del> ✅</h3>
-
-  <ul class="mb-4 opacity-50">
-    <li class="mb-4">
-      <details>
-        <summary>
-          <h4 class="font-bold inline">Some Like It Hot</h4>
-        </summary>
-        <ul class="list-disc list-outside ml-4">
-          <li>Scotch</li>
-          <li>Espresso / coffee / reheated cold brew</li>
-          <li>Scotch bonnet syrup</li>
-          <li>Hot water</li>
-          <li>Whipped cream</li>
-        </ul>
-      </details>
-    </li>
-    <li class="mb-4">
-      <details>
-        <summary>
-          <h4 class="font-bold inline">Some Like It Cold</h4>
-        </summary>
-        <ul class="list-disc list-outside ml-4">
-          <li>Scotch</li>
-          <li>Leftover espresso / coffee / cold brew</li>
-          <li>Scotch bonnet syrup</li>
-          <li>Whipped cream</li>
-        </ul>
-      </details>
-    </li>
-    <li class="mb-4">
-      <details>
-        <summary>
-          <h4 class="font-bold inline">Sterling</h4>
-        </summary>
-        <ul class="list-disc list-outside ml-4">
-          <li>Gin</li>
-          <li>Scotch bonnet syrup</li>
-          <li>Rose-infused soju</li>
-          <li>Szechuan pepper vodka</li>
-          <li>Soda</li>
-          <li>Lemon peel</li>
-        </ul>
-      </details>
-    </li>
-  </ul>
-</div>
-
-<div>
   <h3 class="mb-4">Feb 13, 2021</h3>
+
+  <p class="mb-4">Non-alcoholic drinks!</p>
 
   <ul class="mb-4">
     <li class="mb-4">
-      <h4 class="font-bold">Non-alcoholic drinks</h4>
+      <h4 class="font-bold">Winter Solstice</h4>
+
+      <ul class="list-disc list-outside ml-4">
+        <li>1.5oz orange juice</li>
+        <li>.5oz lemon juice</li>
+        <li>.25oz lime juice</li>
+        <li>.75oz egg white or aquafaba</li>
+        <li>1oz maple syrup</li>
+        <li>1 drop cinnamon extract</li>
+        <li>Sumac</li>
+      </ul>
+    </li>
+
+    <li class="mb-4">
+      <h4 class="font-bold">Mermaid's Tail</h4>
+
+      <ul class="list-disc list-outside ml-4">
+        <li>2oz coconut cream</li>
+        <li>1.5oz Monday zero alcohol gin</li>
+        <li>1oz blue curacao syrup</li>
+        <li>.5oz lime juice</li>
+        <li>.25oz makrut leaf tincture</li>
+        <li>Dehydrated orange wheel</li>
+      </ul>
     </li>
   </ul>
 </div>
