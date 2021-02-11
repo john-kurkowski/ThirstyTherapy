@@ -34,7 +34,7 @@
         <li>1.5oz Monday zero alcohol gin</li>
         <li>1oz blue curacao syrup</li>
         <li>.5oz lime juice</li>
-        <li>.25oz makrut leaf tincture</li>
+        <li>25-50 drops Thai bitters</li>
         <li>Dehydrated orange wheel</li>
       </ul>
     </li>
