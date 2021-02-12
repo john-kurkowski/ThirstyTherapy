@@ -30,7 +30,7 @@
       <h4 class="font-bold">Mermaid's Tail</h4>
 
       <ul class="list-disc list-outside ml-4">
-        <li>2oz coconut cream</li>
+        <li>2oz coconut milk</li>
         <li>1.5oz Monday zero alcohol gin</li>
         <li>1oz blue curacao syrup</li>
         <li>.5oz lime juice</li>
