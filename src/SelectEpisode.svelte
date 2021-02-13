@@ -15,8 +15,6 @@
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
-
-  // TODO: redact from source control
   const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
   const fetchData = (async () => {
