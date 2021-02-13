@@ -1,60 +1,110 @@
+<script>
+  import { onMount } from "svelte";
+
+  const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeZone: "America/Los_Angeles",
+  });
+
+  const SPACE_ID = "nc2tnr0lufn7";
+  const ENVIRONMENT_ID = "master";
+  const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
+  const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
+
+  const fetchData = async () => {
+    const episodeTooOldToDisplayDate = new Date();
+    episodeTooOldToDisplayDate.setDate(
+      episodeTooOldToDisplayDate.getDate() - 7
+    );
+
+    const episodeIsPastDate = new Date();
+    episodeIsPastDate.setDate(episodeIsPastDate.getDate() - 1);
+
+    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}&content_type=episode&fields.isReadyForViewers=true&fields.broadcast[gte]=${episodeTooOldToDisplayDate.toISOString()}&order=fields.broadcast`;
+    const resp = await fetch(url);
+    const entries = await resp.json();
+
+    entries.items.forEach(function joinIncludesInMemory(episode, i) {
+      const isEpisodeBeforeThis = entries.items
+        .slice(0, i)
+        .some((previousEpisode) => !previousEpisode.fields.isPast);
+
+      episode.fields.isPast =
+        new Date(episode.fields.broadcast) < episodeIsPastDate;
+
+      episode.fields.agendaItems = episode.fields.agendaItems.map((item) => {
+        const agendaItem = entries.includes.Entry.find(
+          (entry) => entry.sys.id === item.sys.id
+        );
+
+        agendaItem.fields.isCollapsed =
+          episode.fields.isPast || isEpisodeBeforeThis;
+
+        return agendaItem;
+      });
+    });
+
+    return entries.items;
+  };
+  let fetchingData = Promise.resolve();
+
+  onMount(() => {
+    fetchingData = fetchData();
+  });
+</script>
+
 <style>
   h3 {
     @apply text-xl;
     @apply font-bold;
     @apply font-display;
   }
+
+  summary {
+    @apply cursor-pointer;
+  }
 </style>
 
-<div>
-  <h3 class="mb-4">Feb 13, 2021</h3>
+{#await fetchingData then data}
+  {#each data as episode}
+    <div>
+      <h3 class="mb-4">
+        {#if episode.fields.isPast}
+          <del
+            class="opacity-50">{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}</del>
+          ✅
+        {:else}{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}{/if}
+      </h3>
 
-  <p class="mb-4">Non-alcoholic drinks!</p>
+      <div class={episode.fields.isPast ? 'opacity-50' : ''}>
+        {#if episode.fields.teaser}
+          <p class="mb-4">{episode.fields.teaser}</p>
+        {/if}
 
-  <ul class="mb-4">
-    <li class="mb-4">
-      <h4 class="font-bold">Winter Solstice</h4>
+        {#if episode.fields.agendaItems.length}
+          <ul class="mb-4">
+            {#each episode.fields.agendaItems as agendaItem}
+              <li class="mb-4">
+                <details open={!agendaItem.fields.isCollapsed}>
+                  <summary>
+                    <h4 class="font-bold inline">{agendaItem.fields.title}</h4>
+                  </summary>
 
-      <ul class="list-disc list-outside ml-4">
-        <li>1.5oz orange juice</li>
-        <li>.5oz lemon juice</li>
-        <li>.25oz lime juice</li>
-        <li>.75oz egg white or aquafaba</li>
-        <li>1oz maple syrup</li>
-        <li>1 drop cinnamon extract</li>
-        <li>Sumac</li>
-      </ul>
-    </li>
-
-    <li class="mb-4">
-      <h4 class="font-bold">Mermaid's Tail</h4>
-
-      <ul class="list-disc list-outside ml-4">
-        <li>2oz coconut milk</li>
-        <li>1.5oz Monday zero alcohol gin</li>
-        <li>1oz blue curacao syrup</li>
-        <li>.5oz lime juice</li>
-        <li>25-50 drops Thai bitters</li>
-        <li>Dehydrated orange wheel</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div>
-  <h3 class="mb-4">Feb 27, 2021</h3>
-
-  <ul class="mb-4">
-    <li class="mb-4">
-      <h4 class="font-bold">Penicillin</h4>
-
-      <ul class="list-disc list-outside ml-4" />
-    </li>
-
-    <li class="mb-4">
-      <h4 class="font-bold">Martini</h4>
-
-      <ul class="list-disc list-outside ml-4" />
-    </li>
-  </ul>
-</div>
+                  <ul class="list-disc list-outside ml-4">
+                    {#if agendaItem.fields.steps && agendaItem.fields.steps.length}
+                      {#each agendaItem.fields.steps as step}
+                        <li>{step}</li>
+                      {/each}
+                    {/if}
+                  </ul>
+                </details>
+              </li>
+            {/each}
+          </ul>
+        {:else}
+          <p class="font-bold mb-4">TBD</p>
+        {/if}
+      </div>
+    </div>
+  {/each}
+{/await}
