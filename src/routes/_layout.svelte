@@ -36,7 +36,7 @@
 <div class="font-body text-center text-purple-100">
   <header
     class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative">
-    <h1 class="font-bold font-display mb-10 text-4xl">Thirsty Therapy</h1>
+    <h1 class="font-display mb-10 text-4xl">Thirsty Therapy</h1>
     <img
       alt="Thirsty Therapy logo: a bright red cocktail in a rocks glass, lined with a Hood strawberry"
       class="absolute border-gray-800 border-2 left-0 mx-auto my-1 right-0 rounded-full z-20"

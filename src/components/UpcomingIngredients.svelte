@@ -58,7 +58,6 @@
 <style>
   h3 {
     @apply text-xl;
-    @apply font-bold;
     @apply font-display;
   }
 

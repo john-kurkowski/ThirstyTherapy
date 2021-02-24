@@ -43,7 +43,6 @@
 
   .card h2 {
     @apply text-2xl;
-    @apply font-bold;
     @apply font-display;
   }
 </style>
