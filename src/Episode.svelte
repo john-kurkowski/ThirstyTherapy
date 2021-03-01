@@ -19,7 +19,7 @@
     const data = JSON.parse(
       JSON.stringify(entries.items.find((entry) => entry.sys.id === id))
     );
-    data.fields.agendaItems = data.fields.agendaItems.map((item) =>
+    data.fields.agendaItems = (data.fields.agendaItems || []).map((item) =>
       entries.items.find((entry) => entry.sys.id === item.sys.id)
     );
 
