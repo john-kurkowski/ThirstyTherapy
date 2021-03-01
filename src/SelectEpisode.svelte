@@ -38,33 +38,33 @@
 </style>
 
 {#await fetchData then data}
-  <h2 class="font-display">Episodes</h2>
-  <table class="mt-4">
-    <thead>
-      <tr>
-        <th class="py-2">Date</th>
-        <th class="pl-4 py-2">Title</th>
-        <th class="pl-4 py-2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each data as entry}
+  <div class="px-1 py-1">
+    <h2 class="font-display">Episodes</h2>
+    <table class="mt-4 text-xs">
+      <thead>
         <tr>
-          <td class="py-2">
-            <time datetime={entry.fields.broadcast}>
-              {DATETIME_FORMAT.format(new Date(entry.fields.broadcast))}
-            </time>
-          </td>
-          <td class="pl-4 py-2">{entry.fields.title}</td>
-          <td class="pl-4 py-2">
-            <Link to={`/episode/${entry.sys.id}${qs}`}>
-              <span class="hover:text-gray-500 text-gray-200 underline">
-                View
-              </span>
-            </Link>
-          </td>
+          <th class="pb-2">Date</th>
+          <th class="pb-1 pl-3">Title</th>
         </tr>
-      {/each}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {#each data as entry}
+          <tr>
+            <td class="pb-1">
+              <time datetime={entry.fields.broadcast}>
+                {DATETIME_FORMAT.format(new Date(entry.fields.broadcast))}
+              </time>
+            </td>
+            <td class="pb-2 pl-3">
+              <Link to={`/episode/${entry.sys.id}${qs}`}>
+                <span class="hover:text-gray-500 text-gray-200 underline">
+                  {entry.fields.title}
+                </span>
+              </Link>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
 {/await}
