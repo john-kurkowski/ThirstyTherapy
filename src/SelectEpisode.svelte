@@ -39,7 +39,7 @@
 
 {#await fetchData then data}
   <h2 class="font-display">Episodes</h2>
-  <table class="mt-4">
+  <table class="md:max-w-screen-md mt-4">
     <thead>
       <tr>
         <th class="py-2">Date</th>
