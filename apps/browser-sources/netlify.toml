@@ -1,6 +1,6 @@
 [build]
-  command = "node common/scripts/install-run-rush.js install && node common/scripts/install-run-rush.js build --to browser-sources && node common/scripts/install-run-rush.js deploy --project browser-sources"
-  publish = "../../common/deploy/apps/browser-sources/public/"
+  command = "node ../../common/scripts/install-run-rush.js install && node ../../common/scripts/install-run-rush.js build --to browser-sources"
+  publish = "public/"
 [[redirects]]
   from = "/*"
   to = "/index.html"
