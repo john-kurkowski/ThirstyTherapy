@@ -34,7 +34,7 @@
    *
    * The default value is false.
    */
-  // "includeNpmIgnoreFiles": true,
+  "includeNpmIgnoreFiles": true,
 
   /**
    * To improve backwards compatibility with legacy packages, the PNPM package manager installs extra links in the
