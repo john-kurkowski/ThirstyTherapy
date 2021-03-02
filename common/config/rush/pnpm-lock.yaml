@@ -14,6 +14,7 @@ dependencies:
   prettier: 2.2.1
   prettier-plugin-svelte: 2.2.0_prettier@2.2.1+svelte@3.35.0
   rollup: 2.40.0
+  rollup-plugin-css-only: 3.1.0_rollup@2.40.0
   rollup-plugin-livereload: 2.0.0
   rollup-plugin-svelte: 7.1.0_rollup@2.40.0+svelte@3.35.0
   rollup-plugin-terser: 7.0.2_rollup@2.40.0
@@ -328,6 +329,18 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
+  /@rollup/pluginutils/4.1.0_rollup@2.40.0:
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.2.2
+      rollup: 2.40.0
+    dev: false
+    engines:
+      node: '>= 8.0.0'
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    resolution:
+      integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
   /@stylelint/postcss-css-in-js/0.37.2_4fe96148bf77e6cee792ae366c9083f9:
     dependencies:
       '@babel/core': 7.13.8
@@ -2591,6 +2604,17 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
+  /rollup-plugin-css-only/3.1.0_rollup@2.40.0:
+    dependencies:
+      '@rollup/pluginutils': 4.1.0_rollup@2.40.0
+      rollup: 2.40.0
+    dev: false
+    engines:
+      node: '>=10.12.0'
+    peerDependencies:
+      rollup: 1 || 2
+    resolution:
+      integrity: sha512-TYMOE5uoD76vpj+RTkQLzC9cQtbnJNktHPB507FzRWBVaofg7KhIqq1kGbcVOadARSozWF883Ho9KpSPKH8gqA==
   /rollup-plugin-livereload/2.0.0:
     dependencies:
       livereload: 0.9.1
@@ -3426,6 +3450,7 @@ packages:
       prettier: 2.2.1
       prettier-plugin-svelte: 2.2.0_prettier@2.2.1+svelte@3.35.0
       rollup: 2.40.0
+      rollup-plugin-css-only: 3.1.0_rollup@2.40.0
       rollup-plugin-livereload: 2.0.0
       rollup-plugin-svelte: 7.1.0_rollup@2.40.0+svelte@3.35.0
       rollup-plugin-terser: 7.0.2_rollup@2.40.0
@@ -3442,7 +3467,7 @@ packages:
     dev: false
     name: '@rush-temp/browser-sources'
     resolution:
-      integrity: sha512-RvhOWVjqPKbCj6OvKd2WFqRmINSNUq2y6yQdtQ34V+9YJx5MRtg8KyTSO/YhiUbwNa1d09vIAtcV3Hld6qMRIg==
+      integrity: sha512-XdfwHzVCwzAuNp4UqNNH8uZQxyYY3YG3XIXZ5rC5X46YURSMQSjpJkURZab1nu7BVtmInWj7zBmcXPghK/leKQ==
       tarball: file:projects/browser-sources.tgz
     version: 0.0.0
 registry: ''
@@ -3462,6 +3487,7 @@ specifiers:
   prettier: ^2.2.1
   prettier-plugin-svelte: ^2.2.0
   rollup: ^2.40.0
+  rollup-plugin-css-only: ^3.1.0
   rollup-plugin-livereload: ^2.0.0
   rollup-plugin-svelte: ^7.1.0
   rollup-plugin-terser: ^7.0.2
