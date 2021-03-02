@@ -1,3 +1,11 @@
+# Thirsty Therapy Browser Sources
+
+This app contains routes to be composited into an OBS stream as a _browser
+source_. They are deployed at an obfuscated URL. The URLs are for the streamer.
+They are not to advertise to the general public.
+
+# The original starter README follows
+
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
