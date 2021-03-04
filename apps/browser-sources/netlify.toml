@@ -1,0 +1,7 @@
+[build]
+  command = "node ../../common/scripts/install-run-rush.js install && node ../../common/scripts/install-run-rush.js build --to browser-sources"
+  publish = "public/"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
