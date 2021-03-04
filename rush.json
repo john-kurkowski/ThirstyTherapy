@@ -461,6 +461,10 @@
     {
       "packageName": "browser-sources",
       "projectFolder": "apps/browser-sources"
+    },
+    {
+      "packageName": "thirstytherapy.com",
+      "projectFolder": "apps/www"
     }
   ]
 }
