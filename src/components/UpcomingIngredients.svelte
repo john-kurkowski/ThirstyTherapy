@@ -107,7 +107,7 @@
             {/each}
           </ul>
         {:else}
-          <p class="font-bold mb-4">TBD</p>
+          <p class="mb-4">TBD</p>
         {/if}
       </div>
     </div>
