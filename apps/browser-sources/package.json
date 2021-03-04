@@ -4,8 +4,7 @@
   "scripts": {
     "build": "rollup -c --silent",
     "dev": "rollup -c -w",
-    "start": "sirv public --single",
-    "validate": "svelte-check"
+    "start": "sirv public --single"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -15,23 +14,14 @@
     "@rollup/plugin-typescript": "^8.2.0",
     "@tsconfig/svelte": "^1.0.10",
     "autoprefixer": "^10.2.4",
-    "eslint": "^7.21.0",
-    "eslint-plugin-svelte3": "^3.1.2",
-    "husky": "^5.1.3",
-    "lint-staged": "^10.5.4",
     "postcss": "^8.2.6",
     "postcss-load-config": "^3.0.1",
-    "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
     "rollup": "^2.40.0",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.1.0",
     "rollup-plugin-terser": "^7.0.2",
-    "stylelint": "^13.11.0",
-    "stylelint-config-standard": "^20.0.0",
     "svelte": "^3.35.0",
-    "svelte-check": "^1.2.0",
     "svelte-preprocess": "^4.6.9",
     "svelte-routing": "^1.5.0",
     "tailwindcss": "^2.0.3",
@@ -40,27 +30,5 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.11"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run validate"
-    }
-  },
-  "lint-staged": {
-    "*.css": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.html": [
-      "prettier --write"
-    ],
-    "*.{js,svelte}": [
-      "eslint --cache --fix --max-warnings=0",
-      "prettier --write"
-    ]
-  },
-  "volta": {
-    "node": "14.16.0",
-    "npm": "6.14.11"
   }
 }
