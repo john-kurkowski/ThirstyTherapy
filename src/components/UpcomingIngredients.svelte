@@ -32,18 +32,22 @@
       episode.fields.isPast =
         new Date(episode.fields.broadcast) < episodeIsPastDate;
 
-      episode.fields.agendaItems = (episode.fields.agendaItems || []).map(
-        (item) => {
+      episode.fields.agendaItems = (episode.fields.agendaItems || [])
+        .map((item) => {
           const agendaItem = entries.includes.Entry.find(
             (entry) => entry.sys.id === item.sys.id
           );
+
+          if (!agendaItem) {
+            return null;
+          }
 
           agendaItem.fields.isCollapsed =
             episode.fields.isPast || isEpisodeBeforeThis;
 
           return agendaItem;
-        }
-      );
+        })
+        .filter(Boolean);
     });
 
     return entries.items;
