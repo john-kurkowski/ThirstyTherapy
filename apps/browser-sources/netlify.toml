@@ -1,7 +1,0 @@
-[build]
-  command = "rm -rf \"$NETLIFY_CACHE_DIR\"/node_modules; node ../../common/scripts/install-run-rush.js install && node ../../common/scripts/install-run-rush.js build --to browser-sources"
-  publish = "public/"
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
