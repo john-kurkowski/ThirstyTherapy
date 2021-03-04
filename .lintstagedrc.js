@@ -4,6 +4,8 @@ const pkgUp = require("pkg-up");
 module.exports = {
   "*.css": ["stylelint --fix", "prettier --write"],
 
+  "*.sh": "shellcheck",
+
   "*.svelte": (filenames) => {
     const distintProjectFolders = [
       ...new Set(
