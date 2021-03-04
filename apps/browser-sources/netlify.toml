@@ -1,0 +1,12 @@
+[build]
+  command = "node ../../common/scripts/install-run-rush.js install && node ../../common/scripts/install-run-rush.js build --to browser-sources"
+  publish = "public/"
+[build.environment]
+  # Disable Netlify's implicit node_modules cache in the presence of
+  # package.json. Rush has its own caching scheme, without using NPM. Netlify
+  # gives ENOENT when it tries to restore its NPM cache.
+  NPM_FLAGS = "--prefix=/dev/null"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
