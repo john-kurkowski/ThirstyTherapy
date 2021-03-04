@@ -1,3 +1,9 @@
+# Thirsty Therapy Marketing Website
+
+This folder contains the static marketing website, https://thirstytherapy.com.
+
+# The original starter README follows
+
 # sapper-template
 
 The default template for setting up a [Sapper](https://github.com/sveltejs/sapper) project. Can use either Rollup or webpack as bundler.
