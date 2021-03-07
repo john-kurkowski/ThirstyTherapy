@@ -1,6 +1,7 @@
 <script lang="ts">
   import Episode from "./Episode.svelte";
   import SelectEpisode from "./SelectEpisode.svelte";
+  import SittingAtTheBar from "./SittingAtTheBar.svelte";
   import Tailwindcss from "./Tailwindcss.svelte";
   import { Router, Route } from "svelte-routing";
   import { pageName } from "./stores";
@@ -65,5 +66,6 @@
   <Router {url}>
     <Route path="/" component={SelectEpisode} />
     <Route path="/episode/:id" component={Episode} />
+    <Route path="/sitting" component={SittingAtTheBar} />
   </Router>
 </div>
