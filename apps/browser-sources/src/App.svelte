@@ -47,6 +47,14 @@
       body {
         background-color: rgba(0, 0, 0, 0) !important;
       }
+
+      .broadcast-bubble:global {
+        @apply bg-black;
+        @apply bg-opacity-50;
+        @apply px-1.5;
+        @apply py-0.5;
+        @apply rounded-md;
+      }
     </style>
   {/if}
 </svelte:head>
