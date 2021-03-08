@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Admin from "./Admin.svelte";
   import Episode from "./Episode.svelte";
   import SelectEpisode from "./SelectEpisode.svelte";
   import SittingAtTheBar from "./SittingAtTheBar.svelte";
@@ -65,6 +66,7 @@
 <div class="">
   <Router {url}>
     <Route path="/" component={SelectEpisode} />
+    <Route path="/admin" component={Admin} />
     <Route path="/episode/:id" component={Episode} />
     <Route path="/sitting" component={SittingAtTheBar} />
   </Router>

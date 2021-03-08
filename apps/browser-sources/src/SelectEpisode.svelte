@@ -1,4 +1,5 @@
 <script>
+  import Header from "./Header.svelte";
   import { Link } from "svelte-routing";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
@@ -31,16 +32,11 @@
   export const location = "";
 </script>
 
-<style>
-  .font-display {
-    @apply text-lg;
-  }
-</style>
-
 {#await fetchData then data}
   <div class="px-1 py-1">
-    <h2 class="font-display">Episodes</h2>
-    <table class="mt-4 text-xs">
+    <Header />
+
+    <table class="text-xs">
       <thead>
         <tr>
           <th class="pb-2">Date</th>
