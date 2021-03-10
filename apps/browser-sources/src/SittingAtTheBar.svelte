@@ -1,4 +1,5 @@
 <script>
+  import Loader from "./SittingAtTheBar/Loader.svelte";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
@@ -34,7 +35,11 @@
   export const location = "";
 </script>
 
-{#await fetchData then data}
+{#await fetchData}
+  <div class="broadcast-bubble">
+    <Loader />
+  </div>
+{:then data}
   <div class="broadcast-bubble inline-block">
     <h2 class="text-tn">Sitting at the bar</h2>
 
@@ -54,6 +59,17 @@
         </li>
       {/each}
     </ol>
+  </div>
+{:catch error}
+  <div class="broadcast-bubble inline-block text-tn">
+    <p>
+      No one at the bar! 😭 Are your
+      <Link to="/admin">
+        <span class="underline">admin settings</span>
+      </Link>
+      correct?
+    </p>
+    <code class="text-red-600">{error.message}</code>
   </div>
 {/await}
 
