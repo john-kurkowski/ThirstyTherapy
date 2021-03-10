@@ -1,32 +1,44 @@
 <script>
   import Loader from "./SittingAtTheBar/Loader.svelte";
+  import { Link } from "svelte-routing";
+  import { TWITCH_CLIENT_ID, pageName, twitchAccessToken } from "./stores";
   import { onMount } from "svelte";
-  import { pageName } from "./stores";
 
   const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
 
   const HOST = "https://api.twitch.tv/helix";
-  const CLIENT_ID = "yrcihot9pxnayk7czuvy5jplj1r7yd";
-  // TODO: redact from source control
-  const ACCESS_TOKEN = "9zfbkvjl7occic43d0fpb9seopj0qr";
 
-  const headers = {
-    Authorization: `Bearer ${ACCESS_TOKEN}`,
-    "client-id": CLIENT_ID,
-  };
+  let fetchData;
+  $: if (!$twitchAccessToken) {
+    fetchData = new Promise(() => {});
+  } else if ($twitchAccessToken instanceof Error) {
+    fetchData = Promise.reject($twitchAccessToken);
+  } else {
+    fetchData = (async () => {
+      const headers = {
+        Authorization: `Bearer ${$twitchAccessToken}`,
+        "client-id": TWITCH_CLIENT_ID,
+      };
 
-  const fetchData = (async () => {
-    const usernames = ["TargTarts", "KynderLyft", "luzeph"];
-    const qs = `?login=${usernames.join("&login=")}`;
-    const url = `${HOST}/users${qs}`;
-    const resp = await fetch(url, { headers });
-    const entries = await resp.json();
-    return entries.data.sort(
-      (o1, o2) =>
-        usernames.indexOf(o1.display_name.toLowerCase()) -
-        usernames.indexOf(o2.display_name.toLowerCase())
-    );
-  })();
+      const usernames = ["TargTarts", "KynderLyft", "luzeph"].map((username) =>
+        username.toLowerCase()
+      );
+      const qs = `?login=${usernames.join("&login=")}`;
+      const url = `${HOST}/users${qs}`;
+      const resp = await fetch(url, { headers });
+      const entries = await resp.json();
+
+      if (!resp.ok) {
+        throw new Error(entries.message);
+      }
+
+      return entries.data.sort(
+        (o1, o2) =>
+          usernames.indexOf(o1.display_name.toLowerCase()) -
+          usernames.indexOf(o2.display_name.toLowerCase())
+      );
+    })();
+  }
 
   onMount(function () {
     pageName.set("Sitting at the bar");
