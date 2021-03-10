@@ -13,6 +13,13 @@
         </Link>
       </li>
       <li>
+        <Link to="/sitting">
+          <span class="hover:text-gray-500 hover:underline ml-4 text-gray-200">
+            Sitting
+          </span>
+        </Link>
+      </li>
+      <li>
         <Link to="/admin">
           <span class="hover:text-gray-500 hover:underline ml-4 text-gray-200">
             Admin
