@@ -1,29 +1,10 @@
 <script lang="ts">
   import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte";
-  import Nav from "../components/Nav.svelte";
   import Tailwindcss from "../Tailwindcss.svelte";
   import { stores } from "@sapper/app";
 
   let ga_measurment_id = "G-KC8DC5DEDS";
-
-  export let segment: string;
 </script>
-
-<style>
-  .after-gradient::after {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.225) 0%,
-      rgba(0, 0, 0, 0.001) 100%
-    );
-    bottom: -20%;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 100%;
-  }
-</style>
 
 <GoogleAnalytics {stores} id={ga_measurment_id} />
 
@@ -35,7 +16,8 @@
 
 <div class="font-body text-center text-purple-100">
   <header
-    class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative">
+    class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative"
+  >
     <h1 class="font-display mb-10 text-4xl">Thirsty Therapy</h1>
     <img
       alt="Thirsty Therapy logo: a bright red cocktail in a rocks glass, lined with a Hood strawberry"
@@ -43,10 +25,9 @@
       height="100"
       src="./logo.png"
       style="bottom: -56px;"
-      width="100" />
+      width="100"
+    />
   </header>
-
-  <Nav {segment} />
 
   <main class="mb-8 mx-auto px-4">
     <slot />
@@ -64,7 +45,8 @@
           <img
             alt="Instagram"
             src="./iconmonstr-instagram-11.svg"
-            title="Instagram" />
+            title="Instagram"
+          />
         </a>
       </li>
       <li class="ml-8">
@@ -78,7 +60,8 @@
             alt="PayPal"
             height="24"
             src="./iconmonstr-paypal-1.svg"
-            title="PayPal" />
+            title="PayPal"
+          />
         </a>
       </li>
       <li class="ml-8">
@@ -88,14 +71,33 @@
             height="24"
             src="./venmo-icon.svg"
             title="Venmo"
-            width="24" />
+            width="24"
+          />
         </a>
       </li>
     </ul>
     <p>
       <a
         class="underline"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSe-jauZKAnpo3PD2MOahCj62Ss9f73QH3XSAaiPOfZFXtN0Zw/viewform?usp=sf_link">Survey</a>
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe-jauZKAnpo3PD2MOahCj62Ss9f73QH3XSAaiPOfZFXtN0Zw/viewform?usp=sf_link"
+        >Survey</a
+      >
     </p>
   </footer>
 </div>
+
+<style>
+  .after-gradient::after {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.225) 0%,
+      rgba(0, 0, 0, 0.001) 100%
+    );
+    bottom: -20%;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+</style>
