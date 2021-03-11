@@ -43,7 +43,7 @@
 
       <img
         alt="A martini glass cocktail with 2 stacks of cocktail and culinary books."
-        class="h-44 object-top object-cover w-full"
+        class="h-44 object-cover object-top mt-auto w-full"
         src="./books.jpeg"
       />
     </div>
@@ -62,7 +62,7 @@
       </p>
       <img
         alt="Screenshot of Billy and John livestream bartending, on Twitch"
-        class="h-44 object-cover w-full"
+        class="h-44 object-cover mt-auto w-full"
         src="./stream.png"
       />
     </div>
@@ -145,8 +145,18 @@
     @apply justify-between;
   }
 
+  /* Autofill the last space. H/T https://stackoverflow.com/a/34816625/62269 */
+  .cards::after {
+    @apply m-2;
+    @apply w-80;
+
+    content: "";
+  }
+
   .card {
     @apply bg-pink-100;
+    @apply flex-col;
+    @apply flex;
     @apply m-2;
     @apply px-4;
     @apply py-2;
@@ -154,6 +164,13 @@
     @apply text-gray-700;
 
     width: theme("width.80");
+  }
+
+  @media (min-width: 640px) {
+    .card:nth-of-type(1),
+    .card:nth-of-type(2) {
+      height: 30rem;
+    }
   }
 
   .card header {
