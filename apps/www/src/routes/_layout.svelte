@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte";
   import Nav from "../components/Nav.svelte";
   import Tailwindcss from "../Tailwindcss.svelte";
@@ -6,7 +6,7 @@
 
   let ga_measurment_id = "G-KC8DC5DEDS";
 
-  export let segment;
+  export let segment: string;
 </script>
 
 <style>

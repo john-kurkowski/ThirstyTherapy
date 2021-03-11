@@ -7,6 +7,7 @@ import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
+import typescript from "@rollup/plugin-typescript";
 import url from "@rollup/plugin-url";
 import { terser } from "rollup-plugin-terser";
 
@@ -18,11 +19,12 @@ const onwarn = (warning, onwarn) =>
   (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
   (warning.code === "CIRCULAR_DEPENDENCY" &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
+  warning.code === "THIS_IS_UNDEFINED" ||
   onwarn(warning);
 
 export default {
   client: {
-    input: config.client.input(),
+    input: config.client.input().replace(/\.js$/, ".ts"),
     output: config.client.output(),
     plugins: [
       replace({
@@ -46,6 +48,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
+      typescript({ sourceMap: dev }),
 
       legacy &&
         babel({
@@ -82,7 +85,7 @@ export default {
   },
 
   server: {
-    input: config.server.input(),
+    input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
     output: config.server.output(),
     plugins: [
       replace({
@@ -106,6 +109,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
+      typescript({ sourceMap: dev }),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules
@@ -116,7 +120,7 @@ export default {
   },
 
   serviceworker: {
-    input: config.serviceworker.input(),
+    input: config.serviceworker.input().replace(/\.js$/, ".ts"),
     output: config.serviceworker.output(),
     plugins: [
       resolve(),
@@ -125,6 +129,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       commonjs(),
+      typescript({ sourceMap: dev }),
       !dev && terser(),
     ],
 
