@@ -17,33 +17,71 @@
 <p class="mb-10 text-xl">You are worthy of good drinks.</p>
 
 <div class="text-left">
-  <div class="max-w-2xl mx-auto">
-    <p class="mb-6">
-      Welcome in, folks, to the socially safe cocktail bar! Sit at the bar with
-      Billy the master bartender and alchemist, and his apprentice John. Follow
-      along to put fresh spins on your favorite spirits. We stream every other
-      Saturday, 6-9pm Pacific, <a
-        class="underline"
-        href="https://twitch.tv/thirstytherapy">on Twitch</a
-      >.
-    </p>
-
-    <p class="mb-6 text-center text-lg">
-      <a class="align-middle button" href="https://twitch.tv/thirstytherapy">
-        Watch on Twitch
-        <img
-          class="inline-block ml-2"
-          src="./iconmonstr-twitch-1.svg"
-          alt="Twitch logo"
-        />
-      </a>
-    </p>
-  </div>
-
   <div class="cards justify-between max-w-2xl mb-6 mx-auto xl:max-w-5xl">
     <div class="card mb-6">
       <header class="mb-4">
-        <h2>Upcoming Ingredients</h2>
+        <h2 class="mb-2">Cocktail Distance Learning</h2>
+        <a
+          class="button inline-flex justify-center my-1 text-center"
+          href="mailto:ThirstyTherapy@gmail.com"
+        >
+          Ask about a class
+          <img
+            alt="Email"
+            class="inline-block ml-2"
+            src="./iconmonstr-email-3.svg"
+          />
+        </a>
+      </header>
+
+      <p class="mb-4">
+        Welcome in, folks, to the socially safe cocktail bar! Master bartender
+        and alchemist Billy noble leads your team or private Zoom. He'll
+        handpick ingredients and tools just for your event. Alcholic or non,
+        home or office, you are worthy of good drinks.
+      </p>
+
+      <img
+        alt="A martini glass cocktail with 2 stacks of cocktail and culinary books."
+        class="h-44 object-top object-cover w-full"
+        src="./books.jpeg"
+      />
+    </div>
+
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2>Livestreams</h2>
+      </header>
+      <p class="mb-4">
+        Join free livestreams every other Saturday, 6-9pm PDT, <a
+          class="underline"
+          href="https://www.twitch.tv/thirstytherapy">on Twitch</a
+        >. Follow along to put fresh spins on your favorite spirits. Ask
+        anything, like for substitutions, or what to do with that bottle at the
+        back of the cabinet.
+      </p>
+      <img
+        alt="Screenshot of Billy and John livestream bartending, on Twitch"
+        class="h-44 object-cover w-full"
+        src="./stream.png"
+      />
+    </div>
+
+    <div class="card mb-6">
+      <header class="mb-4">
+        <h2 class="mb-2">Upcoming</h2>
+
+        <a
+          class="button inline-flex justify-center my-1 text-center"
+          href="https://twitch.tv/thirstytherapy"
+        >
+          Watch on Twitch
+          <img
+            class="inline-block ml-2"
+            src="./iconmonstr-twitch-1.svg"
+            alt="Twitch logo"
+          />
+        </a>
       </header>
 
       <UpcomingIngredients />
@@ -54,7 +92,7 @@
         <h2 class="mb-2">About Billy</h2>
         <img
           alt="Billy the bartender, smiling"
-          class="w-full"
+          class="h-44 object-cover w-full"
           src="./billy.png"
         />
       </header>
@@ -68,7 +106,11 @@
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">About John</h2>
-        <img alt="John the barback, thinking" class="w-full" src="./john.png" />
+        <img
+          alt="John the barback, thinking"
+          class="h-44 object-cover w-full"
+          src="./john.png"
+        />
       </header>
       <p class="mb-4">
         John is Billy's long time guest sitting at the bar. One day John asked,
@@ -80,10 +122,6 @@
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">More</h2>
-        <img
-          alt="Screenshot of Billy and John bartending remotely during a 2020 livestream"
-          src="./stream.png"
-        />
       </header>
 
       <ul class="list-disc list-inside mb-4">
@@ -102,13 +140,14 @@
 
 <style lang="postcss">
   .button {
-    @apply bg-pink-100;
+    @apply bg-purple-200;
     @apply border-2;
     @apply border-gray-900;
     @apply px-3;
     @apply py-1.5;
     @apply rounded-md;
     @apply text-gray-900;
+    @apply transition-colors;
   }
 
   .button:hover {
