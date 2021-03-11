@@ -57,6 +57,15 @@
         </a>
       </li>
       <li class="ml-8">
+        <a href="https://www.youtube.com/channel/UC_t71znatwtjEPL3i1MiutA">
+          <img
+            alt="YouTube archive"
+            src="./iconmonstr-youtube-6.svg"
+            title="YouTube archive"
+          />
+        </a>
+      </li>
+      <li class="ml-8">
         <a href="https://paypal.me/thirstytherapy">
           <img
             alt="PayPal"

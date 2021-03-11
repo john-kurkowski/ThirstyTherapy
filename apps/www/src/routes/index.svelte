@@ -118,23 +118,6 @@
         on the apron, get behind the bar.
       </p>
     </div>
-
-    <div class="card mb-6">
-      <header class="mb-4">
-        <h2 class="mb-2">More</h2>
-      </header>
-
-      <ul class="list-disc list-inside mb-4">
-        <li>
-          <a
-            class="underline"
-            href="https://www.youtube.com/channel/UC_t71znatwtjEPL3i1MiutA"
-          >
-            YouTube archive
-          </a>
-        </li>
-      </ul>
-    </div>
   </div>
 </div>
 
