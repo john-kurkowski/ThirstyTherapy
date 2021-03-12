@@ -1,5 +1,5 @@
 module.exports = {
-  parser: "@babel/eslint-parser",
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2019,
     requireConfigFile: false,
@@ -10,8 +10,8 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ["eslint:recommended"],
-  plugins: ["svelte3"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  plugins: ["@typescript-eslint", "svelte3"],
   overrides: [
     {
       files: ["*.svelte"],
