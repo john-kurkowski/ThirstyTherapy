@@ -17,7 +17,7 @@
 <p class="mb-10 text-xl">You are worthy of good drinks.</p>
 
 <div class="text-left">
-  <div class="cards justify-between max-w-2xl mb-6 mx-auto xl:max-w-5xl">
+  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">Cocktail Distance Learning</h2>
@@ -162,8 +162,7 @@
     @apply py-2;
     @apply rounded-lg;
     @apply text-gray-700;
-
-    width: theme("width.80");
+    @apply w-80;
   }
 
   @media (min-width: 640px) {
