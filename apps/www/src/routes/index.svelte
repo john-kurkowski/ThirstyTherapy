@@ -142,7 +142,7 @@
     @apply flex-wrap;
     @apply flex;
     @apply items-start;
-    @apply justify-between;
+    @apply justify-center;
   }
 
   /* Autofill the last space. H/T https://stackoverflow.com/a/34816625/62269 */
