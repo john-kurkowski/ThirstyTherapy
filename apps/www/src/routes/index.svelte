@@ -97,9 +97,10 @@
         />
       </header>
       <p class="mb-4">
-        Billy is a professional bartender in Portland, OR, USA. He's obsessed
-        with hospitality and alchemy, applying culinary techniques to his drinks
-        and making his own bitters.
+        Billy Noble is a professional bartender in Portland, OR, USA. He's
+        obsessed with hospitality and alchemy. While he appreciates a classic
+        cocktail, he's pushing drinking forward, using new culinary techniques
+        and seasonal, homegrown ingredients.
       </p>
     </div>
 
@@ -113,9 +114,10 @@
         />
       </header>
       <p class="mb-4">
-        John is Billy's long time guest sitting at the bar. One day John asked,
-        how to take his home bartending to the next level? Billy told him, put
-        on the apron, get behind the bar.
+        John Kurkowski is Billy's long time guest, sitting at the bar. One day
+        John asked, how to take his home bartending to the next level? Billy
+        told him, put on the apron, get behind the bar. Watch our livestreams to
+        follow John the barback's journey.
       </p>
     </div>
   </div>
