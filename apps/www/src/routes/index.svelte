@@ -1,5 +1,13 @@
 <script>
-  import UpcomingIngredients from "../components/UpcomingIngredients.svelte";
+  import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
+  import { fetchData } from "../components/UpcomingIngredients";
+  import { onMount } from "svelte";
+
+  let fetchingData = Promise.resolve();
+
+  onMount(() => {
+    fetchingData = fetchData();
+  });
 </script>
 
 <svelte:head>
@@ -84,7 +92,11 @@
         </a>
       </header>
 
-      <UpcomingIngredients />
+      {#await fetchingData then data}
+        {#each data as episode}
+          <UpcomingIngredient {episode} />
+        {/each}
+      {/await}
     </div>
 
     <div class="card mb-6">
