@@ -5,6 +5,7 @@ dependencies:
   '@babel/preset-env': 7.13.9_@babel+core@7.13.8
   '@babel/runtime': 7.13.9
   '@contentful/rich-text-html-renderer': 14.1.2
+  '@contentful/rich-text-types': 14.1.2
   '@rollup/plugin-babel': 5.3.0_@babel+core@7.13.8+rollup@2.40.0
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.40.0
   '@rollup/plugin-node-resolve': 11.2.0_rollup@2.40.0
@@ -2948,6 +2949,7 @@ packages:
       '@babel/preset-env': 7.13.9_@babel+core@7.13.8
       '@babel/runtime': 7.13.9
       '@contentful/rich-text-html-renderer': 14.1.2
+      '@contentful/rich-text-types': 14.1.2
       '@rollup/plugin-babel': 5.3.0_@babel+core@7.13.8+rollup@2.40.0
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.40.0
       '@rollup/plugin-node-resolve': 11.2.0_rollup@2.40.0
@@ -2980,7 +2982,7 @@ packages:
     peerDependencies:
       autoprefixer: '*'
     resolution:
-      integrity: sha512-y6ZSba+ysMLMUhtOVOjnej0NPMPUqh2yDTbjeXWtbQ0iksXf70CcCXIT8oIcLLw1+6thQGHBitDwyKTzUl+BPA==
+      integrity: sha512-229u1WaaPZP03yjDTu4oF/R2eqTlsEaUyY9qgcbtLMA4ZnwyOm4kCzWBdqICiY31wnkUk7j5fdfTXK6XuGVykA==
       tarball: file:projects/thirstytherapy.com.tgz
     version: 0.0.0
 registry: ''
@@ -2991,6 +2993,7 @@ specifiers:
   '@babel/preset-env': ^7.0.0
   '@babel/runtime': ^7.0.0
   '@contentful/rich-text-html-renderer': ^14.1.2
+  '@contentful/rich-text-types': ^14.1.2
   '@rollup/plugin-babel': ^5.0.0
   '@rollup/plugin-commonjs': ^17.1.0
   '@rollup/plugin-node-resolve': ^11.2.0
