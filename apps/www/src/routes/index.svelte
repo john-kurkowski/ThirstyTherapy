@@ -35,10 +35,10 @@
       </header>
 
       <p class="mb-4">
-        Welcome in, folks, to the socially safe cocktail bar! Master bartender
-        and alchemist Billy noble leads your team or private Zoom. He'll
-        handpick ingredients and tools just for your event. Alcholic or non,
-        home or office, you are worthy of good drinks.
+        Welcome in, folks, to the socially safe cocktail bar! A master bartender
+        leads your team or private Zoom. He handpicks ingredients and tools for
+        your event. Alcholic or non, home or office, you are worthy of good
+        drinks.
       </p>
 
       <img
@@ -57,7 +57,7 @@
           class="underline"
           href="https://www.twitch.tv/thirstytherapy">on Twitch</a
         >. Follow along to put fresh spins on your favorite spirits. Ask
-        anything, like for substitutions, or what to do with that bottle at the
+        anything. Like for substitutions. Or what to do with that bottle at the
         back of the cabinet.
       </p>
       <img
@@ -168,7 +168,7 @@
   @media (min-width: 640px) {
     .card:nth-of-type(1),
     .card:nth-of-type(2) {
-      height: 30rem;
+      height: 29rem;
     }
   }
 
