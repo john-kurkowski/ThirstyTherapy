@@ -1,10 +1,19 @@
 <script>
+  import { INLINES } from "@contentful/rich-text-types";
+  import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
   import { onMount } from "svelte";
 
   const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
     dateStyle: "medium",
     timeZone: "America/Los_Angeles",
   });
+
+  const RICH_OPTIONS = {
+    renderNode: {
+      [INLINES.HYPERLINK]: (node) =>
+        `<a class="underline" href="${node.data.uri}">${node.content[0].value}</a>`,
+    },
+  };
 
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
@@ -59,31 +68,26 @@
   });
 </script>
 
-<style>
-  h3 {
-    @apply text-xl;
-    @apply font-display;
-  }
-
-  summary {
-    @apply cursor-pointer;
-  }
-</style>
-
 {#await fetchingData then data}
   {#each data as episode}
     <div>
       <h3 class="mb-4">
         {#if episode.fields.isPast}
-          <del
-            class="opacity-50">{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}</del>
+          <del class="opacity-50"
+            >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}</del
+          >
           ✅
         {:else}{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}{/if}
       </h3>
 
-      <div class={episode.fields.isPast ? 'opacity-50' : ''}>
-        {#if episode.fields.teaser}
-          <p class="mb-4">{episode.fields.teaser}</p>
+      <div class={episode.fields.isPast ? "opacity-50" : ""}>
+        {#if episode.fields.teaser_rich}
+          <p class="mb-4">
+            {@html documentToHtmlString(
+              episode.fields.teaser_rich,
+              RICH_OPTIONS
+            )}
+          </p>
         {/if}
 
         {#if episode.fields.agendaItems.length}
@@ -113,3 +117,14 @@
     </div>
   {/each}
 {/await}
+
+<style>
+  h3 {
+    @apply text-xl;
+    @apply font-display;
+  }
+
+  summary {
+    @apply cursor-pointer;
+  }
+</style>
