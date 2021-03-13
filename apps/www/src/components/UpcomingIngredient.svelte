@@ -18,7 +18,14 @@
         <li class="mb-4">
           <details open={!agendaItem.fields.isCollapsed}>
             <summary>
-              <h4 class="font-bold inline">{agendaItem.fields.title}</h4>
+              <h4 class="font-bold inline">
+                {agendaItem.fields.title}
+                {#if agendaItem.fields.badge}
+                  <span class="badge">
+                    {agendaItem.fields.badge}
+                  </span>
+                {/if}
+              </h4>
             </summary>
 
             <ul class="list-disc list-outside ml-4">
@@ -38,6 +45,11 @@
 </div>
 
 <style>
+  .badge {
+    @apply bg-pink-400;
+    @apply text-gray-100;
+  }
+
   summary {
     @apply cursor-pointer;
   }
