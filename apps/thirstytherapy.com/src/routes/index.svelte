@@ -175,6 +175,23 @@
         follow John the barback's journey.
       </p>
     </div>
+
+    <div class="card mb-6">
+      <header class="mb-2">
+        <h2 class="mb-2">About Brie</h2>
+        <img
+          alt="Brie the oracle"
+          class="h-44 object-cover w-full"
+          src="./brie.png"
+        />
+      </header>
+      <p class="mb-4">
+        Brie Noble is the oracle and operator. She thought Billy and John looked
+        like fools walking off screen to transition their camera angles. So she
+        does it for them behind the scenes. She Googles chat questions
+        aggressively. Say hi! #teambrie
+      </p>
+    </div>
   </div>
 </div>
 
