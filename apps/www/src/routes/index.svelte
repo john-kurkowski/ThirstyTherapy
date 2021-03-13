@@ -1,5 +1,6 @@
 <script>
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
+  import { DATETIME_FORMAT } from "../components/UpcomingIngredients";
   import { fetchData } from "../components/UpcomingIngredients";
   import { onMount } from "svelte";
 
@@ -58,7 +59,18 @@
 
     <div class="card mb-6">
       <header class="mb-4">
-        <h2>Livestreams</h2>
+        <h2 class="mb-2">Livestreams</h2>
+        <a
+          class="button inline-flex justify-center my-1 text-center"
+          href="https://twitch.tv/thirstytherapy"
+        >
+          Watch on Twitch
+          <img
+            class="inline-block ml-2"
+            src="./iconmonstr-twitch-1.svg"
+            alt="Twitch logo"
+          />
+        </a>
       </header>
       <p class="mb-4">
         Join free livestreams every other Saturday, 6-9pm PDT, <a
@@ -75,29 +87,28 @@
       />
     </div>
 
-    <div class="card mb-6">
-      <header class="mb-4">
-        <h2 class="mb-2">Upcoming</h2>
+    {#await fetchingData then data}
+      {#each data as episode}
+        <div class="card mb-6">
+          <header class="mb-2">
+            <h2 class="mb-2">
+              {#if episode.fields.isPast}
+                <del class="opacity-50"
+                  >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
+                  PDT</del
+                >
+                ✅
+              {:else}
+                {DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
+                PDT
+              {/if}
+            </h2>
+          </header>
 
-        <a
-          class="button inline-flex justify-center my-1 text-center"
-          href="https://twitch.tv/thirstytherapy"
-        >
-          Watch on Twitch
-          <img
-            class="inline-block ml-2"
-            src="./iconmonstr-twitch-1.svg"
-            alt="Twitch logo"
-          />
-        </a>
-      </header>
-
-      {#await fetchingData then data}
-        {#each data as episode}
           <UpcomingIngredient {episode} />
-        {/each}
-      {/await}
-    </div>
+        </div>
+      {/each}
+    {/await}
 
     <div class="card mb-6">
       <header class="mb-4">

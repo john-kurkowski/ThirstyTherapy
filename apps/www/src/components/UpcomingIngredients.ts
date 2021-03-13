@@ -36,12 +36,7 @@ export const fetchData: () => Promise<any[]> = async () => {
   const entries = await resp.json();
 
   // @ts-expect-error TODO type this
-  entries.items.forEach(function joinIncludesInMemory(episode, i: number) {
-    const isEpisodeBeforeThis = entries.items
-      .slice(0, i)
-      // @ts-expect-error TODO type this
-      .some((previousEpisode) => !previousEpisode.fields.isPast);
-
+  entries.items.forEach(function joinIncludesInMemory(episode) {
     episode.fields.isPast =
       new Date(episode.fields.broadcast) < episodeIsPastDate;
 
@@ -57,8 +52,7 @@ export const fetchData: () => Promise<any[]> = async () => {
           return null;
         }
 
-        agendaItem.fields.isCollapsed =
-          episode.fields.isPast || isEpisodeBeforeThis;
+        agendaItem.fields.isCollapsed = episode.fields.isPast;
 
         return agendaItem;
       })

@@ -1,18 +1,9 @@
 <script>
-  import { DATETIME_FORMAT, RICH_OPTIONS } from "./UpcomingIngredients";
+  import { RICH_OPTIONS } from "./UpcomingIngredients";
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
   export let episode;
 </script>
-
-<h3 class="mb-4">
-  {#if episode.fields.isPast}
-    <del class="opacity-50"
-      >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm PDT</del
-    >
-    ✅
-  {:else}{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm PDT{/if}
-</h3>
 
 <div class={episode.fields.isPast ? "opacity-50" : ""}>
   {#if episode.fields.teaser_rich}
@@ -47,11 +38,6 @@
 </div>
 
 <style>
-  h3 {
-    @apply text-xl;
-    @apply font-display;
-  }
-
   summary {
     @apply cursor-pointer;
   }
