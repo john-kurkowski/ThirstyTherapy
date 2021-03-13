@@ -61,6 +61,7 @@
 
     return entries.items;
   };
+
   let fetchingData = Promise.resolve();
 
   onMount(() => {
@@ -74,10 +75,11 @@
       <h3 class="mb-4">
         {#if episode.fields.isPast}
           <del class="opacity-50"
-            >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}</del
+            >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm PDT</del
           >
           ✅
-        {:else}{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))}{/if}
+        {:else}{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
+          PDT{/if}
       </h3>
 
       <div class={episode.fields.isPast ? "opacity-50" : ""}>
