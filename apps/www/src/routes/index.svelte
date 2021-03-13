@@ -86,7 +86,11 @@
         src="./stream.png"
       />
     </div>
+  </div>
 
+  <hr data-hr-content="Upcoming" />
+
+  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
     {#await fetchingData then data}
       {#each data as episode}
         <div class="card mb-6">
@@ -109,7 +113,11 @@
         </div>
       {/each}
     {/await}
+  </div>
 
+  <hr data-hr-content="Team" />
+
+  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">About Billy</h2>
@@ -170,14 +178,6 @@
     @apply justify-center;
   }
 
-  /* Autofill the last space. H/T https://stackoverflow.com/a/34816625/62269 */
-  .cards::after {
-    @apply m-2;
-    @apply w-80;
-
-    content: "";
-  }
-
   .card {
     @apply bg-pink-100;
     @apply flex-col;
@@ -190,13 +190,6 @@
     @apply w-80;
   }
 
-  @media (min-width: 640px) {
-    .card:nth-of-type(1),
-    .card:nth-of-type(2) {
-      height: 29rem;
-    }
-  }
-
   .card header {
     @apply mx-auto;
     @apply text-center;
@@ -205,5 +198,30 @@
   .card h2 {
     @apply text-2xl;
     @apply font-display;
+  }
+
+  hr {
+    @apply border-0;
+    @apply my-8;
+    @apply text-center;
+    @apply text-lg;
+
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0)
+    );
+    height: 2px;
+  }
+
+  hr::after {
+    @apply absolute;
+    @apply bg-purple-900;
+    @apply px-4;
+    @apply whitespace-nowrap;
+
+    content: attr(data-hr-content);
+    transform: translate(-50%, -50%);
   }
 </style>
