@@ -25,8 +25,8 @@
 
 <p class="mb-10 text-xl">You are worthy of good drinks.</p>
 
-<div class="text-left">
-  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
+<div class="max-w-2xl mx-auto text-left xl:max-w-5xl">
+  <div class="cards mb-6 mx-auto">
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">Cocktail Distance Learning</h2>
@@ -90,7 +90,7 @@
 
   <hr data-hr-content="Upcoming" />
 
-  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
+  <div class="cards mb-6 mx-auto">
     {#await fetchingData then data}
       {#each data as episode}
         <div class="card mb-6">
@@ -117,7 +117,7 @@
 
   <hr data-hr-content="Team" />
 
-  <div class="cards max-w-2xl mb-6 mx-auto xl:max-w-5xl">
+  <div class="cards mb-6 mx-auto">
     <div class="card mb-6">
       <header class="mb-4">
         <h2 class="mb-2">About Billy</h2>
