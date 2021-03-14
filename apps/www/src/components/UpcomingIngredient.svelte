@@ -21,9 +21,9 @@
               <h4 class="font-bold inline">
                 {agendaItem.fields.title}
                 {#if agendaItem.fields.badge}
-                  <span class="badge">
+                  <small class="badge">
                     {agendaItem.fields.badge}
-                  </span>
+                  </small>
                 {/if}
               </h4>
             </summary>
