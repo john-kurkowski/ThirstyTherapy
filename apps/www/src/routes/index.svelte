@@ -28,7 +28,7 @@
 <div class="max-w-2xl mx-auto text-left xl:max-w-5xl">
   <div class="cards mb-6 mx-auto">
     <div class="card mb-6">
-      <header class="mb-4">
+      <header class="mb-2">
         <h2 class="mb-2">Cocktail Distance Learning</h2>
         <a
           class="button inline-flex justify-center my-1 text-center"
@@ -58,8 +58,8 @@
     </div>
 
     <div class="card mb-6">
-      <header class="mb-4">
-        <h2 class="mb-2">Livestreams</h2>
+      <header class="mb-2">
+        <h2 class="mb-2">Livestream</h2>
         <a
           class="button inline-flex justify-center my-1 text-center"
           href="https://twitch.tv/thirstytherapy"
@@ -119,7 +119,7 @@
 
   <div class="cards mb-6 mx-auto">
     <div class="card mb-6">
-      <header class="mb-4">
+      <header class="mb-2">
         <h2 class="mb-2">About Billy</h2>
         <img
           alt="Billy the bartender, smiling"
@@ -136,7 +136,7 @@
     </div>
 
     <div class="card mb-6">
-      <header class="mb-4">
+      <header class="mb-2">
         <h2 class="mb-2">About John</h2>
         <img
           alt="John the barback, thinking"
