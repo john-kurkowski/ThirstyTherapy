@@ -86,6 +86,30 @@
         src="./stream.png"
       />
     </div>
+
+    <div class="card mb-6">
+      <header class="mb-2">
+        <h2 class="mb-2">Subscriptions</h2>
+      </header>
+      <p class="mb-4">
+        Like what we do? Tip your bartender via
+        <a class="underline" href="https://paypal.me/thirstytherapy">PayPal</a>
+        or
+        <a class="underline" href="https://venmo.com/thirstytherapy">Venmo</a>.
+      </p>
+      <p class="mb-4">
+        Subscribe to get past and future recipes, and you pick the agenda!
+      </p>
+      <p class="mb-4">
+        Help bartenders and bar patrons reconnect at our virtual bar. We use
+        tips to bring you more creative drinks!
+      </p>
+      <img
+        alt="Several coupes with infused gin cocktails, lemon twists, and cut sterling roses."
+        class="h-44 object-cover object-top mt-auto w-full"
+        src="./glasses.jpeg"
+      />
+    </div>
   </div>
 
   <hr data-hr-content="Upcoming" />
