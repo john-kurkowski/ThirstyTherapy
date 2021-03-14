@@ -6,3 +6,7 @@
   # package.json. Rush has its own caching scheme, without using NPM. Netlify
   # gives ENOENT when it tries to restore its NPM cache.
   NPM_FLAGS = "--prefix=/dev/null"
+[[redirects]]
+  from = "/livestream"
+  to = "/"
+  status = 301
