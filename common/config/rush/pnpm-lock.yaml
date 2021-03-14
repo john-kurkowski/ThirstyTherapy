@@ -13,6 +13,7 @@ dependencies:
   '@rollup/plugin-typescript': 8.2.0_611c8b2ed1e492df47cb58b5c35b4947
   '@rollup/plugin-url': 5.0.1_rollup@2.40.0
   '@rush-temp/browser-sources': file:projects/browser-sources.tgz_@babel+core@7.13.8
+  '@rush-temp/noblebittersco.com': file:projects/noblebittersco.com.tgz
   '@rush-temp/thirstytherapy.com': file:projects/thirstytherapy.com.tgz_autoprefixer@10.2.4
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
@@ -2941,6 +2942,13 @@ packages:
       integrity: sha512-ZPJKjEPPK79/WSZrEBhbNbrWNCDG7eWqn1cGEu9lCLal6qEpMMyZ210pK7vYwD8CPQmM8GxkW6l6jJv/gn1CaQ==
       tarball: file:projects/browser-sources.tgz
     version: 0.0.0
+  file:projects/noblebittersco.com.tgz:
+    dev: false
+    name: '@rush-temp/noblebittersco.com'
+    resolution:
+      integrity: sha512-1P4BsSfVvlC0cQaCJeOTon8C15dgyJXZCakZKDYOPC0pGRDx4thHwEy0qcYVRWzDbluxSR9B7DoPpcKy1f/MPA==
+      tarball: file:projects/noblebittersco.com.tgz
+    version: 0.0.0
   file:projects/thirstytherapy.com.tgz_autoprefixer@10.2.4:
     dependencies:
       '@babel/core': 7.13.8
@@ -3001,6 +3009,7 @@ specifiers:
   '@rollup/plugin-typescript': ^8.2.0
   '@rollup/plugin-url': ^5.0.0
   '@rush-temp/browser-sources': file:./projects/browser-sources.tgz
+  '@rush-temp/noblebittersco.com': file:./projects/noblebittersco.com.tgz
   '@rush-temp/thirstytherapy.com': file:./projects/thirstytherapy.com.tgz
   '@tsconfig/svelte': ^1.0.10
   '@types/compression': ^1.7.0

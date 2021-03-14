@@ -463,6 +463,10 @@
       "projectFolder": "apps/browser-sources"
     },
     {
+      "packageName": "noblebittersco.com",
+      "projectFolder": "apps/noblebittersco.com"
+    },
+    {
       "packageName": "thirstytherapy.com",
       "projectFolder": "apps/thirstytherapy.com"
     }

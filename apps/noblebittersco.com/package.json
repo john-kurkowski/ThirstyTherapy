@@ -1,0 +1,12 @@
+{
+  "name": "noblebittersco.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "true"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true
+}
