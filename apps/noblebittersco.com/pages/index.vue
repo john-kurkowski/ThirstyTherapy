@@ -2,25 +2,8 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">noblebittersco.com</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h1 class="title">Noble Bitters Co.</h1>
+      <h2 class="subtitle">Coming soon!</h2>
     </div>
   </div>
 </template>
@@ -62,9 +45,5 @@ export default Vue.extend({})
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
