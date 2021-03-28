@@ -50,13 +50,20 @@ export const twitchAccessToken = derived(
   }
 );
 
+function readQueryParamValue(cookieName) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(cookieName);
+}
+
 function readCookieValue(cookieName) {
   return (new RegExp(`${cookieName}=([^;]+)`, "g").exec(document.cookie) ||
     [])[1];
 }
 
 function writableCookie(cookieName) {
-  const { set, subscribe } = writable(readCookieValue(cookieName));
+  const initialValue =
+    readQueryParamValue(cookieName) || readCookieValue(cookieName);
+  const { set, subscribe } = writable(initialValue);
 
   return {
     set(value) {
