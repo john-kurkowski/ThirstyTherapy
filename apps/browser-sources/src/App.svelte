@@ -24,8 +24,6 @@
   <style>
     html,
     body {
-      @apply max-w-sm;
-
       font-size: 32px;
 
       /* Hide scroll bar. */
