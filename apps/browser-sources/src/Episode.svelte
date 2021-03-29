@@ -3,9 +3,6 @@
   import Collapsible from "./Collapsible.svelte";
   import { pageName } from "./stores";
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const isBroadcast = urlParams.get("isBroadcast");
-
   const SPACE_ID = "nc2tnr0lufn7";
   const ENVIRONMENT_ID = "master";
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
@@ -32,38 +29,22 @@
   export const location = "";
 </script>
 
-<style>
-  .agenda-item + .agenda-item {
-    @apply mt-1;
-  }
-</style>
-
-{#if isBroadcast}
-  <style>
-    .agenda-item {
-      @apply bg-black;
-      @apply bg-opacity-50;
-      @apply px-1.5;
-      @apply py-0.5;
-      @apply rounded-md;
-    }
-  </style>
-{/if}
-
 <form
-  class="flex flex-col justify-end min-h-screen"
-  on:submit={(event) => event.preventDefault()}>
+  class="flex flex-col justify-end max-w-sm min-h-screen"
+  on:submit={(event) => event.preventDefault()}
+>
   {#await fetchData then data}
     <ol class="self-end">
       {#each data.fields.agendaItems as entry}
-        <li class="agenda-item">
+        <li class="agenda-item broadcast-bubble">
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
-            <span
-              slot="button">{entry.fields.displayTitle || entry.fields.title}</span>
+            <span slot="button">
+              {entry.fields.displayTitle || entry.fields.title}
+            </span>
 
             <div slot="rest" let:state>
               {#if (entry.fields.steps || []).length}
-                <Collapsible isExpanded={state === 'EXPANDED'}>
+                <Collapsible isExpanded={state === "EXPANDED"}>
                   <ul class="ml-4">
                     {#each entry.fields.steps as step}
                       <li>
@@ -82,3 +63,9 @@
     </ol>
   {/await}
 </form>
+
+<style>
+  .agenda-item + .agenda-item {
+    @apply mt-1;
+  }
+</style>

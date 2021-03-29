@@ -1,6 +1,8 @@
 <script lang="ts">
+  import Admin from "./Admin.svelte";
   import Episode from "./Episode.svelte";
   import SelectEpisode from "./SelectEpisode.svelte";
+  import SittingAtTheBar from "./SittingAtTheBar.svelte";
   import Tailwindcss from "./Tailwindcss.svelte";
   import { Router, Route } from "svelte-routing";
   import { pageName } from "./stores";
@@ -22,8 +24,6 @@
   <style>
     html,
     body {
-      @apply max-w-sm;
-
       font-size: 32px;
 
       /* Hide scroll bar. */
@@ -47,6 +47,14 @@
       body {
         background-color: rgba(0, 0, 0, 0) !important;
       }
+
+      .broadcast-bubble:global {
+        @apply bg-black;
+        @apply bg-opacity-50;
+        @apply px-1.5;
+        @apply py-0.5;
+        @apply rounded-md;
+      }
     </style>
   {/if}
 </svelte:head>
@@ -56,6 +64,8 @@
 <div class="">
   <Router {url}>
     <Route path="/" component={SelectEpisode} />
+    <Route path="/admin" component={Admin} />
     <Route path="/episode/:id" component={Episode} />
+    <Route path="/sitting" component={SittingAtTheBar} />
   </Router>
 </div>
