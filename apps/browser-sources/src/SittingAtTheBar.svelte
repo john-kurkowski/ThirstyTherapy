@@ -20,9 +20,15 @@
         "client-id": TWITCH_CLIENT_ID,
       };
 
-      const usernames = ["TargTarts", "KynderLyft", "luzeph"].map((username) =>
-        username.toLowerCase()
-      );
+      const urlParams = new URLSearchParams(window.location.search);
+      const usernames = urlParams
+        .getAll("username")
+        .map((username) => username.toLowerCase());
+
+      if (!usernames.length) {
+        return [];
+      }
+
       const qs = `?login=${usernames.join("&login=")}`;
       const url = `${HOST}/users${qs}`;
       const resp = await fetch(url, { headers });
@@ -56,22 +62,26 @@
     <div class="broadcast-bubble">
       <h2 class="text-tn">Sitting at the bar</h2>
 
-      <ol class="flex mt-1">
-        {#each data as entry, i}
-          <li class="flex items-center text-xs {i > 0 && 'ml-4'}">
-            <span aria-label="Drinking a cocktail" role="img">
-              {COCKTAIL_ICONS[i % COCKTAIL_ICONS.length]}
-            </span>
+      {#if data.length}
+        <ol class="flex mt-1">
+          {#each data as entry, i}
+            <li class="flex items-center text-xs {i > 0 && 'ml-4'}">
+              <span aria-label="Drinking a cocktail" role="img">
+                {COCKTAIL_ICONS[i % COCKTAIL_ICONS.length]}
+              </span>
 
-            <div class="flex flex-col items-center ml-1">
-              <!-- svelte-ignore a11y-missing-attribute -->
-              <!-- The text below it is sufficient. -->
-              <img class="rounded-full w-4" src={entry.profile_image_url} />
-              <p>{entry.display_name}</p>
-            </div>
-          </li>
-        {/each}
-      </ol>
+              <div class="flex flex-col items-center ml-1">
+                <!-- svelte-ignore a11y-missing-attribute -->
+                <!-- The text below it is sufficient. -->
+                <img class="rounded-full w-4" src={entry.profile_image_url} />
+                <p>{entry.display_name}</p>
+              </div>
+            </li>
+          {/each}
+        </ol>
+      {:else}
+        <p class="animate-pulse text-tn">…</p>
+      {/if}
     </div>
   {:catch error}
     <div class="broadcast-bubble text-tn">
