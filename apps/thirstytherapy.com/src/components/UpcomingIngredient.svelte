@@ -47,7 +47,11 @@
 <style>
   .badge {
     @apply bg-pink-400;
+    @apply inline-block;
+    @apply ml-6;
     @apply text-gray-100;
+
+    transform: rotate(-8deg);
   }
 
   summary {
