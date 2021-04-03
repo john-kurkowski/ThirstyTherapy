@@ -50,7 +50,7 @@
 
       .broadcast-bubble:global {
         @apply bg-black;
-        @apply bg-opacity-50;
+        @apply bg-opacity-30;
         @apply px-1.5;
         @apply py-0.5;
         @apply rounded-md;

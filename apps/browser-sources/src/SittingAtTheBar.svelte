@@ -60,12 +60,12 @@
     </div>
   {:then data}
     <div class="broadcast-bubble">
-      <h2 class="text-tn">Sitting at the bar</h2>
+      <h2 class="text-xs">Sitting at the bar</h2>
 
       {#if data.length}
         <ol class="flex mt-1">
           {#each data as entry, i}
-            <li class="flex items-center text-xs {i > 0 && 'ml-4'}">
+            <li class="flex items-center text-sm {i > 0 && 'ml-4'}">
               <span aria-label="Drinking a cocktail" role="img">
                 {COCKTAIL_ICONS[i % COCKTAIL_ICONS.length]}
               </span>
@@ -80,11 +80,11 @@
           {/each}
         </ol>
       {:else}
-        <p class="animate-pulse text-tn">…</p>
+        <p class="animate-pulse text-xs">…</p>
       {/if}
     </div>
   {:catch error}
-    <div class="broadcast-bubble text-tn">
+    <div class="broadcast-bubble text-xs">
       <p>
         No one at the bar! 😭 Are your
         <Link to="/admin">
@@ -96,9 +96,3 @@
     </div>
   {/await}
 </div>
-
-<style>
-  .text-tn {
-    font-size: 0.5rem;
-  }
-</style>
