@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo rsync --compress --links --recursive --times --verbose --exclude 'service.json' --exclude '*.bak' '/Users/thirstytherapy/Library/Application Support/obs-studio/basic' "$(dirname "$0")"/
+sudo chown -R "$(whoami)" "$(dirname "$0")"/basic
