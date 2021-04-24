@@ -1,5 +1,7 @@
 <script>
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
+  import Scene1 from "./SittingAtTheBar/Scene1.svelte";
+  import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
@@ -35,27 +37,16 @@
   export const location = "";
 </script>
 
-<div
-  class="align-top fadeable inline-flex justify-end w-full {isVisible
-    ? 'is-visible'
-    : 'is-not-visible'}"
->
-  {#if sceneNumber == 0}
-    <Scene0 />
+<div class="align-top inline-flex justify-end w-full">
+  {#if isVisible}
+    {#if sceneNumber === 0}
+      <div transition:fade={{ duration: 2000 }}>
+        <Scene0 />
+      </div>
+    {:else if sceneNumber === 1}
+      <div transition:fade={{ duration: 2000 }}>
+        <Scene1 />
+      </div>
+    {/if}
   {/if}
 </div>
-
-<style>
-  .fadeable {
-    @apply transition-opacity;
-    transition-duration: 2000ms;
-  }
-
-  .is-visible {
-    @apply opacity-100;
-  }
-
-  .is-not-visible {
-    @apply opacity-0;
-  }
-</style>
