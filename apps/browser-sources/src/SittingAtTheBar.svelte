@@ -10,6 +10,8 @@
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
+  let sceneNumber = 0;
+  let numScenes = 2;
   let timeoutIsVisible = 0;
 
   let fetchData;
@@ -65,6 +67,9 @@
     clearTimeout(timeoutIsVisible);
 
     isVisible = !isVisible;
+    if (!isVisible) {
+      sceneNumber = (sceneNumber + 1) % numScenes;
+    }
     timeoutIsVisible = setTimeout(timeShow, timeShowMs());
   }
 
@@ -72,7 +77,8 @@
 </script>
 
 <div
-  class="align-top fadeable inline-flex justify-end w-full {isVisible
+  class="align-top fadeable inline-flex justify-end w-full {sceneNumber === 0 &&
+  isVisible
     ? 'is-visible'
     : 'is-not-visible'}"
 >
