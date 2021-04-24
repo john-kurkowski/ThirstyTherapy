@@ -8,6 +8,7 @@
 
   const HOST = "https://api.twitch.tv/helix";
 
+  const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let timeoutIsVisible = 0;
 
@@ -23,7 +24,6 @@
         "client-id": TWITCH_CLIENT_ID,
       };
 
-      const urlParams = new URLSearchParams(window.location.search);
       const usernames = urlParams
         .getAll("username")
         .map((username) => username.toLowerCase());
@@ -49,17 +49,23 @@
     })();
   }
 
-  setTimeout(timeShow, 4000);
+  setTimeout(timeShow, timeShowMs());
 
   onMount(function () {
     pageName.set("Sitting at the bar");
   });
 
+  function timeShowMs() {
+    return isVisible
+      ? urlParams.get("on") || 30 * 1000
+      : urlParams.get("off") || 60 * 1000;
+  }
+
   function timeShow() {
     clearTimeout(timeoutIsVisible);
 
     isVisible = !isVisible;
-    timeoutIsVisible = setTimeout(timeShow, 4000);
+    timeoutIsVisible = setTimeout(timeShow, timeShowMs());
   }
 
   export const location = "";
