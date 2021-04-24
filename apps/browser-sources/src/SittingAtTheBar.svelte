@@ -8,6 +8,9 @@
 
   const HOST = "https://api.twitch.tv/helix";
 
+  let isVisible = true;
+  let timeoutIsVisible = 0;
+
   let fetchData;
   $: if (!$twitchAccessToken) {
     fetchData = new Promise(() => {});
@@ -46,14 +49,27 @@
     })();
   }
 
+  setTimeout(timeShow, 4000);
+
   onMount(function () {
     pageName.set("Sitting at the bar");
   });
 
+  function timeShow() {
+    clearTimeout(timeoutIsVisible);
+
+    isVisible = !isVisible;
+    timeoutIsVisible = setTimeout(timeShow, 4000);
+  }
+
   export const location = "";
 </script>
 
-<div class="align-top inline-flex justify-end w-full">
+<div
+  class="align-top fadeable inline-flex justify-end w-full {isVisible
+    ? 'is-visible'
+    : 'is-not-visible'}"
+>
   {#await fetchData}
     <div class="broadcast-bubble">
       <Loader />
@@ -96,3 +112,18 @@
     </div>
   {/await}
 </div>
+
+<style>
+  .fadeable {
+    @apply transition-opacity;
+    transition-duration: 2000ms;
+  }
+
+  .is-visible {
+    @apply opacity-100;
+  }
+
+  .is-not-visible {
+    @apply opacity-0;
+  }
+</style>
