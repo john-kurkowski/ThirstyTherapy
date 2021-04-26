@@ -37,16 +37,14 @@
   export const location = "";
 </script>
 
-<div class="align-top inline-flex justify-end w-full">
-  {#if isVisible}
-    {#if sceneNumber === 0}
-      <div transition:fade={{ duration: 2000 }}>
-        <Scene0 />
-      </div>
-    {:else if sceneNumber === 1}
-      <div transition:fade={{ duration: 2000 }}>
-        <Scene1 />
-      </div>
-    {/if}
+{#if isVisible}
+  {#if sceneNumber === 0}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene0 />
+    </div>
+  {:else if sceneNumber === 1}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene1 />
+    </div>
   {/if}
-</div>
+{/if}
