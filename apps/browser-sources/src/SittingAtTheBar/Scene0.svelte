@@ -1,50 +1,10 @@
 <script>
   import Loader from "./Loader.svelte";
   import { Link } from "svelte-routing";
-  import { TWITCH_CLIENT_ID, twitchAccessToken } from "../stores";
 
   const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
 
-  const HOST = "https://api.twitch.tv/helix";
-
-  const urlParams = new URLSearchParams(window.location.search);
-
-  let fetchData;
-  $: if (!$twitchAccessToken) {
-    fetchData = new Promise(() => {});
-  } else if ($twitchAccessToken instanceof Error) {
-    fetchData = Promise.reject($twitchAccessToken);
-  } else {
-    fetchData = (async () => {
-      const headers = {
-        Authorization: `Bearer ${$twitchAccessToken}`,
-        "client-id": TWITCH_CLIENT_ID,
-      };
-
-      const usernames = urlParams
-        .getAll("username")
-        .map((username) => username.toLowerCase());
-
-      if (!usernames.length) {
-        return [];
-      }
-
-      const qs = `?login=${usernames.join("&login=")}`;
-      const url = `${HOST}/users${qs}`;
-      const resp = await fetch(url, { headers });
-      const entries = await resp.json();
-
-      if (!resp.ok) {
-        throw new Error(entries.message);
-      }
-
-      return entries.data.sort(
-        (o1, o2) =>
-          usernames.indexOf(o1.display_name.toLowerCase()) -
-          usernames.indexOf(o2.display_name.toLowerCase())
-      );
-    })();
-  }
+  export let fetchData;
 </script>
 
 <div class="align-top inline-flex justify-end w-full">
