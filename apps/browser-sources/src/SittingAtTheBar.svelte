@@ -1,98 +1,50 @@
 <script>
-  import Loader from "./SittingAtTheBar/Loader.svelte";
-  import { Link } from "svelte-routing";
-  import { TWITCH_CLIENT_ID, pageName, twitchAccessToken } from "./stores";
+  import Scene0 from "./SittingAtTheBar/Scene0.svelte";
+  import Scene1 from "./SittingAtTheBar/Scene1.svelte";
+  import { fade } from "svelte/transition";
   import { onMount } from "svelte";
+  import { pageName } from "./stores";
 
-  const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
+  const NUM_SCENES = 2;
 
-  const HOST = "https://api.twitch.tv/helix";
+  const urlParams = new URLSearchParams(window.location.search);
+  let isVisible = true;
+  let sceneNumber = 0;
+  let timeoutIsVisible = 0;
 
-  let fetchData;
-  $: if (!$twitchAccessToken) {
-    fetchData = new Promise(() => {});
-  } else if ($twitchAccessToken instanceof Error) {
-    fetchData = Promise.reject($twitchAccessToken);
-  } else {
-    fetchData = (async () => {
-      const headers = {
-        Authorization: `Bearer ${$twitchAccessToken}`,
-        "client-id": TWITCH_CLIENT_ID,
-      };
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const usernames = urlParams
-        .getAll("username")
-        .map((username) => username.toLowerCase());
-
-      if (!usernames.length) {
-        return [];
-      }
-
-      const qs = `?login=${usernames.join("&login=")}`;
-      const url = `${HOST}/users${qs}`;
-      const resp = await fetch(url, { headers });
-      const entries = await resp.json();
-
-      if (!resp.ok) {
-        throw new Error(entries.message);
-      }
-
-      return entries.data.sort(
-        (o1, o2) =>
-          usernames.indexOf(o1.display_name.toLowerCase()) -
-          usernames.indexOf(o2.display_name.toLowerCase())
-      );
-    })();
-  }
+  setTimeout(timeShow, timeShowMs());
 
   onMount(function () {
     pageName.set("Sitting at the bar");
   });
 
+  function timeShowMs() {
+    return isVisible
+      ? urlParams.get("on") || 30 * 1000
+      : urlParams.get("off") || 60 * 1000;
+  }
+
+  function timeShow() {
+    clearTimeout(timeoutIsVisible);
+
+    isVisible = !isVisible;
+    if (!isVisible) {
+      sceneNumber = (sceneNumber + 1) % NUM_SCENES;
+    }
+    timeoutIsVisible = setTimeout(timeShow, timeShowMs());
+  }
+
   export const location = "";
 </script>
 
-<div class="align-top inline-flex justify-end w-full">
-  {#await fetchData}
-    <div class="broadcast-bubble">
-      <Loader />
+{#if isVisible}
+  {#if sceneNumber === 0}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene0 />
     </div>
-  {:then data}
-    <div class="broadcast-bubble">
-      <h2 class="text-xs">Sitting at the bar</h2>
-
-      {#if data.length}
-        <ol class="flex mt-1">
-          {#each data as entry, i}
-            <li class="flex items-center text-sm {i > 0 && 'ml-4'}">
-              <span aria-label="Drinking a cocktail" role="img">
-                {COCKTAIL_ICONS[i % COCKTAIL_ICONS.length]}
-              </span>
-
-              <div class="flex flex-col items-center ml-1">
-                <!-- svelte-ignore a11y-missing-attribute -->
-                <!-- The text below it is sufficient. -->
-                <img class="rounded-full w-4" src={entry.profile_image_url} />
-                <p>{entry.display_name}</p>
-              </div>
-            </li>
-          {/each}
-        </ol>
-      {:else}
-        <p class="animate-pulse text-xs">…</p>
-      {/if}
+  {:else if sceneNumber === 1}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene1 />
     </div>
-  {:catch error}
-    <div class="broadcast-bubble text-xs">
-      <p>
-        No one at the bar! 😭 Are your
-        <Link to="/admin">
-          <span class="underline">admin settings</span>
-        </Link>
-        correct?
-      </p>
-      <code class="text-red-600">{error.message}</code>
-    </div>
-  {/await}
-</div>
+  {/if}
+{/if}
