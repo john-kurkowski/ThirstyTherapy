@@ -120,6 +120,16 @@
         <div class="card mb-6">
           <header class="mb-2">
             <h2 class="mb-2">
+              {#if episode.fields.originalTime}
+                <small class="block opacity-50">
+                  <del
+                    >{DATETIME_FORMAT.format(
+                      new Date(episode.fields.originalTime)
+                    )} 6-9pm PDT</del
+                  >
+                </small>
+              {/if}
+
               {#if episode.fields.isPast}
                 <del class="opacity-50"
                   >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
