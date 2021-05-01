@@ -1,4 +1,5 @@
 <script>
+  import HeadingPop from "../components/HeadingPop.svelte";
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
   import { DATETIME_FORMAT } from "../components/UpcomingIngredients";
   import { fetchData } from "../components/UpcomingIngredients";
@@ -29,7 +30,7 @@
   <div class="cards mb-6 mx-auto">
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Cocktail Distance Learning</h2>
+        <HeadingPop>Cocktail Distance Learning</HeadingPop>
         <a
           class="button inline-flex justify-center my-1 text-center"
           href="mailto:ThirstyTherapy@gmail.com"
@@ -59,7 +60,7 @@
 
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Livestream</h2>
+        <HeadingPop>Livestream</HeadingPop>
         <a
           class="button inline-flex justify-center my-1 text-center"
           href="https://twitch.tv/thirstytherapy"
@@ -89,7 +90,7 @@
 
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Subscriptions</h2>
+        <HeadingPop>Subscriptions</HeadingPop>
       </header>
       <p class="mb-4">
         Like what we do? Tip your bartender via
@@ -119,7 +120,7 @@
       {#each data as episode}
         <div class="card">
           <header class="mb-2">
-            <h2 class="mb-2">
+            <HeadingPop>
               {#if episode.fields.originalTime}
                 <small class="block opacity-50">
                   <del
@@ -140,7 +141,7 @@
                 {DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
                 PDT
               {/if}
-            </h2>
+            </HeadingPop>
           </header>
 
           <UpcomingIngredient {episode} />
@@ -154,7 +155,7 @@
   <div class="cards mb-6 mx-auto">
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About Billy</h2>
+        <HeadingPop>About Billy</HeadingPop>
         <img
           alt="Billy the bartender, smiling"
           class="h-44 object-cover w-full"
@@ -171,7 +172,7 @@
 
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About John</h2>
+        <HeadingPop>About John</HeadingPop>
         <img
           alt="John the barback, thinking"
           class="h-44 object-cover w-full"
@@ -188,7 +189,7 @@
 
     <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About Brie</h2>
+        <HeadingPop>About Brie</HeadingPop>
         <img
           alt="Brie the oracle"
           class="h-44 object-cover w-full"
@@ -244,40 +245,12 @@
 
   .card header {
     @apply flex;
-    @apply pt-8;
+    @apply flex-col;
     @apply relative;
   }
 
   .card header .button {
     @apply mx-auto;
-  }
-
-  .card h2 {
-    @apply -left-6;
-    @apply -top-6;
-    @apply absolute;
-    @apply font-display;
-    @apply px-4;
-    @apply py-1;
-    @apply text-2xl;
-    @apply w-80;
-
-    z-index: 0;
-  }
-
-  .card h2::before {
-    @apply absolute;
-    @apply bg-gray-100;
-    @apply border-gray-800;
-    @apply h-full;
-    @apply left-0;
-    @apply top-0;
-    @apply w-80;
-
-    border-width: 3px;
-    content: "";
-    transform: skew(-10deg);
-    z-index: -1;
   }
 
   hr {
