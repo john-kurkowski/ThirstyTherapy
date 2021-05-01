@@ -242,13 +242,27 @@
   }
 
   .card header {
+    @apply flex;
+    @apply pt-8;
+    @apply relative;
+  }
+
+  .card header .button {
     @apply mx-auto;
-    @apply text-center;
   }
 
   .card h2 {
-    @apply text-2xl;
+    @apply -left-6;
+    @apply -top-6;
+    @apply absolute;
+    @apply bg-gray-100;
+    @apply border-2;
+    @apply border-purple-900;
     @apply font-display;
+    @apply px-2;
+    @apply py-1;
+    @apply text-2xl;
+    @apply w-80;
   }
 
   hr {
