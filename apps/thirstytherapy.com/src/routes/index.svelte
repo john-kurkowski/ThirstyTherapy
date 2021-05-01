@@ -47,7 +47,7 @@
       <p class="mb-4">
         Welcome in, folks, to the socially safe cocktail bar! A master bartender
         leads your team or private Zoom. He handpicks ingredients and tools for
-        your event. Alcholic or non, home or office, you are worthy of good
+        your event. Alcoholic or non, home or office, you are worthy of good
         drinks.
       </p>
 
