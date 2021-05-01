@@ -9,3 +9,7 @@ To export:
 ```
 ./sync
 ```
+
+OBS stores in plain text streaming keys and query param auth tokens. This
+folder's sync process should take care to remove sensitive data from source
+control. **TODO:** hide more credentials and rotate their keys in production.
