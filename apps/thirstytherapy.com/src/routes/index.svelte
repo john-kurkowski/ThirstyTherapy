@@ -27,7 +27,7 @@
 
 <div class="max-w-2xl mx-auto text-left xl:max-w-5xl">
   <div class="cards mb-6 mx-auto">
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">Cocktail Distance Learning</h2>
         <a
@@ -57,7 +57,7 @@
       />
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">Livestream</h2>
         <a
@@ -87,7 +87,7 @@
       />
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">Subscriptions</h2>
       </header>
@@ -117,7 +117,7 @@
   <div class="cards mb-6 mx-auto">
     {#await fetchingData then data}
       {#each data as episode}
-        <div class="card mb-6">
+        <div class="card">
           <header class="mb-2">
             <h2 class="mb-2">
               {#if episode.fields.originalTime}
@@ -152,7 +152,7 @@
   <hr data-hr-content="Team" />
 
   <div class="cards mb-6 mx-auto">
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">About Billy</h2>
         <img
@@ -169,7 +169,7 @@
       </p>
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">About John</h2>
         <img
@@ -186,7 +186,7 @@
       </p>
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
         <h2 class="mb-2">About Brie</h2>
         <img
@@ -234,6 +234,7 @@
     @apply flex-col;
     @apply flex;
     @apply m-2;
+    @apply mb-8;
     @apply px-4;
     @apply py-2;
     @apply rounded-lg;
@@ -281,7 +282,8 @@
 
   hr {
     @apply border-0;
-    @apply my-8;
+    @apply mb-12;
+    @apply mt-8;
     @apply text-center;
     @apply text-lg;
 
