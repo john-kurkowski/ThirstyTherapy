@@ -1,4 +1,5 @@
 <script>
+  import HeadingPop from "../components/HeadingPop.svelte";
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
   import { DATETIME_FORMAT } from "../components/UpcomingIngredients";
   import { fetchData } from "../components/UpcomingIngredients";
@@ -27,9 +28,9 @@
 
 <div class="max-w-2xl mx-auto text-left xl:max-w-5xl">
   <div class="cards mb-6 mx-auto">
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Cocktail Distance Learning</h2>
+        <HeadingPop>Cocktail Distance Learning</HeadingPop>
         <a
           class="button inline-flex justify-center my-1 text-center"
           href="mailto:ThirstyTherapy@gmail.com"
@@ -57,9 +58,9 @@
       />
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Livestream</h2>
+        <HeadingPop>Livestream</HeadingPop>
         <a
           class="button inline-flex justify-center my-1 text-center"
           href="https://twitch.tv/thirstytherapy"
@@ -87,9 +88,9 @@
       />
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">Subscriptions</h2>
+        <HeadingPop>Subscriptions</HeadingPop>
       </header>
       <p class="mb-4">
         Like what we do? Tip your bartender via
@@ -117,9 +118,9 @@
   <div class="cards mb-6 mx-auto">
     {#await fetchingData then data}
       {#each data as episode}
-        <div class="card mb-6">
+        <div class="card">
           <header class="mb-2">
-            <h2 class="mb-2">
+            <HeadingPop>
               {#if episode.fields.originalTime}
                 <small class="block opacity-50">
                   <del
@@ -140,7 +141,7 @@
                 {DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
                 PDT
               {/if}
-            </h2>
+            </HeadingPop>
           </header>
 
           <UpcomingIngredient {episode} />
@@ -152,9 +153,9 @@
   <hr data-hr-content="Team" />
 
   <div class="cards mb-6 mx-auto">
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About Billy</h2>
+        <HeadingPop>About Billy</HeadingPop>
         <img
           alt="Billy the bartender, smiling"
           class="h-44 object-cover w-full"
@@ -169,9 +170,9 @@
       </p>
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About John</h2>
+        <HeadingPop>About John</HeadingPop>
         <img
           alt="John the barback, thinking"
           class="h-44 object-cover w-full"
@@ -186,9 +187,9 @@
       </p>
     </div>
 
-    <div class="card mb-6">
+    <div class="card">
       <header class="mb-2">
-        <h2 class="mb-2">About Brie</h2>
+        <HeadingPop>About Brie</HeadingPop>
         <img
           alt="Brie the oracle"
           class="h-44 object-cover w-full"
@@ -234,6 +235,7 @@
     @apply flex-col;
     @apply flex;
     @apply m-2;
+    @apply mb-8;
     @apply px-4;
     @apply py-2;
     @apply rounded-lg;
@@ -242,18 +244,19 @@
   }
 
   .card header {
-    @apply mx-auto;
-    @apply text-center;
+    @apply flex;
+    @apply flex-col;
+    @apply relative;
   }
 
-  .card h2 {
-    @apply text-2xl;
-    @apply font-display;
+  .card header .button {
+    @apply mx-auto;
   }
 
   hr {
     @apply border-0;
-    @apply my-8;
+    @apply mb-12;
+    @apply mt-8;
     @apply text-center;
     @apply text-lg;
 
