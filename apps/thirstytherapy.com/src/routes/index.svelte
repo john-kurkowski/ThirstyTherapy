@@ -37,7 +37,7 @@
         >
           Ask about a class
           <img
-            alt="Email"
+            alt=""
             class="inline-block ml-2"
             src="./iconmonstr-email-3.svg"
           />
@@ -67,9 +67,9 @@
         >
           Watch on Twitch
           <img
+            alt=""
             class="inline-block ml-2"
             src="./iconmonstr-twitch-1.svg"
-            alt="Twitch logo"
           />
         </a>
       </header>
