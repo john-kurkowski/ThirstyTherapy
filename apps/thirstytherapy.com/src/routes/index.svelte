@@ -255,16 +255,28 @@
     @apply -left-6;
     @apply -top-6;
     @apply absolute;
-    @apply bg-gray-100;
-    @apply border-gray-800;
     @apply font-display;
-    @apply px-2;
+    @apply px-4;
     @apply py-1;
     @apply text-2xl;
     @apply w-80;
 
+    z-index: 0;
+  }
+
+  .card h2::before {
+    @apply absolute;
+    @apply bg-gray-100;
+    @apply border-gray-800;
+    @apply h-full;
+    @apply left-0;
+    @apply top-0;
+    @apply w-80;
+
     border-width: 3px;
+    content: "";
     transform: skew(-10deg);
+    z-index: -1;
   }
 
   hr {
