@@ -25,9 +25,11 @@
               </span>
 
               <div class="flex flex-col items-center ml-1">
-                <!-- svelte-ignore a11y-missing-attribute -->
-                <!-- The text below it is sufficient. -->
-                <img class="rounded-full w-4" src={entry.profile_image_url} />
+                <img
+                  alt=""
+                  class="rounded-full w-8"
+                  src={entry.profile_image_url}
+                />
                 <p>{entry.display_name}</p>
               </div>
             </li>

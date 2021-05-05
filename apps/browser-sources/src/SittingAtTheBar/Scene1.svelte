@@ -1,6 +1,11 @@
 <div class="inline-flex justify-end w-full">
   <div class="broadcast-bubble flex items-center">
     <p class="font-display">Thirsty Therapy</p>
+    <img
+      alt=""
+      class="ml-4 my-1 rounded-full w-8"
+      src="https://static-cdn.jtvnw.net/jtv_user_pictures/62f1dd2d-465d-4099-aa03-475678b920c5-profile_image-300x300.png"
+    />
     <p class="ml-4">
       <code>#worthyofgooddrinks</code>
     </p>
