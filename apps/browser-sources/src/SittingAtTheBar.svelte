@@ -1,13 +1,14 @@
 <script>
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
+  import Scene2 from "./SittingAtTheBar/Scene2.svelte";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
   const HOST = "https://api.twitch.tv/helix";
-  const NUM_SCENES = 2;
+  const NUM_SCENES = 4;
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
@@ -84,6 +85,14 @@
   {:else if sceneNumber === 1}
     <div transition:fade={{ duration: 2000 }}>
       <Scene1 />
+    </div>
+  {:else if sceneNumber === 2}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene0 {fetchData} />
+    </div>
+  {:else if sceneNumber === 3}
+    <div transition:fade={{ duration: 2000 }}>
+      <Scene2 />
     </div>
   {/if}
 {/if}
