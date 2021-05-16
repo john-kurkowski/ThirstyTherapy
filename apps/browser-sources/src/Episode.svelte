@@ -33,7 +33,7 @@
 </script>
 
 <form
-  class="flex flex-col {isRight ? 'justify-end' : ''} max-w-sm min-h-screen"
+  class="flex flex-col justify-end max-w-sm min-h-screen"
   on:submit={(event) => event.preventDefault()}
 >
   {#await fetchData then data}
