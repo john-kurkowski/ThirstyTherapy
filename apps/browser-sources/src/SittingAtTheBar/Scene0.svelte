@@ -4,10 +4,13 @@
 
   const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const isRight = urlParams.get("isRight");
+
   export let fetchData;
 </script>
 
-<div class="align-top inline-flex justify-end w-full">
+<div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
   {#await fetchData}
     <div class="broadcast-bubble">
       <Loader />

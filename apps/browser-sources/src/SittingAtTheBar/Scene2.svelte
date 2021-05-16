@@ -1,4 +1,9 @@
-<div class="inline-flex justify-end w-full">
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const isRight = urlParams.get("isRight");
+</script>
+
+<div class="inline-flex {isRight ? 'justify-end' : ''} w-full">
   <div class="broadcast-bubble flex justify-between items-center scene-line">
     <p class="font-display">Thirsty Therapy</p>
     <img
@@ -12,7 +17,7 @@
   </div>
 </div>
 
-<div class="inline-flex justify-end mt-1 text-sm w-full">
+<div class="inline-flex {isRight ? 'justify-end' : ''} mt-1 text-sm w-full">
   <div class="flex justify-center scene-line">
     <div class="broadcast-bubble flex items-center">
       <p>Streaming every other Saturday, 6-9pm PDT</p>

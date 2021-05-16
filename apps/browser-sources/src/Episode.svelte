@@ -8,6 +8,9 @@
   const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
   const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const isRight = urlParams.get("isRight");
+
   const fetchData = (async () => {
     const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
     const resp = await fetch(url);
@@ -30,11 +33,11 @@
 </script>
 
 <form
-  class="flex flex-col justify-end max-w-sm min-h-screen"
+  class="flex flex-col {isRight ? 'justify-end' : ''} max-w-sm min-h-screen"
   on:submit={(event) => event.preventDefault()}
 >
   {#await fetchData then data}
-    <ol class="self-end">
+    <ol class={isRight ? "self-end" : "self-start"}>
       {#each data.fields.agendaItems as entry}
         <li class="agenda-item broadcast-bubble">
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
