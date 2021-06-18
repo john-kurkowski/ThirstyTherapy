@@ -16,8 +16,8 @@ export const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
 
 export const RICH_OPTIONS: Options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node: Block | Inline) =>
-      `<p class="mb-4">${(node.content[0] as Text).value}</p>`,
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, next) =>
+      `<p class="mb-4">${next(node.content)}</p>`,
     [INLINES.HYPERLINK]: (node: Block | Inline) =>
       `<a class="underline" href="${node.data.uri}">${
         (node.content[0] as Text).value
