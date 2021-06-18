@@ -7,9 +7,7 @@
 
 <div class={episode.fields.isPast ? "opacity-50" : ""}>
   {#if episode.fields.teaser_rich}
-    <p class="mb-4">
-      {@html documentToHtmlString(episode.fields.teaser_rich, RICH_OPTIONS)}
-    </p>
+    {@html documentToHtmlString(episode.fields.teaser_rich, RICH_OPTIONS)}
   {/if}
 
   {#if episode.fields.agendaItems.length}

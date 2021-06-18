@@ -1,5 +1,11 @@
 import type { Options } from "@contentful/rich-text-html-renderer";
-import { Block, Inline, INLINES, Text } from "@contentful/rich-text-types";
+import {
+  BLOCKS,
+  Block,
+  Inline,
+  INLINES,
+  Text,
+} from "@contentful/rich-text-types";
 
 export const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
   // @ts-expect-error - The following parameter is not in every browser, like Safari. I'm okay with that.
@@ -10,6 +16,8 @@ export const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
 
 export const RICH_OPTIONS: Options = {
   renderNode: {
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline) =>
+      `<p class="mb-4">${(node.content[0] as Text).value}</p>`,
     [INLINES.HYPERLINK]: (node: Block | Inline) =>
       `<a class="underline" href="${node.data.uri}">${
         (node.content[0] as Text).value
