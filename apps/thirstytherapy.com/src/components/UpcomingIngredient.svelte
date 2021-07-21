@@ -26,6 +26,12 @@
               </h4>
             </summary>
 
+            {#if agendaItem.fields.subtitle}
+              <small class="block my-1 text-gray-500">
+                {agendaItem.fields.subtitle}
+              </small>
+            {/if}
+
             <ul class="list-disc list-outside ml-4">
               {#if agendaItem.fields.steps && agendaItem.fields.steps.length}
                 {#each agendaItem.fields.steps as step}

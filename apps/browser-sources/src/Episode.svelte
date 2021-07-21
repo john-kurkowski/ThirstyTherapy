@@ -48,6 +48,12 @@
             <div slot="rest" let:state>
               {#if (entry.fields.steps || []).length}
                 <Collapsible isExpanded={state === "EXPANDED"}>
+                  {#if entry.fields.subtitle}
+                    <small class="block my-1 text-gray-500">
+                      {entry.fields.subtitle}
+                    </small>
+                  {/if}
+
                   <ul class="ml-4">
                     {#each entry.fields.steps as step}
                       <li>
