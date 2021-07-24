@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 
+set -e
+
+# Sync files from streaming user account for version control on this user
+# account. Exclude some sensitive files. Requires this user account's sudo
+# password.
 sudo rsync --compress --links --recursive --times --verbose --exclude 'service.json' --exclude '*.bak' '/Users/thirstytherapy/Library/Application Support/obs-studio/basic' "$(dirname "$0")"/
 sudo chown -R "$(whoami)" "$(dirname "$0")"/basic
+
+# Format OBS's compact JSON.
+shopt -s globstar
+parallel 'python -m json.tool {} | sponge {}' ::: "$(dirname "$0")"/basic/**/*.json
