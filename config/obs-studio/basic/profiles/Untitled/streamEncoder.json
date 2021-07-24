@@ -1,4 +1,5 @@
 {
     "bitrate": 2500,
+    "keyint_sec": 2,
     "limit_bitrate": false
 }
