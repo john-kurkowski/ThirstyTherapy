@@ -14,7 +14,7 @@
         "id": "coreaudio_input_capture",
         "mixers": 255,
         "monitoring_type": 0,
-        "muted": false,
+        "muted": true,
         "name": "Mic/Aux",
         "prev_ver": 452984833,
         "private_settings": {},
@@ -29,7 +29,7 @@
         "versioned_id": "coreaudio_input_capture",
         "volume": 1.0
     },
-    "current_program_scene": "Billy Big Hands - John Hands",
+    "current_program_scene": "[NS] Agenda Left",
     "current_scene": "[NS] Agenda Left",
     "current_transition": "Fade",
     "groups": [],
@@ -150,6 +150,38 @@
             "deinterlace_mode": 0,
             "enabled": true,
             "flags": 0,
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": [],
+                "libobs.unmute": []
+            },
+            "id": "browser_source",
+            "mixers": 255,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Streamlabs Widget",
+            "prev_ver": 452984833,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "height": 500,
+                "url": "https://streamlabs.com/alert-box/v3/2ADBB7B98CA503DA8B99",
+                "width": 800
+            },
+            "sync": 0,
+            "versioned_id": "browser_source",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
             "hotkeys": {},
             "id": "av_capture_input",
             "mixers": 0,
@@ -163,8 +195,14 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "device": "0x8020000005ac8514",
-                "device_name": "FaceTime HD Camera (Built-in)"
+                "color_space": -1,
+                "device": "",
+                "device_name": "FaceTime HD Camera (Built-in)",
+                "input_format": 4294967295,
+                "preset": "AVCaptureSessionPreset1280x720",
+                "uid": "",
+                "use_preset": true,
+                "video_range": -1
             },
             "sync": 0,
             "versioned_id": "av_capture_input",
@@ -252,7 +290,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "height": 1040,
-                "url": "https://ecstatic-raman-47199a.netlify.app/episode/2k3y9KOJoJNsMgFk6GgHTq?isBroadcast=1&isRight=1",
+                "url": "https://ecstatic-raman-47199a.netlify.app/episode/7tP41ibgFm2E3EPM7E6HbX?isBroadcast=1&isRight=1",
                 "width": 400
             },
             "sync": 0,
@@ -284,7 +322,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "height": 300,
-                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=targtarts&username=BluuNukem&username=toughgum&on=60000&off=5000&isRight=1",
+                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=targtarts&username=luzeph&username=loriander&on=60000&off=5000&isRight=1",
                 "width": 900
             },
             "sync": 0,
@@ -301,8 +339,10 @@
                 "OBSBasic.SelectScene": [],
                 "libobs.hide_scene_item.Agenda Left": [],
                 "libobs.hide_scene_item.Sitting at the Bar Left": [],
+                "libobs.hide_scene_item.Streamlabs Widget": [],
                 "libobs.show_scene_item.Agenda Left": [],
-                "libobs.show_scene_item.Sitting at the Bar Left": []
+                "libobs.show_scene_item.Sitting at the Bar Left": [],
+                "libobs.show_scene_item.Streamlabs Widget": []
             },
             "id": "scene",
             "mixers": 0,
@@ -317,7 +357,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 2,
+                "id_counter": 3,
                 "items": [
                     {
                         "align": 5,
@@ -388,6 +428,41 @@
                             "duration": 0
                         },
                         "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "id": 3,
+                        "locked": false,
+                        "name": "Streamlabs Widget",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 179.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.8265625238418579,
+                            "y": 0.8270833492279053
+                        },
+                        "scale_filter": "disable",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "visible": true
                     }
                 ]
             },
@@ -420,7 +495,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "height": 300,
-                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=targtarts&username=BluuNukem&username=toughgum&on=60000&off=5000",
+                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=targtarts&username=luzeph&username=loriander&on=60000&off=5000",
                 "width": 900
             },
             "sync": 0,
@@ -615,8 +690,10 @@
                 "OBSBasic.SelectScene": [],
                 "libobs.hide_scene_item.Agenda Right": [],
                 "libobs.hide_scene_item.Sitting at the Bar Right": [],
+                "libobs.hide_scene_item.Streamlabs Widget": [],
                 "libobs.show_scene_item.Agenda Right": [],
-                "libobs.show_scene_item.Sitting at the Bar Right": []
+                "libobs.show_scene_item.Sitting at the Bar Right": [],
+                "libobs.show_scene_item.Streamlabs Widget": []
             },
             "id": "scene",
             "mixers": 0,
@@ -631,7 +708,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 5,
+                "id_counter": 6,
                 "items": [
                     {
                         "align": 5,
@@ -696,6 +773,41 @@
                         "scale": {
                             "x": 1.0,
                             "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "visible": true
+                    },
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "id": 6,
+                        "locked": false,
+                        "name": "Streamlabs Widget",
+                        "pos": {
+                            "x": 1256.25,
+                            "y": 188.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.8296874761581421,
+                            "y": 0.8291666507720947
                         },
                         "scale_filter": "disable",
                         "show_transition": {
@@ -3366,7 +3478,7 @@
                     "style": "Regular"
                 },
                 "outline": false,
-                "text": "Applejack John"
+                "text": "John the Slush"
             },
             "sync": 0,
             "versioned_id": "text_ft2_source_v2",
@@ -3429,7 +3541,7 @@
             "settings": {
                 "css": "",
                 "height": 1040,
-                "url": "https://ecstatic-raman-47199a.netlify.app/episode/2k3y9KOJoJNsMgFk6GgHTq?isBroadcast=1",
+                "url": "https://ecstatic-raman-47199a.netlify.app/episode/7tP41ibgFm2E3EPM7E6HbX?isBroadcast=1",
                 "width": 400
             },
             "sync": 0,
@@ -4260,7 +4372,7 @@
                     "style": "Regular"
                 },
                 "outline": false,
-                "text": "Banane du Billy"
+                "text": "Billy the Frosty"
             },
             "sync": 0,
             "versioned_id": "text_ft2_source_v2",
@@ -4585,7 +4697,7 @@
             "settings": {
                 "color_space": -1,
                 "device": "0xd200000046d085e",
-                "device_name": "Logitech BRIO",
+                "device_name": "Logitech BRIO #2",
                 "frame_rate": {
                     "denominator": 1000000.0,
                     "numerator": 30000030.0
@@ -5064,7 +5176,7 @@
                         "show_transition": {
                             "duration": 0
                         },
-                        "visible": true
+                        "visible": false
                     },
                     {
                         "align": 5,
