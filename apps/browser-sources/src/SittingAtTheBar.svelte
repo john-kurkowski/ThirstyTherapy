@@ -18,10 +18,9 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
-  let usernames = (urlParams.getAll("username").length
+  let usernames = urlParams.getAll("username").length
     ? urlParams.getAll("username")
-    : ["ThirstyTherapy", "BluuNukem", "toughgum"]
-  ).map((username) => username.toLowerCase());
+    : ["ThirstyTherapy", "BluuNukem", "toughgum"];
 
   let fetchData;
   $: if (!$twitchAccessToken) {
@@ -43,11 +42,15 @@
         throw new Error(entries.message);
       }
 
-      return entries.data.sort(
-        (o1, o2) =>
-          usernames.indexOf(o1.display_name.toLowerCase()) -
-          usernames.indexOf(o2.display_name.toLowerCase())
+      let usernamesLowercase = usernames.map((username) =>
+        username.toLowerCase()
       );
+      return entries.data.sort((o1, o2) => {
+        return (
+          usernamesLowercase.indexOf(o1.display_name.toLowerCase()) -
+          usernamesLowercase.indexOf(o2.display_name.toLowerCase())
+        );
+      });
     })();
   }
 
