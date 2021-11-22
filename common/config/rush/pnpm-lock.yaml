@@ -14,9 +14,9 @@ dependencies:
   '@rollup/plugin-url': 5.0.1_rollup@2.60.0
   '@rush-temp/browser-sources': file:projects/browser-sources.tgz_@babel+core@7.16.0
   '@rush-temp/thirstytherapy.com': file:projects/thirstytherapy.com.tgz_autoprefixer@10.4.0
-  '@tsconfig/svelte': 1.0.13
+  '@tsconfig/svelte': 2.0.1
   '@types/compression': 1.7.2
-  '@types/node': 14.17.34
+  '@types/node': 16.11.9
   '@types/polka': 0.5.3
   autoprefixer: 10.4.0_postcss@8.3.11
   compression: 1.7.4
@@ -33,7 +33,7 @@ dependencies:
   sirv: 1.0.18
   sirv-cli: 1.0.14
   svelte: 3.44.2
-  svelte-check: 1.6.0_75f040b47370c137feb7f5d6e49c4681
+  svelte-check: 2.2.10_75f040b47370c137feb7f5d6e49c4681
   svelte-preprocess: 4.9.8_202004836efc76da858f953f2edc895f
   svelte-routing: 1.6.0_svelte@3.44.2+typescript@4.5.2
   tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
@@ -1398,10 +1398,10 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
-  /@tsconfig/svelte/1.0.13:
+  /@tsconfig/svelte/2.0.1:
     dev: false
     resolution:
-      integrity: sha512-5lYJP45Xllo4yE/RUBccBT32eBlRDbqN8r1/MIvQbKxW3aFqaYPCNgm8D5V20X4ShHcwvYWNlKg3liDh1MlBoA==
+      integrity: sha512-aqkICXbM1oX5FfgZd2qSSAGdyo/NRxjWCamxoyi3T8iVQnzGge19HhDYzZ6NrVOW7bhcWNSq9XexWFtMzbB24A==
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.34
@@ -1458,6 +1458,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-USUftMYpmuMzeWobskoPfzDi+vkpe0dvcOBRNOscFrGxVp4jomnRxWuVohgqBow2xyIPC0S3gjxV/5079jhmDg==
+  /@types/node/16.11.9:
+    dev: false
+    resolution:
+      integrity: sha512-MKmdASMf3LtPzwLyRrFjtFFZ48cMf8jmX5VRYrDQiJa8Ybu5VAmkqBWqKU8fdCwD8ysw4mQ9nrEHvzg6gunR7A==
   /@types/parse-json/4.0.0:
     dev: false
     resolution:
@@ -1552,15 +1556,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
-  /anymatch/3.1.1:
-    dependencies:
-      normalize-path: 3.0.0
-      picomatch: 2.2.2
-    dev: false
-    engines:
-      node: '>= 8'
-    resolution:
-      integrity: sha512-mM8522psRCqzV+6LhomX5wgp25YVibjh8Wj23I5RPkPppSVSjyKD2A2mBJmWGa+KN7f2D6LNh9jkBCeyLktzjg==
   /anymatch/3.1.2:
     dependencies:
       normalize-path: 3.0.0
@@ -1731,15 +1726,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
-  /chalk/4.1.0:
-    dependencies:
-      ansi-styles: 4.3.0
-      supports-color: 7.2.0
-    dev: false
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
   /chalk/4.1.2:
     dependencies:
       ansi-styles: 4.3.0
@@ -1749,22 +1735,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
-  /chokidar/3.5.1:
-    dependencies:
-      anymatch: 3.1.1
-      braces: 3.0.2
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.1
-      normalize-path: 3.0.0
-      readdirp: 3.5.0
-    dev: false
-    engines:
-      node: '>= 8.10.0'
-    optionalDependencies:
-      fsevents: 2.3.2
-    resolution:
-      integrity: sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
   /chokidar/3.5.2:
     dependencies:
       anymatch: 3.1.2
@@ -2774,14 +2744,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
-  /readdirp/3.5.0:
-    dependencies:
-      picomatch: 2.2.2
-    dev: false
-    engines:
-      node: '>=8.10.0'
-    resolution:
-      integrity: sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   /readdirp/3.6.0:
     dependencies:
       picomatch: 2.2.2
@@ -3148,11 +3110,11 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
-  /svelte-check/1.6.0_75f040b47370c137feb7f5d6e49c4681:
+  /svelte-check/2.2.10_75f040b47370c137feb7f5d6e49c4681:
     dependencies:
-      chalk: 4.1.0
-      chokidar: 3.5.1
-      glob: 7.1.6
+      chalk: 4.1.2
+      chokidar: 3.5.2
+      fast-glob: 3.2.7
       import-fresh: 3.3.0
       minimist: 1.2.5
       sade: 1.7.4
@@ -3168,7 +3130,7 @@ packages:
       postcss-load-config: '*'
       svelte: ^3.24.0
     resolution:
-      integrity: sha512-nQTlbFJWhwoeLY5rkhgbjzGQSwk5F1pRdEXait0EFaQSrE/iJF+PIjrQlk0BjL/ogk9HaR9ZI0DQSYrl7jl3IQ==
+      integrity: sha512-UVLd/N7hUIG2v6dytofsw8MxYn2iS2hpNSglsGz9Z9b8ZfbJ5jayl4Mm1SXhNwiFs5aklG90zSBJtd7NTK8dTg==
   /svelte-preprocess/4.9.8_202004836efc76da858f953f2edc895f:
     dependencies:
       '@babel/core': 7.16.0
@@ -3450,7 +3412,7 @@ packages:
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.60.0
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.60.0
       '@rollup/plugin-typescript': 8.3.0_8237b289b1560ac087923ea403810077
-      '@tsconfig/svelte': 1.0.13
+      '@tsconfig/svelte': 2.0.1
       autoprefixer: 10.4.0_postcss@8.3.11
       postcss: 8.3.11
       postcss-load-config: 3.1.0
@@ -3472,7 +3434,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-IougU/0VBidq3K3oHe6b6CQ4qCH9oADIQR4NQH97B3pYMuA8Iv7m1M+BLqw8o2dghlO71FEk9ESpqxMV/qoBJg==
+      integrity: sha512-mShp67BVUOh5rtV5M/3C8y6smnJm2TMlO0jiSUC9+vzTf11YcpC6iEB+RWYTXAUviOKpV+AjvFZ4qXZnbtMuMA==
       tarball: file:projects/browser-sources.tgz
     version: 0.0.0
   file:projects/thirstytherapy.com.tgz_autoprefixer@10.4.0:
@@ -3490,9 +3452,9 @@ packages:
       '@rollup/plugin-replace': 2.4.2_rollup@2.60.0
       '@rollup/plugin-typescript': 8.3.0_8237b289b1560ac087923ea403810077
       '@rollup/plugin-url': 5.0.1_rollup@2.60.0
-      '@tsconfig/svelte': 1.0.13
+      '@tsconfig/svelte': 2.0.1
       '@types/compression': 1.7.2
-      '@types/node': 14.17.34
+      '@types/node': 16.11.9
       '@types/polka': 0.5.3
       compression: 1.7.4
       polka: 1.0.0-next.22
@@ -3505,7 +3467,7 @@ packages:
       sapper-google-analytics: 1.0.2
       sirv: 1.0.18
       svelte: 3.44.2
-      svelte-check: 1.6.0_75f040b47370c137feb7f5d6e49c4681
+      svelte-check: 2.2.10_75f040b47370c137feb7f5d6e49c4681
       svelte-preprocess: 4.9.8_202004836efc76da858f953f2edc895f
       tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
       tslib: 2.3.1
@@ -3516,7 +3478,7 @@ packages:
     peerDependencies:
       autoprefixer: '*'
     resolution:
-      integrity: sha512-zHVcq2sX1rOT4VwANK3qmj02Al8i0UYnD3ttfYbBVMrjuWNQSGmEoIZ6H6HRc4E2Zcw8PGNbly6TFhj8DWyfdw==
+      integrity: sha512-sp0MtOL6cUXkde5AAoGju2ayJv1fffwXlLAYSuFEruaAoMqgZpaQUtwm9XVfdyTTkDD+rIMbzgRQUEpojyo6oA==
       tarball: file:projects/thirstytherapy.com.tgz
     version: 0.0.0
 registry: ''
@@ -3536,9 +3498,9 @@ specifiers:
   '@rollup/plugin-url': ^5.0.1
   '@rush-temp/browser-sources': file:./projects/browser-sources.tgz
   '@rush-temp/thirstytherapy.com': file:./projects/thirstytherapy.com.tgz
-  '@tsconfig/svelte': ^1.0.13
+  '@tsconfig/svelte': ^2.0.1
   '@types/compression': ^1.7.2
-  '@types/node': ^14.17.34
+  '@types/node': ^16.11.9
   '@types/polka': ^0.5.3
   autoprefixer: ^10.4.0
   compression: ^1.7.4
@@ -3555,7 +3517,7 @@ specifiers:
   sirv: ^1.0.18
   sirv-cli: ^1.0.14
   svelte: ^3.44.2
-  svelte-check: ^1.6.0
+  svelte-check: ^2.2.10
   svelte-preprocess: ^4.9.8
   svelte-routing: ^1.6.0
   tailwindcss: ^2.2.19
