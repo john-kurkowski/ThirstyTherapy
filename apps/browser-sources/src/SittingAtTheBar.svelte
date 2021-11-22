@@ -14,7 +14,6 @@
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let sceneNumber = 0;
-  let timeoutIsVisible = 0;
 
   let fetchData;
   $: if (!$twitchAccessToken) {
@@ -66,13 +65,11 @@
   }
 
   function timeShow() {
-    clearTimeout(timeoutIsVisible);
-
     isVisible = !isVisible;
     if (!isVisible) {
       sceneNumber = (sceneNumber + 1) % NUM_SCENES;
     }
-    timeoutIsVisible = setTimeout(timeShow, timeShowMs());
+    setTimeout(timeShow, timeShowMs());
   }
 
   export const location = "";
