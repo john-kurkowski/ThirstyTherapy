@@ -2,6 +2,14 @@
 
 This folder contains the static marketing website, https://thirstytherapy.com.
 
+## Development
+
+```
+rushx dev
+```
+
+See the containing project's README for general install info, shared by all projects in this monorepo.
+
 # The original starter README follows
 
 # sapper-template

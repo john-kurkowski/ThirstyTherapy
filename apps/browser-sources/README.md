@@ -4,6 +4,14 @@ This app contains routes to be composited into an OBS stream as a _browser
 source_. They are deployed at an obfuscated URL. The URLs are for the streamer.
 They are not to advertise to the general public.
 
+## Development
+
+```
+rushx dev
+```
+
+See the containing project's README for general install info, shared by all projects in this monorepo.
+
 # The original starter README follows
 
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
