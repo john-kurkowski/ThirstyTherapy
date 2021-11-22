@@ -13,7 +13,15 @@
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let sceneNumber = 0;
-  let scenes = [];
+
+  let scenes = urlParams.getAll("scene").length
+    ? urlParams.getAll("scene")
+    : ["0", "1", "0", "2"];
+
+  let usernames = (urlParams.getAll("username").length
+    ? urlParams.getAll("username")
+    : ["ThirstyTherapy", "BluuNukem", "toughgum"]
+  ).map((username) => username.toLowerCase());
 
   let fetchData;
   $: if (!$twitchAccessToken) {
@@ -26,16 +34,6 @@
         Authorization: `Bearer ${$twitchAccessToken}`,
         "client-id": TWITCH_CLIENT_ID,
       };
-
-      scenes = urlParams.getAll("scene").length
-        ? urlParams.getAll("scene")
-        : ["0", "1", "0", "2"];
-
-      const usernames = (urlParams.getAll("username").length
-        ? urlParams.getAll("username")
-        : ["ThirstyTherapy", "BluuNukem", "toughgum"]
-      ).map((username) => username.toLowerCase());
-
       const qs = `?login=${usernames.join("&login=")}`;
       const url = `${HOST}/users${qs}`;
       const resp = await fetch(url, { headers });
