@@ -57,6 +57,10 @@
     pageName.set("Sitting at the bar");
   });
 
+  function handleNameEdit(index, e) {
+    usernames[index] = e.detail;
+  }
+
   function timeShowMs() {
     return isVisible
       ? urlParams.get("on") || 10 * 1000
@@ -80,7 +84,7 @@
 {#if isVisible}
   {#if scenes[sceneNumber] === "0"}
     <div transition:fade={{ duration: FADE_DURATION }}>
-      <Scene0 {fetchData} />
+      <Scene0 {fetchData} {handleNameEdit} />
     </div>
   {:else if scenes[sceneNumber] === "1"}
     <div transition:fade={{ duration: FADE_DURATION }}>

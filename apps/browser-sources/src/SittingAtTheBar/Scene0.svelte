@@ -8,14 +8,8 @@
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 
-  async function handleNameEdit(index, e) {
-    let data = await fetchData;
-    console.log(
-      `Data at index ${index} was "${data[index].display_name}" now "${e.detail}"`
-    );
-  }
-
   export let fetchData;
+  export let handleNameEdit;
 </script>
 
 <div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
