@@ -9,11 +9,11 @@
 
   const FADE_DURATION = 2000;
   const HOST = "https://api.twitch.tv/helix";
-  const NUM_SCENES = 4;
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let sceneNumber = 0;
+  let scenes = [];
 
   let fetchData;
   $: if (!$twitchAccessToken) {
@@ -27,13 +27,14 @@
         "client-id": TWITCH_CLIENT_ID,
       };
 
-      let usernames = urlParams
-        .getAll("username")
-        .map((username) => username.toLowerCase());
+      scenes = urlParams.getAll("scene").length
+        ? urlParams.getAll("scene")
+        : ["0", "1", "0", "2"];
 
-      if (!usernames.length) {
-        usernames = ["ThirstyTherapy", "BluuNukem", "toughgum"];
-      }
+      const usernames = (urlParams.getAll("username").length
+        ? urlParams.getAll("username")
+        : ["ThirstyTherapy", "BluuNukem", "toughgum"]
+      ).map((username) => username.toLowerCase());
 
       const qs = `?login=${usernames.join("&login=")}`;
       const url = `${HOST}/users${qs}`;
@@ -65,10 +66,13 @@
   }
 
   function timeShow() {
-    isVisible = !isVisible;
-    if (!isVisible) {
-      sceneNumber = (sceneNumber + 1) % NUM_SCENES;
+    if (scenes.length > 1) {
+      isVisible = !isVisible;
+      if (!isVisible) {
+        sceneNumber = (sceneNumber + 1) % scenes.length;
+      }
     }
+
     setTimeout(timeShow, timeShowMs());
   }
 
@@ -76,19 +80,15 @@
 </script>
 
 {#if isVisible}
-  {#if sceneNumber === 0}
+  {#if scenes[sceneNumber] === "0"}
     <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene0 {fetchData} />
     </div>
-  {:else if sceneNumber === 1}
+  {:else if scenes[sceneNumber] === "1"}
     <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene1 />
     </div>
-  {:else if sceneNumber === 2}
-    <div transition:fade={{ duration: FADE_DURATION }}>
-      <Scene0 {fetchData} />
-    </div>
-  {:else if sceneNumber === 3}
+  {:else if scenes[sceneNumber] === "2"}
     <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene2 />
     </div>
