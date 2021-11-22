@@ -9,7 +9,7 @@ overlays.
 
 ## Install
 
-1. `rush build`
+1. `rush install`
 
 ## Development
 
