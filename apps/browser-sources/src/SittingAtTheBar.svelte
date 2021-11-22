@@ -7,6 +7,7 @@
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
+  const FADE_DURATION = 2000;
   const HOST = "https://api.twitch.tv/helix";
   const NUM_SCENES = 4;
 
@@ -61,7 +62,7 @@
   function timeShowMs() {
     return isVisible
       ? urlParams.get("on") || 10 * 1000
-      : urlParams.get("off") || 2 * 1000;
+      : Math.max(urlParams.get("off") || 3 * 1000, FADE_DURATION + 500);
   }
 
   function timeShow() {
@@ -79,19 +80,19 @@
 
 {#if isVisible}
   {#if sceneNumber === 0}
-    <div transition:fade={{ duration: 2000 }}>
+    <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene0 {fetchData} />
     </div>
   {:else if sceneNumber === 1}
-    <div transition:fade={{ duration: 2000 }}>
+    <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene1 />
     </div>
   {:else if sceneNumber === 2}
-    <div transition:fade={{ duration: 2000 }}>
+    <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene0 {fetchData} />
     </div>
   {:else if sceneNumber === 3}
-    <div transition:fade={{ duration: 2000 }}>
+    <div transition:fade={{ duration: FADE_DURATION }}>
       <Scene2 />
     </div>
   {/if}
