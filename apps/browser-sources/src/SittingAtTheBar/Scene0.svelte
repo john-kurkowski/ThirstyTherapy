@@ -1,4 +1,5 @@
 <script>
+  import InlineInput from "svelte-inline-input";
   import Loader from "./Loader.svelte";
   import { Link } from "svelte-routing";
 
@@ -6,6 +7,13 @@
 
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
+
+  async function handleNameEdit(index, e) {
+    let data = await fetchData;
+    console.log(
+      `Data at index ${index} was "${data[index].display_name}" now "${e.detail}"`
+    );
+  }
 
   export let fetchData;
 </script>
@@ -33,7 +41,11 @@
                   class="rounded-full w-8"
                   src={entry.profile_image_url}
                 />
-                <p>{entry.display_name}</p>
+                <InlineInput
+                  inputClasses="text-gray-800"
+                  on:blur={(v) => handleNameEdit(i, v)}
+                  value={entry.display_name}
+                />
               </div>
             </li>
           {/each}

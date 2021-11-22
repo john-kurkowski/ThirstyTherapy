@@ -34,6 +34,7 @@ dependencies:
   sirv-cli: 1.0.14
   svelte: 3.44.2
   svelte-check: 2.2.10_75f040b47370c137feb7f5d6e49c4681
+  svelte-inline-input: 1.2.1
   svelte-preprocess: 4.9.8_202004836efc76da858f953f2edc895f
   svelte-routing: 1.6.0_svelte@3.44.2+typescript@4.5.2
   tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
@@ -3131,6 +3132,10 @@ packages:
       svelte: ^3.24.0
     resolution:
       integrity: sha512-UVLd/N7hUIG2v6dytofsw8MxYn2iS2hpNSglsGz9Z9b8ZfbJ5jayl4Mm1SXhNwiFs5aklG90zSBJtd7NTK8dTg==
+  /svelte-inline-input/1.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-1GMIOJFCdy/TV1+KADo5EpZYhS47Tlj8yOPX/Tahvfytuh7shT8t4ARka1fByuz9SrNQwEmXwkrsq7T/Cg4mVA==
   /svelte-preprocess/4.9.8_202004836efc76da858f953f2edc895f:
     dependencies:
       '@babel/core': 7.16.0
@@ -3423,6 +3428,7 @@ packages:
       rollup-plugin-terser: 7.0.2_rollup@2.60.0
       sirv-cli: 1.0.14
       svelte: 3.44.2
+      svelte-inline-input: 1.2.1
       svelte-preprocess: 4.9.8_202004836efc76da858f953f2edc895f
       svelte-routing: 1.6.0_svelte@3.44.2+typescript@4.5.2
       tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
@@ -3434,7 +3440,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-mShp67BVUOh5rtV5M/3C8y6smnJm2TMlO0jiSUC9+vzTf11YcpC6iEB+RWYTXAUviOKpV+AjvFZ4qXZnbtMuMA==
+      integrity: sha512-ZAm1N4+TsTJP42xucPb4jxa7gGDIqceB5YFodHp3UzsqG/UomJTpt7skY/cK9HBXERlhBpuRDn9xRPSlyqrC6w==
       tarball: file:projects/browser-sources.tgz
     version: 0.0.0
   file:projects/thirstytherapy.com.tgz_autoprefixer@10.4.0:
@@ -3518,6 +3524,7 @@ specifiers:
   sirv-cli: ^1.0.14
   svelte: ^3.44.2
   svelte-check: ^2.2.10
+  svelte-inline-input: ^1.2.1
   svelte-preprocess: ^4.9.8
   svelte-routing: ^1.6.0
   tailwindcss: ^2.2.19
