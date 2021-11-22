@@ -20,7 +20,7 @@
 <div class="inline-flex {isRight ? 'justify-end' : ''} mt-1 text-sm w-full">
   <div class="flex justify-center scene-line">
     <div class="broadcast-bubble flex items-center">
-      <p>Streaming every other Saturday, 6-9pm PDT</p>
+      <p>Streaming every other Saturday, 6-9pm Pacific</p>
     </div>
   </div>
 </div>
