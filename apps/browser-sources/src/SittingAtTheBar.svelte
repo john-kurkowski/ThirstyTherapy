@@ -27,12 +27,12 @@
         "client-id": TWITCH_CLIENT_ID,
       };
 
-      const usernames = urlParams
+      let usernames = urlParams
         .getAll("username")
         .map((username) => username.toLowerCase());
 
       if (!usernames.length) {
-        return [];
+        usernames = ["ThirstyTherapy", "BluuNukem", "toughgum"];
       }
 
       const qs = `?login=${usernames.join("&login=")}`;
@@ -60,8 +60,8 @@
 
   function timeShowMs() {
     return isVisible
-      ? urlParams.get("on") || 30 * 1000
-      : urlParams.get("off") || 60 * 1000;
+      ? urlParams.get("on") || 10 * 1000
+      : urlParams.get("off") || 2 * 1000;
   }
 
   function timeShow() {
