@@ -8,7 +8,6 @@ import {
 } from "@contentful/rich-text-types";
 
 export const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
-  // @ts-expect-error - The following parameter is not in every browser, like Safari. I'm okay with that.
   dateStyle: "medium",
 
   timeZone: "America/Los_Angeles",
