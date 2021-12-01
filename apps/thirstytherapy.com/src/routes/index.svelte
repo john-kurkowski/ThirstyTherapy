@@ -131,12 +131,12 @@
                 </small>
               {/if}
 
-              {#if episode.fields.isPast}
+              {#if episode.fields.isPast || episode.fields.isSkipped}
                 <del class="opacity-50"
                   >{DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
                   PDT</del
                 >
-                ✅
+                {#if !episode.fields.isSkipped}✅{/if}
               {:else}
                 {DATETIME_FORMAT.format(new Date(episode.fields.broadcast))} 6-9pm
                 PDT

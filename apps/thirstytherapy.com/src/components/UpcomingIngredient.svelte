@@ -43,7 +43,7 @@
         </li>
       {/each}
     </ul>
-  {:else}
+  {:else if !episode.fields.isSkipped}
     <p class="mb-4">TBD</p>
   {/if}
 </div>
