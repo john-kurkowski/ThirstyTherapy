@@ -14,7 +14,7 @@
     <ul class="mb-4">
       {#each episode.fields.agendaItems as agendaItem}
         <li class="mb-4">
-          <details open={!agendaItem.fields.isCollapsed}>
+          <details open={!agendaItem.fields.isPast}>
             <summary>
               <h4 class="font-bold inline">
                 {agendaItem.fields.title}

@@ -51,18 +51,10 @@ export const fetchData: () => Promise<any[]> = async () => {
     episode.fields.agendaItems = (episode.fields.agendaItems || [])
       // @ts-expect-error TODO type this
       .map((item) => {
-        const agendaItem = entries.includes.Entry.find(
+        return entries.includes.Entry.find(
           // @ts-expect-error TODO type this
           (entry) => entry.sys.id === item.sys.id
         );
-
-        if (!agendaItem) {
-          return null;
-        }
-
-        agendaItem.fields.isCollapsed = episode.fields.isPast;
-
-        return agendaItem;
       })
       .filter(Boolean);
   });
