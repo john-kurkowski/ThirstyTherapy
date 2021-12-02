@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
+  import type { TwitchUser } from "./SittingAtTheBar/Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
@@ -22,9 +23,9 @@
     ? urlParams.getAll("username")
     : ["ThirstyTherapy", "BluuNukem", "toughgum"];
 
-  let fetchData;
+  let fetchData: Promise<TwitchUser[]>;
   $: if (!$twitchAccessToken) {
-    fetchData = new Promise(() => {});
+    fetchData = new Promise(() => []);
   } else if ($twitchAccessToken instanceof Error) {
     fetchData = Promise.reject($twitchAccessToken);
   } else {
@@ -45,7 +46,7 @@
       let usernamesLowercase = usernames.map((username) =>
         username.toLowerCase()
       );
-      return entries.data.sort((o1, o2) => {
+      return (entries.data as TwitchUser[]).sort((o1, o2) => {
         return (
           usernamesLowercase.indexOf(o1.display_name.toLowerCase()) -
           usernamesLowercase.indexOf(o2.display_name.toLowerCase())
@@ -60,7 +61,7 @@
     pageName.set("Sitting at the bar");
   });
 
-  function handleNameEdit(index, e) {
+  function handleNameEdit(index: number, e: { detail: string }) {
     if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
     }
@@ -68,10 +69,13 @@
     usernames[index] = e.detail;
   }
 
-  function timeShowMs() {
+  function timeShowMs(): number {
     return isVisible
-      ? urlParams.get("on") || 10 * 1000
-      : Math.max(urlParams.get("off") || 3 * 1000, FADE_DURATION + 500);
+      ? parseInt(urlParams.get("on") || "", 10) || 10 * 1000
+      : Math.max(
+          parseInt(urlParams.get("off") || "", 10) || 3 * 1000,
+          FADE_DURATION + 500
+        );
   }
 
   function timeShow() {
