@@ -61,6 +61,10 @@
   });
 
   function handleNameEdit(index, e) {
+    if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
+      return;
+    }
+
     usernames[index] = e.detail;
   }
 
