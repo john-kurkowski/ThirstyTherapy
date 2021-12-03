@@ -1,34 +1,42 @@
-<script>
+<script lang="ts">
   import AgendaItem from "./AgendaItem.svelte";
   import Collapsible from "./Collapsible.svelte";
+  import type {
+    AgendaItem as AgendaItemModel,
+    CmsResult,
+    Episode,
+  } from "./Model";
+  import { fetchCmsPath } from "./Model";
   import { pageName } from "./stores";
-
-  const SPACE_ID = "nc2tnr0lufn7";
-  const ENVIRONMENT_ID = "master";
-  const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
-  const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 
   const fetchData = (async () => {
-    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}`;
-    const resp = await fetch(url);
-    const entries = await resp.json();
+    const entries: CmsResult = await (await fetchCmsPath("/entries")).json();
 
-    const data = JSON.parse(
+    const episode: Episode = JSON.parse(
       JSON.stringify(entries.items.find((entry) => entry.sys.id === id))
     );
-    data.fields.agendaItems = (data.fields.agendaItems || []).map((item) =>
-      entries.items.find((entry) => entry.sys.id === item.sys.id)
-    );
 
-    pageName.set(data.fields.displayTitle || data.fields.title);
+    const data: { agendaItems: AgendaItemModel[]; episode: Episode } = {
+      agendaItems: (episode.fields.agendaItems || []).map((item) => {
+        // The fetch requests all items. It will be found.
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return entries.items.find(
+          (entry) => entry.sys.id === item.sys.id
+        )! as AgendaItemModel;
+      }),
+
+      episode,
+    };
+
+    pageName.set(episode.fields.displayTitle || episode.fields.title);
 
     return data;
   })();
 
-  export let id;
+  export let id: string;
   export const location = "";
 </script>
 
@@ -38,7 +46,7 @@
 >
   {#await fetchData then data}
     <ol class={isRight ? "self-end" : "self-start"}>
-      {#each data.fields.agendaItems as entry}
+      {#each data.agendaItems as entry}
         <li class="agenda-item broadcast-bubble">
           <AgendaItem isAnimatable={!(entry.fields.steps || []).length}>
             <span slot="button">
@@ -55,7 +63,7 @@
                   {/if}
 
                   <ul class="ml-4">
-                    {#each entry.fields.steps as step}
+                    {#each entry.fields.steps || [] as step}
                       <li>
                         <AgendaItem isAnimatable={true}>
                           <span slot="button">{step}</span>

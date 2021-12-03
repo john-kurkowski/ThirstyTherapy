@@ -2,7 +2,7 @@
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
-  import type { TwitchUser } from "./SittingAtTheBar/Model";
+  import type { TwitchUser } from "./Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
