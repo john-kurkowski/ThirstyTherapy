@@ -5,11 +5,13 @@
   import type { TwitchUser } from "./Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { fade } from "svelte/transition";
+  import { fetchCmsPath } from "./Model";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
   const FADE_DURATION = 2000;
   const HOST = "https://api.twitch.tv/helix";
+  const USERNAMES_SITTING_AT_THE_BAR = "6LrlYBz1jpPXFkjvDrp8Pv";
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
@@ -19,9 +21,15 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
-  let usernames = urlParams.getAll("username").length
-    ? urlParams.getAll("username")
-    : ["ThirstyTherapy", "BluuNukem", "toughgum"];
+  let usernames: string[];
+
+  let usernamesPromise = (async () => {
+    usernames = (
+      await (
+        await fetchCmsPath(`/entries/${USERNAMES_SITTING_AT_THE_BAR}`)
+      ).json()
+    ).fields.stringValues;
+  })();
 
   let fetchData: Promise<TwitchUser[]>;
   $: if (!$twitchAccessToken) {
@@ -30,6 +38,8 @@
     fetchData = Promise.reject($twitchAccessToken);
   } else {
     fetchData = (async () => {
+      await usernamesPromise;
+
       const headers = {
         Authorization: `Bearer ${$twitchAccessToken}`,
         "client-id": TWITCH_CLIENT_ID,
