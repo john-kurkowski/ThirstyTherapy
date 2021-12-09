@@ -50,12 +50,6 @@ export default {
       preprocess: sveltePreprocess({ postcss: true }),
     }),
 
-    babel({
-      babelHelpers: "runtime",
-      extensions: [".html", ".js", ".mjs", ".svelte", ".ts"],
-      presets: ["@babel/preset-env"],
-    }),
-
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: "bundle.css" }),
@@ -70,6 +64,13 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
+
+    babel({
+      babelHelpers: "runtime",
+      extensions: [".html", ".js", ".mjs", ".svelte", ".ts"],
+      presets: ["@babel/preset-env"],
+    }),
+
     typescript({
       sourceMap: !production,
       inlineSources: !production,
