@@ -1,6 +1,7 @@
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import css from "rollup-plugin-css-only";
+import json from "@rollup/plugin-json";
 import livereload from "rollup-plugin-livereload";
 import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
@@ -68,13 +69,14 @@ export default {
     babel({
       babelHelpers: "runtime",
       extensions: [".html", ".js", ".mjs", ".svelte", ".ts"],
-      presets: ["@babel/preset-env"],
+      plugins: [["@babel/plugin-transform-runtime", {}]],
     }),
 
     typescript({
       sourceMap: !production,
       inlineSources: !production,
     }),
+    json(),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated

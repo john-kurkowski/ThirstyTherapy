@@ -4,8 +4,8 @@
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
   import type { TwitchUser } from "./Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
+  import { cmsClient } from "./Model";
   import { fade } from "svelte/transition";
-  import { fetchCmsPath } from "./Model";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
@@ -24,11 +24,11 @@
   let usernames: string[];
 
   let usernamesPromise = (async () => {
-    usernames = (
-      await (
-        await fetchCmsPath(`/entries/${USERNAMES_SITTING_AT_THE_BAR}`)
-      ).json()
-    ).fields.stringValues;
+    let record = await (
+      await cmsClient()
+    ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
+    usernames = record.fields.stringValues["en-US"];
+    return usernames;
   })();
 
   let fetchData: Promise<TwitchUser[]>;
