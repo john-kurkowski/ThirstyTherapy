@@ -3249,11 +3249,12 @@ packages:
     dev: false
 
   file:projects/browser-sources.tgz_@babel+core@7.16.0:
-    resolution: {integrity: sha512-ZAm1N4+TsTJP42xucPb4jxa7gGDIqceB5YFodHp3UzsqG/UomJTpt7skY/cK9HBXERlhBpuRDn9xRPSlyqrC6w==, tarball: file:projects/browser-sources.tgz}
+    resolution: {integrity: sha512-5NodITpKs8XiOu7mxSTTkuyVR+J9aVLnuhIJN3O0qEvsZzsq+7i+hvxlyl8JjW9ez59uH/t7Ua7lVQA1IyTtiA==, tarball: file:projects/browser-sources.tgz}
     id: file:projects/browser-sources.tgz
     name: '@rush-temp/browser-sources'
     version: 0.0.0
     dependencies:
+      '@rollup/plugin-babel': 5.3.0_@babel+core@7.16.0+rollup@2.60.2
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.60.2
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.60.2
       '@rollup/plugin-typescript': 8.3.0_cf49768e670184c7e0e13e8a66db2d3a
@@ -3276,6 +3277,7 @@ packages:
       typescript: 4.5.2
     transitivePeerDependencies:
       - '@babel/core'
+      - '@types/babel__core'
       - acorn
       - bufferutil
       - coffeescript
