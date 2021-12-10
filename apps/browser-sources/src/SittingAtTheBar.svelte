@@ -31,25 +31,22 @@
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
-  let usernamesPromise = (async () => {
-    async function poll() {
-      await usernamesUpdate;
+  async function poll() {
+    await usernamesUpdate;
 
-      let record = await (
-        await cmsClient($cmsManagementAccessToken)
-      ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
-      let valueToCompare: string[] = record.fields.stringValues["en-US"];
+    let record = await (
+      await cmsClient($cmsManagementAccessToken)
+    ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
+    let valueToCompare: string[] = record.fields.stringValues["en-US"];
 
-      if (!isEqual(usernames, valueToCompare)) {
-        usernamesSetting = record;
-        usernames = valueToCompare;
-      }
-
-      setTimeout(poll, 10000);
+    if (!isEqual(usernames, valueToCompare)) {
+      usernamesSetting = record;
+      usernames = valueToCompare;
     }
 
-    return poll();
-  })();
+    setTimeout(poll, 10000);
+  }
+  poll();
 
   let fetchData: Promise<TwitchUser[]>;
   $: if (!$twitchAccessToken) {
@@ -58,8 +55,6 @@
     fetchData = Promise.reject($twitchAccessToken);
   } else {
     fetchData = (async () => {
-      await usernamesPromise;
-
       const headers = {
         Authorization: `Bearer ${$twitchAccessToken}`,
         "client-id": TWITCH_CLIENT_ID,
