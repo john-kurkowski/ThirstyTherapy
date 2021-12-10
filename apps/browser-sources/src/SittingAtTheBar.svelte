@@ -4,7 +4,11 @@
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
   import type { EntryProps } from "contentful-management";
   import type { TwitchUser } from "./Model";
-  import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
+  import {
+    TWITCH_CLIENT_ID,
+    cmsManagementAccessToken,
+    twitchAccessToken,
+  } from "./stores";
   import { cmsClient } from "./Model";
   import { fade } from "svelte/transition";
   import { isEqual } from "lodash-es";
@@ -32,7 +36,7 @@
       await usernamesUpdate;
 
       let record = await (
-        await cmsClient()
+        await cmsClient($cmsManagementAccessToken)
       ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
       let valueToCompare: string[] = record.fields.stringValues["en-US"];
 
@@ -94,7 +98,7 @@
 
     usernames[index] = e.detail;
 
-    usernamesUpdate = (await cmsClient()).entry.update(
+    usernamesUpdate = (await cmsClient($cmsManagementAccessToken)).entry.update(
       { entryId: USERNAMES_SITTING_AT_THE_BAR },
       usernamesSetting
     );

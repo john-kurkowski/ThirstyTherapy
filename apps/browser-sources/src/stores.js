@@ -4,6 +4,8 @@ export const TWITCH_CLIENT_ID = "yrcihot9pxnayk7czuvy5jplj1r7yd";
 
 export const pageName = writable("");
 
+export const cmsManagementAccessToken = writableCookie("ttCMSMAT");
+
 export const twitchClientSecret = writableCookie("ttTCS");
 
 /**
