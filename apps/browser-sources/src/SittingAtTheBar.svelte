@@ -49,7 +49,7 @@
   poll();
 
   let fetchData: Promise<TwitchUser[]>;
-  $: if (!$twitchAccessToken) {
+  $: if (!$twitchAccessToken || !usernames.length) {
     fetchData = new Promise(() => []);
   } else if ($twitchAccessToken instanceof Error) {
     fetchData = Promise.reject($twitchAccessToken);
