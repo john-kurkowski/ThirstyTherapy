@@ -19,11 +19,13 @@ specifiers:
   '@rush-temp/thirstytherapy.com': file:./projects/thirstytherapy.com.tgz
   '@tsconfig/svelte': ^2.0.1
   '@types/compression': ^1.7.2
+  '@types/lodash-es': ^4.17.5
   '@types/node': ^16.11.9
   '@types/polka': ^0.5.3
   autoprefixer: ^10.4.0
   compression: ^1.7.4
   contentful-management: ^7.45.7
+  lodash-es: ^4.17.21
   polka: next
   postcss: ^8.3.11
   postcss-load-config: ^3.1.0
@@ -64,11 +66,13 @@ dependencies:
   '@rush-temp/thirstytherapy.com': file:projects/thirstytherapy.com.tgz_autoprefixer@10.4.0
   '@tsconfig/svelte': 2.0.1
   '@types/compression': 1.7.2
+  '@types/lodash-es': 4.17.5
   '@types/node': 16.11.12
   '@types/polka': 0.5.3
   autoprefixer: 10.4.0_postcss@8.4.4
   compression: 1.7.4
   contentful-management: 7.45.7
+  lodash-es: 4.17.21
   polka: 1.0.0-next.22
   postcss: 8.4.4
   postcss-load-config: 3.1.0
@@ -1426,6 +1430,16 @@ packages:
     resolution: {integrity: sha512-MhCUjojzDhVLnZnxwPwa+rETFRDQ0ffjxYdrqOP6TBO2O0/Z64PV5tNeYApo4bc4y4frbWOrRwv/eEkXlI13Rw==}
     dev: false
 
+  /@types/lodash-es/4.17.5:
+    resolution: {integrity: sha512-SHBoI8/0aoMQWAgUHMQ599VM6ZiSKg8sh/0cFqqlQQMyY9uEplc0ULU5yQNzcvdR4ZKa0ey8+vFmahuRbOCT1A==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: false
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
+    dev: false
+
   /@types/mime/1.3.2:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: false
@@ -2325,6 +2339,10 @@ packages:
   /local-access/1.1.0:
     resolution: {integrity: sha512-XfegD5pyTAfb+GY6chk283Ox5z8WexG56OvM06RWLpAc/UHozO8X6xAxEkIitZOtsSMM1Yr3DkHgW5W+onLhCw==}
     engines: {node: '>=6'}
+    dev: false
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
   /lodash.debounce/4.0.8:
@@ -3350,7 +3368,7 @@ packages:
     dev: false
 
   file:projects/browser-sources.tgz_@babel+core@7.16.0:
-    resolution: {integrity: sha512-JUjVf6TfZ2x2Of7cZvqOXXSScyJqPZ3wLhCY9oIHm9OPhpMqsbJRVutejlgLmBoSsPnVAf5QjSm4Czfs/IOSJw==, tarball: file:projects/browser-sources.tgz}
+    resolution: {integrity: sha512-s4nIMwFZvKILUnYeaNaE4zoFqcFZUL5kTYnwkxEGL/IwHUdfOOHuZQ9YlZ6xCZq6nF46rCcpiEVnA2OmzSCDIg==, tarball: file:projects/browser-sources.tgz}
     id: file:projects/browser-sources.tgz
     name: '@rush-temp/browser-sources'
     version: 0.0.0
@@ -3361,8 +3379,10 @@ packages:
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.61.0
       '@rollup/plugin-typescript': 8.3.0_c08b292199e04dddd058244ce3f93c88
       '@tsconfig/svelte': 2.0.1
+      '@types/lodash-es': 4.17.5
       autoprefixer: 10.4.0_postcss@8.4.4
       contentful-management: 7.45.7
+      lodash-es: 4.17.21
       postcss: 8.4.4
       postcss-load-config: 3.1.0
       rollup: 2.61.0

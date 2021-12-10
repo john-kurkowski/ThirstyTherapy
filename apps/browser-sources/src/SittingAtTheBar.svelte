@@ -7,6 +7,7 @@
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { cmsClient } from "./Model";
   import { fade } from "svelte/transition";
+  import { isEqual } from "lodash-es";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
@@ -23,14 +24,27 @@
     : ["0", "1", "0", "2"];
 
   let usernamesSetting: EntryProps;
-  let usernames: string[];
+  let usernamesUpdate: Promise<unknown> = Promise.resolve();
+  let usernames: string[] = [];
 
   let usernamesPromise = (async () => {
-    usernamesSetting = await (
-      await cmsClient()
-    ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
-    usernames = usernamesSetting.fields.stringValues["en-US"];
-    return usernames;
+    async function poll() {
+      await usernamesUpdate;
+
+      let record = await (
+        await cmsClient()
+      ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
+      let valueToCompare: string[] = record.fields.stringValues["en-US"];
+
+      if (!isEqual(usernames, valueToCompare)) {
+        usernamesSetting = record;
+        usernames = valueToCompare;
+      }
+
+      setTimeout(poll, 10000);
+    }
+
+    return poll();
   })();
 
   let fetchData: Promise<TwitchUser[]>;
@@ -80,7 +94,7 @@
 
     usernames[index] = e.detail;
 
-    (await cmsClient()).entry.update(
+    usernamesUpdate = (await cmsClient()).entry.update(
       { entryId: USERNAMES_SITTING_AT_THE_BAR },
       usernamesSetting
     );
