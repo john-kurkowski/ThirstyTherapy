@@ -2,14 +2,18 @@
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
+  import type { EntryProps } from "contentful-management";
   import type { TwitchUser } from "./Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
+  import { cmsClient } from "./Model";
   import { fade } from "svelte/transition";
+  import { isEqual } from "lodash-es";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
 
   const FADE_DURATION = 2000;
   const HOST = "https://api.twitch.tv/helix";
+  const USERNAMES_SITTING_AT_THE_BAR = "6LrlYBz1jpPXFkjvDrp8Pv";
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
@@ -19,9 +23,29 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
-  let usernames = urlParams.getAll("username").length
-    ? urlParams.getAll("username")
-    : ["ThirstyTherapy", "BluuNukem", "toughgum"];
+  let usernamesSetting: EntryProps;
+  let usernamesUpdate: Promise<unknown> = Promise.resolve();
+  let usernames: string[] = [];
+
+  let usernamesPromise = (async () => {
+    async function poll() {
+      await usernamesUpdate;
+
+      let record = await (
+        await cmsClient()
+      ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
+      let valueToCompare: string[] = record.fields.stringValues["en-US"];
+
+      if (!isEqual(usernames, valueToCompare)) {
+        usernamesSetting = record;
+        usernames = valueToCompare;
+      }
+
+      setTimeout(poll, 10000);
+    }
+
+    return poll();
+  })();
 
   let fetchData: Promise<TwitchUser[]>;
   $: if (!$twitchAccessToken) {
@@ -30,6 +54,8 @@
     fetchData = Promise.reject($twitchAccessToken);
   } else {
     fetchData = (async () => {
+      await usernamesPromise;
+
       const headers = {
         Authorization: `Bearer ${$twitchAccessToken}`,
         "client-id": TWITCH_CLIENT_ID,
@@ -61,12 +87,17 @@
     pageName.set("Sitting at the bar");
   });
 
-  function handleNameEdit(index: number, e: { detail: string }) {
+  async function handleNameEdit(index: number, e: { detail: string }) {
     if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
     }
 
     usernames[index] = e.detail;
+
+    usernamesUpdate = (await cmsClient()).entry.update(
+      { entryId: USERNAMES_SITTING_AT_THE_BAR },
+      usernamesSetting
+    );
   }
 
   function timeShowMs(): number {

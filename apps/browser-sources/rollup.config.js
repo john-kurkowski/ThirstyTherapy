@@ -1,10 +1,13 @@
+import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import css from 'rollup-plugin-css-only';
+import css from "rollup-plugin-css-only";
+import json from "@rollup/plugin-json";
 import livereload from "rollup-plugin-livereload";
 import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
+import { spawn } from "child_process";
 import { terser } from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -19,14 +22,10 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require("child_process").spawn(
-        "npm",
-        ["run", "start", "--", "--dev"],
-        {
-          stdio: ["ignore", "inherit", "inherit"],
-          shell: true,
-        }
-      );
+      server = spawn("npm", ["run", "start", "--", "--dev"], {
+        stdio: ["ignore", "inherit", "inherit"],
+        shell: true,
+      });
 
       process.on("SIGTERM", toExit);
       process.on("exit", toExit);
@@ -54,7 +53,7 @@ export default {
 
     // we'll extract any component CSS out into
     // a separate file - better for performance
-    css({ output: 'bundle.css' }),
+    css({ output: "bundle.css" }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -66,10 +65,18 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
+
+    babel({
+      babelHelpers: "runtime",
+      extensions: [".html", ".js", ".mjs", ".svelte", ".ts"],
+      plugins: [["@babel/plugin-transform-runtime", {}]],
+    }),
+
     typescript({
       sourceMap: !production,
       inlineSources: !production,
     }),
+    json(),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
