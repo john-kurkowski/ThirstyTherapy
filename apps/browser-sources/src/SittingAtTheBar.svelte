@@ -2,6 +2,7 @@
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
+  import type { EntryProps } from "contentful-management";
   import type { TwitchUser } from "./Model";
   import { TWITCH_CLIENT_ID, twitchAccessToken } from "./stores";
   import { cmsClient } from "./Model";
@@ -21,13 +22,14 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
+  let usernamesSetting: EntryProps;
   let usernames: string[];
 
   let usernamesPromise = (async () => {
-    let record = await (
+    usernamesSetting = await (
       await cmsClient()
     ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
-    usernames = record.fields.stringValues["en-US"];
+    usernames = usernamesSetting.fields.stringValues["en-US"];
     return usernames;
   })();
 
@@ -71,12 +73,17 @@
     pageName.set("Sitting at the bar");
   });
 
-  function handleNameEdit(index: number, e: { detail: string }) {
+  async function handleNameEdit(index: number, e: { detail: string }) {
     if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
     }
 
     usernames[index] = e.detail;
+
+    (await cmsClient()).entry.update(
+      { entryId: USERNAMES_SITTING_AT_THE_BAR },
+      usernamesSetting
+    );
   }
 
   function timeShowMs(): number {
