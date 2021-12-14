@@ -17,12 +17,10 @@
 </script>
 
 <div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
-  {#await fetchData}
-    <div class="broadcast-bubble">
+  <div class="broadcast-bubble">
+    {#await fetchData}
       <Loader />
-    </div>
-  {:then data}
-    <div class="broadcast-bubble">
+    {:then data}
       <h2 class="text-xs">Sitting at the bar</h2>
 
       {#if data.length}
@@ -51,9 +49,7 @@
       {:else}
         <p class="animate-pulse text-xs">…</p>
       {/if}
-    </div>
-  {:catch error}
-    <div class="broadcast-bubble text-xs">
+    {:catch error}
       <p>
         No one at the bar! 😭 Are your
         <Link to="/admin">
@@ -62,6 +58,6 @@
         correct?
       </p>
       <code class="text-red-600">{error.message}</code>
-    </div>
-  {/await}
+    {/await}
+  </div>
 </div>
