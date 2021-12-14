@@ -86,7 +86,7 @@
     pageName.set("Sitting at the bar");
   });
 
-  async function handleNameEdit(index: number, e: { detail: string }) {
+  async function handleNameEdit(index: number, e: CustomEvent<string>) {
     if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
     }

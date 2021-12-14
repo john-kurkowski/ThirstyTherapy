@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
   import InlineInput from "svelte-inline-input";
   import Loader from "./Loader.svelte";
+  import type { TwitchUser } from "../Model";
   import { Link } from "svelte-routing";
 
   const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
@@ -8,8 +9,11 @@
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 
-  export let fetchData;
-  export let handleNameEdit;
+  export let fetchData: Promise<TwitchUser[]>;
+  export let handleNameEdit: (
+    index: number,
+    value: CustomEvent<string>
+  ) => void;
 </script>
 
 <div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
