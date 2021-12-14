@@ -23,6 +23,7 @@ export interface AgendaItem extends CmsEntry {
 export interface Episode extends CmsEntry {
   fields: {
     agendaItems?: AgendaItem[];
+    broadcast: string;
     displayTitle: string;
     title: string;
   };
@@ -47,7 +48,15 @@ export async function cmsClient(accessToken: string): Promise<PlainClientAPI> {
   );
 }
 
-export function fetchCmsPath(path: string): Promise<Response> {
-  const url = `${CMS_HOST}/${path}?access_token=${CMS_ACCESS_TOKEN}`;
+export function fetchCmsPath(
+  path: string,
+  params?: Record<string, string>
+): Promise<Response> {
+  const url = [
+    `${CMS_HOST}/${path}?access_token=${CMS_ACCESS_TOKEN}`,
+    params && `${new URLSearchParams(params).toString()}`,
+  ]
+    .filter(Boolean)
+    .join("&");
   return fetch(url);
 }

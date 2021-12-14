@@ -1,11 +1,9 @@
-<script>
+<script lang="ts">
   import Header from "./Header.svelte";
   import { Link } from "svelte-routing";
+  import { Episode, fetchCmsPath } from "./Model";
   import { onMount } from "svelte";
   import { pageName } from "./stores";
-
-  const urlParams = new window.URLSearchParams(window.location.search);
-  const qs = urlParams.toString() ? `?${urlParams.toString()}` : "";
 
   const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
     dateStyle: "short",
@@ -13,14 +11,14 @@
     timeZone: "America/Los_Angeles",
   });
 
-  const SPACE_ID = "nc2tnr0lufn7";
-  const ENVIRONMENT_ID = "master";
-  const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
-  const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
+  const urlParams = new window.URLSearchParams(window.location.search);
+  const qs = urlParams.toString() ? `?${urlParams.toString()}` : "";
 
-  const fetchData = (async () => {
-    const url = `${HOST}/entries?access_token=${ACCESS_TOKEN}&content_type=episode&order=-fields.broadcast`;
-    const resp = await fetch(url);
+  const fetchData: Promise<Episode[]> = (async () => {
+    const resp = await fetchCmsPath("/entries", {
+      content_type: "episode",
+      order: "-fields.broadcast",
+    });
     const entries = await resp.json();
     return entries.items;
   })();
