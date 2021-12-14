@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 </script>

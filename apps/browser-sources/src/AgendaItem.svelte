@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   /**
    * Track the in-progress, completion, etc. state of an agenda item. Show the
    * name of the item in the "button" slot. If you need to know the current
@@ -12,9 +12,9 @@
    */
 
   export let isAnimatable = false;
-  let state;
+  let state: "EXPANDED" | "COMPLETE" | "COLLAPSED";
 
-  function toggle() {
+  function toggle(): void {
     if (state === "EXPANDED") {
       state = "COMPLETE";
     } else if (state === "COMPLETE") {
@@ -25,7 +25,19 @@
   }
 </script>
 
-<style>
+<button
+  class={`button font-display ${state}`}
+  class:isAnimatable
+  on:click={toggle}
+>
+  <slot name="button" />
+</button>
+
+<slot name="rest" {state} />
+
+<slot />
+
+<style type="text/postcss">
   .COMPLETE {
     color: lightgray;
     text-decoration: line-through;
@@ -41,14 +53,3 @@
     @apply ring;
   }
 </style>
-
-<button
-  class={`button font-display ${state}`}
-  class:isAnimatable
-  on:click={toggle}>
-  <slot name="button" />
-</button>
-
-<slot name="rest" {state} />
-
-<slot />

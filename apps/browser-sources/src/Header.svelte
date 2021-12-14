@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Link } from "svelte-routing";
 </script>
 
@@ -30,7 +30,7 @@
   </nav>
 </header>
 
-<style>
+<style type="text/postcss">
   :global([aria-current="page"] > *) {
     @apply underline;
   }
