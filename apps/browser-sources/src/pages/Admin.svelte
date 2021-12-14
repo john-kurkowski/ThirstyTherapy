@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Header from "./Header.svelte";
-  import { cmsManagementAccessToken, twitchClientSecret } from "./stores";
+  import Header from "../components/Header.svelte";
+  import { cmsManagementAccessToken, twitchClientSecret } from "../stores";
 </script>
 
 <div class="px-1 py-1">

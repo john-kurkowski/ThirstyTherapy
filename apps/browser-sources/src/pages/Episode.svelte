@@ -1,13 +1,13 @@
 <script lang="ts">
-  import AgendaItem from "./AgendaItem.svelte";
-  import Collapsible from "./Collapsible.svelte";
+  import AgendaItem from "../components/AgendaItem.svelte";
+  import Collapsible from "../components/Collapsible.svelte";
   import type {
     AgendaItem as AgendaItemModel,
     CmsResult,
     Episode,
-  } from "./Model";
-  import { fetchCmsPath } from "./Model";
-  import { pageName } from "./stores";
+  } from "../models";
+  import { fetchCmsPath } from "../models";
+  import { pageName } from "../stores";
 
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");

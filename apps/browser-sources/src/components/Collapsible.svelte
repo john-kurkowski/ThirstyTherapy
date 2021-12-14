@@ -8,6 +8,10 @@
   export let isExpanded = false;
 </script>
 
+<div class:collapse={!isExpanded} class:expand={isExpanded}>
+  <slot />
+</div>
+
 <style>
   .collapse {
     max-height: 0;
@@ -21,7 +25,3 @@
     transition: max-height 0.3s ease-in-out;
   }
 </style>
-
-<div class:collapse={!isExpanded} class:expand={isExpanded}>
-  <slot />
-</div>

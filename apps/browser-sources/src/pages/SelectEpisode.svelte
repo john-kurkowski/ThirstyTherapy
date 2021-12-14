@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Header from "./Header.svelte";
+  import Header from "../components/Header.svelte";
+  import { Episode, fetchCmsPath } from "../models";
   import { Link } from "svelte-routing";
-  import { Episode, fetchCmsPath } from "./Model";
   import { onMount } from "svelte";
-  import { pageName } from "./stores";
+  import { pageName } from "../stores";
 
   const DATETIME_FORMAT = new Intl.DateTimeFormat("en-US", {
     dateStyle: "short",

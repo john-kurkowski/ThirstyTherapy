@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Admin from "./Admin.svelte";
-  import Episode from "./Episode.svelte";
-  import SelectEpisode from "./SelectEpisode.svelte";
-  import SittingAtTheBar from "./SittingAtTheBar.svelte";
+  import Admin from "./pages/Admin.svelte";
+  import Episode from "./pages/Episode.svelte";
+  import SelectEpisode from "./pages/SelectEpisode.svelte";
+  import SittingAtTheBar from "./pages/SittingAtTheBar.svelte";
   import Tailwindcss from "./Tailwindcss.svelte";
   import { Router, Route } from "svelte-routing";
   import { pageName } from "./stores";

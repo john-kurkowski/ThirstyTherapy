@@ -3,17 +3,17 @@
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
   import type { EntryProps } from "contentful-management";
-  import type { TwitchUser } from "./Model";
+  import type { TwitchUser } from "../models";
   import {
     TWITCH_CLIENT_ID,
     cmsManagementAccessToken,
+    pageName,
     twitchAccessToken,
-  } from "./stores";
-  import { cmsClient } from "./Model";
+  } from "../stores";
+  import { cmsClient } from "../models";
   import { fade } from "svelte/transition";
   import { isEqual } from "lodash-es";
   import { onMount } from "svelte";
-  import { pageName } from "./stores";
 
   const FADE_DURATION = 2000;
   const HOST = "https://api.twitch.tv/helix";

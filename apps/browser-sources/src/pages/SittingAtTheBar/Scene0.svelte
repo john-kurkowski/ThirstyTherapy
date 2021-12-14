@@ -1,7 +1,7 @@
 <script lang="ts">
   import InlineInput from "svelte-inline-input";
   import Loader from "./Loader.svelte";
-  import type { TwitchUser } from "../Model";
+  import type { TwitchUser } from "../../models";
   import { Link } from "svelte-routing";
 
   const COCKTAIL_ICONS = ["🍸", "🍹", "🥃"];
