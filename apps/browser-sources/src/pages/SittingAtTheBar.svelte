@@ -13,15 +13,17 @@
   import { cmsClient } from "../models";
   import { fade } from "svelte/transition";
   import { isEqual } from "lodash-es";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
 
-  const FADE_DURATION = 2000;
+  const FADE_DURATION = 2 * 1000;
+  const POLL_INTERVAL = 10 * 1000;
   const HOST = "https://api.twitch.tv/helix";
   const USERNAMES_SITTING_AT_THE_BAR = "6LrlYBz1jpPXFkjvDrp8Pv";
 
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let sceneNumber = 0;
+  let sceneTimeout: number | undefined = undefined;
 
   let scenes = urlParams.getAll("scene").length
     ? urlParams.getAll("scene")
@@ -29,6 +31,7 @@
 
   let usernamesSetting: EntryProps | undefined = undefined;
   let usernamesFetchError: Error | undefined = undefined;
+  let usernamesFetchTimeout: number | undefined = undefined;
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
@@ -50,9 +53,8 @@
       usernamesFetchError = e as Error;
     }
 
-    setTimeout(poll, 10000);
+    usernamesFetchTimeout = window.setTimeout(poll, POLL_INTERVAL);
   }
-  poll();
 
   let fetchData: Promise<TwitchUser[]>;
   $: if ($twitchAccessToken instanceof Error) {
@@ -88,10 +90,14 @@
     })();
   }
 
-  setTimeout(timeShow, timeShowMs());
-
   onMount(function () {
     pageName.set("Sitting at the bar");
+    sceneTimeout = window.setTimeout(timeShow, timeShowMs());
+    poll();
+  });
+
+  onDestroy(function () {
+    [sceneTimeout, usernamesFetchTimeout].forEach(window.clearTimeout);
   });
 
   async function handleNameEdit(index: number, e: CustomEvent<string>) {
@@ -126,7 +132,7 @@
       }
     }
 
-    setTimeout(timeShow, timeShowMs());
+    sceneTimeout = window.setTimeout(timeShow, timeShowMs());
   }
 
   export const location = "";
