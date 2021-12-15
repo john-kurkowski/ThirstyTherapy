@@ -95,7 +95,9 @@
   });
 
   async function handleNameEdit(index: number, e: CustomEvent<string>) {
-    if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
+    if (!usernamesSetting) {
+      return;
+    } else if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
     }
 
@@ -103,10 +105,7 @@
 
     usernamesUpdate = (await cmsClient($cmsManagementAccessToken)).entry.update(
       { entryId: USERNAMES_SITTING_AT_THE_BAR },
-      // TODO: this is guaranteed to be defined by the time it is run. As a
-      //       human, I know that. How to guarantee it to the compiler?
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      usernamesSetting!
+      usernamesSetting
     );
   }
 
