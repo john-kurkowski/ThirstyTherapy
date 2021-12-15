@@ -5,19 +5,18 @@
   import type { EntryProps } from "contentful-management";
   import type { TwitchUser } from "../models";
   import {
-    TWITCH_CLIENT_ID,
     cmsManagementAccessToken,
     pageName,
     twitchAccessToken,
   } from "../stores";
   import { cmsClient } from "../models";
   import { fade } from "svelte/transition";
+  import { fetchUsers } from "./SittingAtTheBar/Twitch";
   import { isEqual } from "lodash-es";
   import { onDestroy, onMount } from "svelte";
 
   const FADE_DURATION = 2 * 1000;
   const POLL_INTERVAL = 10 * 1000;
-  const HOST = "https://api.twitch.tv/helix";
   const USERNAMES_SITTING_AT_THE_BAR = "6LrlYBz1jpPXFkjvDrp8Pv";
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -61,33 +60,8 @@
     fetchData = Promise.reject($twitchAccessToken);
   } else if (usernamesFetchError) {
     fetchData = Promise.reject(usernamesFetchError);
-  } else if (!$twitchAccessToken || !usernames.length) {
-    fetchData = new Promise(() => []);
   } else {
-    fetchData = (async () => {
-      const headers = {
-        Authorization: `Bearer ${$twitchAccessToken}`,
-        "client-id": TWITCH_CLIENT_ID,
-      };
-      const qs = `?login=${usernames.join("&login=")}`;
-      const url = `${HOST}/users${qs}`;
-      const resp = await fetch(url, { headers });
-      const entries = await resp.json();
-
-      if (!resp.ok) {
-        throw new Error(entries.message);
-      }
-
-      let usernamesLowercase = usernames.map((username) =>
-        username.toLowerCase()
-      );
-      return (entries.data as TwitchUser[]).sort((o1, o2) => {
-        return (
-          usernamesLowercase.indexOf(o1.display_name.toLowerCase()) -
-          usernamesLowercase.indexOf(o2.display_name.toLowerCase())
-        );
-      });
-    })();
+    fetchData = fetchUsers($twitchAccessToken, usernames);
   }
 
   onMount(function () {
