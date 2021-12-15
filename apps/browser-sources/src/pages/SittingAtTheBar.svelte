@@ -27,21 +27,27 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
-  let usernamesSetting: EntryProps;
+  let usernamesSetting: EntryProps | undefined = undefined;
+  let usernamesFetchError: Error | undefined = undefined;
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
   async function poll() {
-    await usernamesUpdate;
+    try {
+      await usernamesUpdate;
 
-    let record = await (
-      await cmsClient($cmsManagementAccessToken)
-    ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
-    let valueToCompare: string[] = record.fields.stringValues["en-US"];
+      let record;
+      record = await (
+        await cmsClient($cmsManagementAccessToken)
+      ).entry.get({ entryId: USERNAMES_SITTING_AT_THE_BAR });
+      let valueToCompare: string[] = record.fields.stringValues["en-US"];
 
-    if (!isEqual(usernames, valueToCompare)) {
-      usernamesSetting = record;
-      usernames = valueToCompare;
+      if (!isEqual(usernames, valueToCompare)) {
+        usernamesSetting = record;
+        usernames = valueToCompare;
+      }
+    } catch (e) {
+      usernamesFetchError = e as Error;
     }
 
     setTimeout(poll, 10000);
@@ -49,10 +55,12 @@
   poll();
 
   let fetchData: Promise<TwitchUser[]>;
-  $: if (!$twitchAccessToken || !usernames.length) {
-    fetchData = new Promise(() => []);
-  } else if ($twitchAccessToken instanceof Error) {
+  $: if ($twitchAccessToken instanceof Error) {
     fetchData = Promise.reject($twitchAccessToken);
+  } else if (usernamesFetchError) {
+    fetchData = Promise.reject(usernamesFetchError);
+  } else if (!$twitchAccessToken || !usernames.length) {
+    fetchData = new Promise(() => []);
   } else {
     fetchData = (async () => {
       const headers = {
@@ -95,7 +103,10 @@
 
     usernamesUpdate = (await cmsClient($cmsManagementAccessToken)).entry.update(
       { entryId: USERNAMES_SITTING_AT_THE_BAR },
-      usernamesSetting
+      // TODO: this is guaranteed to be defined by the time it is run. As a
+      //       human, I know that. How to guarantee it to the compiler?
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      usernamesSetting!
     );
   }
 
