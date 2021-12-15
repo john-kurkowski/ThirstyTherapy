@@ -1,4 +1,13 @@
 <script lang="ts">
+  /**
+   * Cycles through an infinite slideshow of a handful of scenes, like a list
+   * of users online right now, and branding.
+
+   * The usernames can be edited inline. With a valid CMS write access token
+   * set, the usernames will persist to the CMS, and be automatically synced to
+   * anybody else viewing this page.
+   */
+
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
@@ -34,7 +43,7 @@
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
-  async function poll() {
+  async function pollUsernames() {
     try {
       await usernamesUpdate;
 
@@ -52,7 +61,7 @@
       usernamesFetchError = e as Error;
     }
 
-    usernamesFetchTimeout = window.setTimeout(poll, POLL_INTERVAL);
+    usernamesFetchTimeout = window.setTimeout(pollUsernames, POLL_INTERVAL);
   }
 
   let fetchData: Promise<TwitchUser[]>;
@@ -66,14 +75,19 @@
 
   onMount(function () {
     pageName.set("Sitting at the bar");
-    sceneTimeout = window.setTimeout(timeShow, timeShowMs());
-    poll();
+    sceneTimeout = window.setTimeout(pollScenesSlideshow, sceneOnOffMs());
+    pollUsernames();
   });
 
   onDestroy(function () {
     [sceneTimeout, usernamesFetchTimeout].forEach(window.clearTimeout);
   });
 
+  /**
+   * Persist the text input username to the CMS. Ignore when there are page
+   * initialization errors. Ignore refreshing the data (and thus reflowing the
+   * page) when the data doesn't change.
+   */
   async function handleNameEdit(index: number, e: CustomEvent<string>) {
     if (!usernamesSetting) {
       return;
@@ -89,7 +103,14 @@
     );
   }
 
-  function timeShowMs(): number {
+  /**
+   * Gets the millisecond duration to show the current scene for.
+   *
+   * This has quick defaults for development. In production, configure the
+   * scene on and off durations with longer values, via the "on" and "off"
+   * query params.
+   */
+  function sceneOnOffMs(): number {
     return isVisible
       ? parseInt(urlParams.get("on") || "", 10) || 10 * 1000
       : Math.max(
@@ -98,7 +119,7 @@
         );
   }
 
-  function timeShow() {
+  function pollScenesSlideshow() {
     if (scenes.length > 1) {
       isVisible = !isVisible;
       if (!isVisible) {
@@ -106,7 +127,7 @@
       }
     }
 
-    sceneTimeout = window.setTimeout(timeShow, timeShowMs());
+    sceneTimeout = window.setTimeout(pollScenesSlideshow, sceneOnOffMs());
   }
 
   export const location = "";

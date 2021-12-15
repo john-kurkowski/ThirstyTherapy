@@ -3,6 +3,13 @@ import { TWITCH_CLIENT_ID } from "../../stores";
 
 const API_HOST = "https://api.twitch.tv/helix";
 
+/**
+ * Given a list of usernames from our CMS, fetch their avatar and proper casing
+ * etc. from Twitch.
+ *
+ * Returns them in the same order they were requested (which Twitch's API does
+ * not guarantee).
+ */
 export async function fetchUsers(
   twitchAccessToken: string,
   usernames: string[]
