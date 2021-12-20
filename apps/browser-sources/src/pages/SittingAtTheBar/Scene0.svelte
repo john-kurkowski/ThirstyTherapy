@@ -1,5 +1,5 @@
 <script lang="ts">
-  import InlineInput from "svelte-inline-input";
+  import InlineInput from "./InlineInput.svelte";
   import Loader from "./Loader.svelte";
   import type { TwitchUser } from "../../models";
   import { Link } from "svelte-routing";
