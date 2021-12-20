@@ -29,6 +29,7 @@
     if (editing) {
       await tick();
       inputEl.focus();
+      dispatch("focus", inputEl.value);
     }
   };
 

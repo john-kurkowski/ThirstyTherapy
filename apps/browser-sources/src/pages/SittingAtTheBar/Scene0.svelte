@@ -13,7 +13,15 @@
   export let handleNameEdit: (
     index: number,
     value: CustomEvent<string>
-  ) => void;
+  ) => void = () => {
+    // default to doing nothing
+  };
+  export let handleNameEditing: (
+    index: number,
+    value: CustomEvent<string>
+  ) => void = () => {
+    // default to doing nothing
+  };
 </script>
 
 <div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
@@ -40,6 +48,7 @@
                 <InlineInput
                   inputClasses="text-gray-800"
                   on:blur={(v) => handleNameEdit(i, v)}
+                  on:focus={(v) => handleNameEditing(i, v)}
                   value={entry.display_name}
                 />
               </div>

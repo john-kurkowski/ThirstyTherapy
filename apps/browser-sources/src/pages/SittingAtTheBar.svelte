@@ -8,6 +8,7 @@
    * anybody else viewing this page.
    */
 
+  import PausableTimeout from "./SittingAtTheBar/PausableTimeout";
   import Scene0 from "./SittingAtTheBar/Scene0.svelte";
   import Scene1 from "./SittingAtTheBar/Scene1.svelte";
   import Scene2 from "./SittingAtTheBar/Scene2.svelte";
@@ -31,7 +32,7 @@
   const urlParams = new URLSearchParams(window.location.search);
   let isVisible = true;
   let sceneNumber = 0;
-  let sceneTimeout: number | undefined = undefined;
+  let sceneTimeout: PausableTimeout | undefined = undefined;
 
   let scenes = urlParams.getAll("scene").length
     ? urlParams.getAll("scene")
@@ -39,7 +40,7 @@
 
   let usernamesSetting: EntryProps | undefined = undefined;
   let usernamesFetchError: Error | undefined = undefined;
-  let usernamesFetchTimeout: number | undefined = undefined;
+  let usernamesFetchTimeout: PausableTimeout | undefined = undefined;
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
@@ -61,7 +62,7 @@
       usernamesFetchError = e as Error;
     }
 
-    usernamesFetchTimeout = window.setTimeout(pollUsernames, POLL_INTERVAL);
+    usernamesFetchTimeout = new PausableTimeout(pollUsernames, POLL_INTERVAL);
   }
 
   let fetchData: Promise<TwitchUser[]>;
@@ -75,12 +76,14 @@
 
   onMount(function () {
     pageName.set("Sitting at the bar");
-    sceneTimeout = window.setTimeout(pollScenesSlideshow, sceneOnOffMs());
+    sceneTimeout = new PausableTimeout(pollScenesSlideshow, sceneOnOffMs());
     pollUsernames();
   });
 
   onDestroy(function () {
-    [sceneTimeout, usernamesFetchTimeout].forEach(window.clearTimeout);
+    [sceneTimeout, usernamesFetchTimeout].forEach(function (timeout) {
+      timeout?.clearTimeout();
+    });
   });
 
   /**
@@ -89,6 +92,10 @@
    * page) when the data doesn't change.
    */
   async function handleNameEdit(index: number, e: CustomEvent<string>) {
+    [sceneTimeout, usernamesFetchTimeout].forEach(function (timeout) {
+      timeout?.resume();
+    });
+
     if (!usernamesSetting) {
       return;
     } else if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
@@ -101,6 +108,12 @@
       { entryId: USERNAMES_SITTING_AT_THE_BAR },
       usernamesSetting
     );
+  }
+
+  function handleNameEditing() {
+    [sceneTimeout, usernamesFetchTimeout].forEach(function (timeout) {
+      timeout?.pause();
+    });
   }
 
   /**
@@ -127,7 +140,7 @@
       }
     }
 
-    sceneTimeout = window.setTimeout(pollScenesSlideshow, sceneOnOffMs());
+    sceneTimeout = new PausableTimeout(pollScenesSlideshow, sceneOnOffMs());
   }
 
   export const location = "";
@@ -136,7 +149,7 @@
 {#if isVisible}
   {#if scenes[sceneNumber] === "0"}
     <div transition:fade={{ duration: FADE_DURATION }}>
-      <Scene0 {fetchData} {handleNameEdit} />
+      <Scene0 {fetchData} {handleNameEdit} {handleNameEditing} />
     </div>
   {:else if scenes[sceneNumber] === "1"}
     <div transition:fade={{ duration: FADE_DURATION }}>
