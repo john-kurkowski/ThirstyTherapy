@@ -9,6 +9,7 @@
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 
+  export let canEdit: boolean;
   export let fetchData: Promise<TwitchUser[]>;
   export let handleNameEdit: (
     index: number,
@@ -45,12 +46,16 @@
                   class="rounded-full w-8"
                   src={entry.profile_image_url}
                 />
-                <InlineInput
-                  inputClasses="text-gray-800"
-                  on:blur={(v) => handleNameEdit(i, v)}
-                  on:focus={(v) => handleNameEditing(i, v)}
-                  value={entry.display_name}
-                />
+                {#if canEdit}
+                  <InlineInput
+                    inputClasses="text-gray-800"
+                    on:blur={(v) => handleNameEdit(i, v)}
+                    on:focus={(v) => handleNameEditing(i, v)}
+                    value={entry.display_name}
+                  />
+                {:else}
+                  <span>{entry.display_name}</span>
+                {/if}
               </div>
             </li>
           {/each}

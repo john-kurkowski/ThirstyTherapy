@@ -38,6 +38,7 @@
     ? urlParams.getAll("scene")
     : ["0", "1", "0", "2"];
 
+  let canEdit = false;
   let usernamesSetting: EntryProps | undefined = undefined;
   let usernamesFetchError: Error | undefined = undefined;
   let usernamesFetchTimeout: PausableTimeout | undefined = undefined;
@@ -86,6 +87,14 @@
     });
   });
 
+  function disableInteraction() {
+    canEdit = false;
+  }
+
+  function enableInteraction() {
+    canEdit = true;
+  }
+
   /**
    * Persist the text input username to the CMS. Ignore when there are page
    * initialization errors. Ignore refreshing the data (and thus reflowing the
@@ -96,7 +105,13 @@
       timeout?.resume();
     });
 
-    if (!usernamesSetting) {
+    if (!canEdit) {
+      // This condition works around https://github.com/sveltejs/svelte/issues/4683.
+      // During outro, `canEdit` doesn't do anything, passed to the child
+      // component below. This condition is extra safety to not submit to the CMS
+      // the user's string mid-typing. Remove when the upstream bug is fixed.
+      return;
+    } else if (!usernamesSetting) {
       return;
     } else if (usernames[index].toLowerCase() === e.detail.toLowerCase()) {
       return;
@@ -148,8 +163,12 @@
 
 {#if isVisible}
   {#if scenes[sceneNumber] === "0"}
-    <div transition:fade={{ duration: FADE_DURATION }}>
-      <Scene0 {fetchData} {handleNameEdit} {handleNameEditing} />
+    <div
+      on:introstart={enableInteraction}
+      on:outrostart={disableInteraction}
+      transition:fade={{ duration: FADE_DURATION }}
+    >
+      <Scene0 {canEdit} {fetchData} {handleNameEdit} {handleNameEditing} />
     </div>
   {:else if scenes[sceneNumber] === "1"}
     <div transition:fade={{ duration: FADE_DURATION }}>
