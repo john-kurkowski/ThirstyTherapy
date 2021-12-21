@@ -37,7 +37,7 @@
 
 <slot />
 
-<style type="text/postcss">
+<style lang="postcss">
   .COMPLETE {
     color: lightgray;
     text-decoration: line-through;

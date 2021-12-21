@@ -30,7 +30,7 @@
   </nav>
 </header>
 
-<style type="text/postcss">
+<style lang="postcss">
   :global([aria-current="page"] > *) {
     @apply underline;
   }
