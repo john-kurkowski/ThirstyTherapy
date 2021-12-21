@@ -30,15 +30,7 @@
   const USERNAMES_SITTING_AT_THE_BAR = "6LrlYBz1jpPXFkjvDrp8Pv";
 
   const urlParams = new URLSearchParams(window.location.search);
-  let isVisible = true;
-  let sceneNumber = 0;
-  let sceneTimeout: PausableTimeout | undefined = undefined;
 
-  let scenes = urlParams.getAll("scene").length
-    ? urlParams.getAll("scene")
-    : ["0", "1", "0", "2"];
-
-  let canEdit = false;
   let usernamesSetting: EntryProps | undefined = undefined;
   let usernamesFetchError: Error | undefined = undefined;
   let usernamesFetchTimeout: PausableTimeout | undefined = undefined;
@@ -74,6 +66,14 @@
   } else {
     fetchData = fetchUsers($twitchAccessToken, usernames);
   }
+
+  let canEdit = false;
+  let isVisible = true;
+  let sceneNumber = 0;
+  let sceneTimeout: PausableTimeout;
+  let scenes = urlParams.getAll("scene").length
+    ? urlParams.getAll("scene")
+    : ["0", "1", "0", "2"];
 
   onMount(function () {
     pageName.set("Sitting at the bar");
