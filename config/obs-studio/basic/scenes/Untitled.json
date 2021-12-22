@@ -323,7 +323,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "height": 300,
-                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=ThirstyTherapy&username=BluuNukem&username=luzeph&on=60000&off=5000&isRight=1",
+                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&username=ThirstyTherapy&username=BluuNukem&username=luzeph&on=60000&off=5000&isRight=1",
                 "width": 900
             },
             "sync": 0,
@@ -502,7 +502,7 @@
                 "reroute_audio": false,
                 "restart_when_active": false,
                 "shutdown": false,
-                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&ttTCS=tunovk8c2qnwkig7bcs44bbjh3pu1g&username=loriander&username=bengineer1987&username=luzeph&on=60000&off=5000",
+                "url": "https://ecstatic-raman-47199a.netlify.app/sitting?isBroadcast=1&username=loriander&username=bengineer1987&username=luzeph&on=60000&off=5000",
                 "width": 900
             },
             "sync": 0,
@@ -4590,7 +4590,7 @@
                 "css": "",
                 "height": 900,
                 "reroute_audio": false,
-                "url": "https://obs.ninja/?scene=1&room=F7LKYx_4_VR_QC9ouYfH&password=F7vpCQcuWBy6!3cuesxM",
+                "url": "https://obs.ninja/?scene=1",
                 "width": 1600
             },
             "sync": 0,
@@ -4656,7 +4656,7 @@
                 "reroute_audio": true,
                 "restart_when_active": false,
                 "shutdown": false,
-                "url": "https://obs.ninja/?scene=2&room=F7LKYx_4_VR_QC9ouYfH&password=F7vpCQcuWBy6!3cuesxM",
+                "url": "https://obs.ninja/?scene=2",
                 "width": 1600
             },
             "sync": 0,
@@ -5040,7 +5040,7 @@
             "settings": {
                 "height": 900,
                 "reroute_audio": true,
-                "url": "https://obs.ninja/?scene=2&room=F7LKYx_4_VR_QC9ouYfH&password=F7vpCQcuWBy6!3cuesxM",
+                "url": "https://obs.ninja/?scene=2",
                 "width": 1600
             },
             "sync": 0,
