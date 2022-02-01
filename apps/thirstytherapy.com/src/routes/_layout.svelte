@@ -16,13 +16,13 @@
 
 <div class="font-body text-center text-purple-100">
   <header
-    class="after-gradient bg-purple-600 border-b-2 border-gray-800 mb-20 px-8 py-4 relative"
+    class="after-gradient relative mb-20 border-b-2 border-gray-800 bg-purple-600 px-8 py-4"
   >
     <a href="/">
       <h1 class="font-display mb-10 text-4xl">Thirsty Therapy</h1>
       <img
         alt="Thirsty Therapy logo: a bright red cocktail in a rocks glass, lined with a Hood strawberry"
-        class="absolute border-gray-800 border-2 left-0 mx-auto my-1 right-0 rounded-full z-20"
+        class="absolute left-0 right-0 z-20 mx-auto my-1 rounded-full border-2 border-gray-800"
         height="100"
         src="./logo.png"
         style="bottom: -56px;"
@@ -31,12 +31,12 @@
     </a>
   </header>
 
-  <main class="mb-8 mx-auto px-4">
+  <main class="mx-auto mb-8 px-4">
     <slot />
   </main>
 
   <footer class="mt-2 px-8 py-4">
-    <ul class="flex justify-center mb-6">
+    <ul class="mb-6 flex justify-center">
       <li>
         <a href="mailto:ThirstyTherapy@gmail.com">
           <img alt="Email" src="./iconmonstr-email-3.svg" title="Email" />

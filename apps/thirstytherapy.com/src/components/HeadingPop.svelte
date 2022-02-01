@@ -2,7 +2,7 @@
   <slot />
 </h2>
 
-<h2 class="block invisible mb-2">
+<h2 class="invisible mb-2 block">
   <slot />
 </h2>
 

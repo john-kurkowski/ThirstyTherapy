@@ -18,7 +18,7 @@ self.addEventListener("install", (event: ExtendableEvent) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ((self as any) as ServiceWorkerGlobalScope).skipWaiting();
+        (self as any as ServiceWorkerGlobalScope).skipWaiting();
       })
   );
 });
@@ -36,7 +36,7 @@ self.addEventListener("activate", (event: ExtendableEvent) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ((self as any) as ServiceWorkerGlobalScope).clients.claim();
+      (self as any as ServiceWorkerGlobalScope).clients.claim();
     })
   );
 });

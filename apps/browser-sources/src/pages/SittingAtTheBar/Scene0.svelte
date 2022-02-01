@@ -25,7 +25,7 @@
   };
 </script>
 
-<div class="align-top inline-flex {isRight ? 'justify-end' : ''} w-full">
+<div class="inline-flex align-top {isRight ? 'justify-end' : ''} w-full">
   <div class="broadcast-bubble">
     {#await fetchData}
       <Loader />

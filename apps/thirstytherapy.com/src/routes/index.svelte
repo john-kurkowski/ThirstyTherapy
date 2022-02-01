@@ -26,19 +26,19 @@
 
 <p class="mb-10 text-xl">You are worthy of good drinks.</p>
 
-<div class="max-w-2xl mx-auto text-left xl:max-w-5xl">
-  <div class="cards mb-6 mx-auto">
+<div class="mx-auto max-w-2xl text-left xl:max-w-5xl">
+  <div class="cards mx-auto mb-6">
     <div class="card">
       <header class="mb-2">
         <HeadingPop>Cocktail Distance Learning</HeadingPop>
         <a
-          class="button inline-flex justify-center my-1 text-center"
+          class="button my-1 inline-flex justify-center text-center"
           href="mailto:ThirstyTherapy@gmail.com"
         >
           Ask about a class
           <img
             alt=""
-            class="inline-block ml-2"
+            class="ml-2 inline-block"
             src="./iconmonstr-email-3.svg"
           />
         </a>
@@ -53,7 +53,7 @@
 
       <img
         alt="A martini glass cocktail with 2 stacks of cocktail and culinary books."
-        class="h-44 object-cover object-top mt-auto w-full"
+        class="mt-auto h-44 w-full object-cover object-top"
         src="./books.jpeg"
       />
     </div>
@@ -62,13 +62,13 @@
       <header class="mb-2">
         <HeadingPop>Livestream</HeadingPop>
         <a
-          class="button inline-flex justify-center my-1 text-center"
+          class="button my-1 inline-flex justify-center text-center"
           href="https://twitch.tv/thirstytherapy"
         >
           Watch on Twitch
           <img
             alt=""
-            class="inline-block ml-2"
+            class="ml-2 inline-block"
             src="./iconmonstr-twitch-1.svg"
           />
         </a>
@@ -83,7 +83,7 @@
       </p>
       <img
         alt="Screenshot of Billy and John livestream bartending, on Twitch"
-        class="h-44 object-cover mt-auto w-full"
+        class="mt-auto h-44 w-full object-cover"
         src="./stream.png"
       />
     </div>
@@ -107,7 +107,7 @@
       </p>
       <img
         alt="Several coupes with infused gin cocktails, lemon twists, and cut sterling roses."
-        class="h-44 object-cover object-top mt-auto w-full"
+        class="mt-auto h-44 w-full object-cover object-top"
         src="./glasses.jpeg"
       />
     </div>
@@ -115,7 +115,7 @@
 
   <hr data-hr-content="Upcoming" />
 
-  <div class="cards mb-6 mx-auto">
+  <div class="cards mx-auto mb-6">
     {#await fetchingData then data}
       {#each data as episode}
         <div class="card">
@@ -152,13 +152,13 @@
 
   <hr data-hr-content="Team" />
 
-  <div class="cards mb-6 mx-auto">
+  <div class="cards mx-auto mb-6">
     <div class="card">
       <header class="mb-2">
         <HeadingPop>About Billy</HeadingPop>
         <img
           alt="Billy the bartender, smiling"
-          class="h-44 object-cover w-full"
+          class="h-44 w-full object-cover"
           src="./billy.png"
         />
       </header>
@@ -175,7 +175,7 @@
         <HeadingPop>About John</HeadingPop>
         <img
           alt="John the barback, thinking"
-          class="h-44 object-cover w-full"
+          class="h-44 w-full object-cover"
           src="./john.png"
         />
       </header>
@@ -192,7 +192,7 @@
         <HeadingPop>About Brie</HeadingPop>
         <img
           alt="Brie the oracle"
-          class="h-44 object-cover w-full"
+          class="h-44 w-full object-cover"
           src="./brie.png"
         />
       </header>

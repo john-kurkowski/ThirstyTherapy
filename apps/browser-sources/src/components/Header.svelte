@@ -2,26 +2,26 @@
   import { Link } from "svelte-routing";
 </script>
 
-<header class="font-bold mb-4">
+<header class="mb-4 font-bold">
   <nav class="text-xs">
     <ul class="flex">
       <li>
         <Link to="/">
-          <span class="hover:text-gray-500 hover:underline text-gray-200">
+          <span class="text-gray-200 hover:text-gray-500 hover:underline">
             Episodes
           </span>
         </Link>
       </li>
       <li>
         <Link to="/sitting">
-          <span class="hover:text-gray-500 hover:underline ml-4 text-gray-200">
+          <span class="ml-4 text-gray-200 hover:text-gray-500 hover:underline">
             Sitting
           </span>
         </Link>
       </li>
       <li>
         <Link to="/admin">
-          <span class="hover:text-gray-500 hover:underline ml-4 text-gray-200">
+          <span class="ml-4 text-gray-200 hover:text-gray-500 hover:underline">
             Admin
           </span>
         </Link>

@@ -16,7 +16,7 @@
         <li class="mb-4">
           <details open={!agendaItem.fields.isPast}>
             <summary>
-              <h4 class="font-bold inline">
+              <h4 class="inline font-bold">
                 {agendaItem.fields.title}
                 {#if agendaItem.fields.badge}
                   <small class="badge">
@@ -27,12 +27,12 @@
             </summary>
 
             {#if agendaItem.fields.subtitle}
-              <small class="block my-1 text-gray-500">
+              <small class="my-1 block text-gray-500">
                 {agendaItem.fields.subtitle}
               </small>
             {/if}
 
-            <ul class="list-disc list-outside ml-4">
+            <ul class="ml-4 list-outside list-disc">
               {#if agendaItem.fields.steps && agendaItem.fields.steps.length}
                 {#each agendaItem.fields.steps as step}
                   <li>{step}</li>

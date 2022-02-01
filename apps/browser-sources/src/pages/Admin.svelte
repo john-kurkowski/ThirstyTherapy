@@ -11,15 +11,15 @@
       <span>CMS Management Token</span>
       <input
         bind:value={$cmsManagementAccessToken}
-        class="block ml-2 px-1 text-gray-800"
+        class="ml-2 block px-1 text-gray-800"
         type="password"
       />
     </label>
-    <label class="flex mt-2">
+    <label class="mt-2 flex">
       <span>Twitch Client Secret</span>
       <input
         bind:value={$twitchClientSecret}
-        class="block ml-2 px-1 text-gray-800"
+        class="ml-2 block px-1 text-gray-800"
         type="password"
       />
     </label>

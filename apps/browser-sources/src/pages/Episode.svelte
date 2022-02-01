@@ -41,7 +41,7 @@
 </script>
 
 <form
-  class="flex flex-col justify-end max-w-sm min-h-screen"
+  class="flex min-h-screen max-w-sm flex-col justify-end"
   on:submit={(event) => event.preventDefault()}
 >
   {#await fetchData then data}

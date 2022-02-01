@@ -1,10 +1,10 @@
 {
-		"extends": "@tsconfig/svelte/tsconfig.json",
+  "extends": "@tsconfig/svelte/tsconfig.json",
 
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*"],
+  "include": ["src/**/*", "src/node_modules/**/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "static/*"],
 
-		"compilerOptions": {
-			"strict": true
-		}
-	}
+  "compilerOptions": {
+    "strict": true
+  }
+}
