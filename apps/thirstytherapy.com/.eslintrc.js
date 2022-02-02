@@ -2,7 +2,6 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2019,
-    requireConfigFile: false,
     sourceType: "module",
   },
   env: {
@@ -18,4 +17,7 @@ module.exports = {
       processor: "svelte3/svelte3",
     },
   ],
+  settings: {
+    "svelte3/typescript": true,
+  },
 };
