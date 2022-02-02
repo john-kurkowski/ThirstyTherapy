@@ -29,9 +29,23 @@ const ENVIRONMENT_ID = "master";
 const HOST = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}`;
 const ACCESS_TOKEN = "h8pCe0ZTrcn4Ga5ZpTiwB0z0zc5LJ_7rgWMEJTorgug";
 
-// TODO type this
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const fetchData: () => Promise<any[]> = async () => {
+export interface AgendaItem {
+  sys: {
+    id: string;
+  };
+}
+
+export interface Episode {
+  fields: {
+    agendaItems: AgendaItem[];
+    broadcast: Date;
+    isPast: boolean;
+    isSkipped: boolean;
+    originalTime: Date;
+  };
+}
+
+export async function fetchData(): Promise<Episode[]> {
   const episodeTooOldToDisplayDate = new Date();
   episodeTooOldToDisplayDate.setDate(episodeTooOldToDisplayDate.getDate() - 7);
 
@@ -42,21 +56,18 @@ export const fetchData: () => Promise<any[]> = async () => {
   const resp = await fetch(url);
   const entries = await resp.json();
 
-  // @ts-expect-error TODO type this
-  entries.items.forEach(function joinIncludesInMemory(episode) {
+  entries.items.forEach(function joinIncludesInMemory(episode: Episode) {
     episode.fields.isPast =
       new Date(episode.fields.broadcast) < episodeIsPastDate;
 
     episode.fields.agendaItems = (episode.fields.agendaItems || [])
-      // @ts-expect-error TODO type this
       .map((item) => {
         return entries.includes.Entry.find(
-          // @ts-expect-error TODO type this
-          (entry) => entry.sys.id === item.sys.id
+          (entry: AgendaItem) => entry.sys.id === item.sys.id
         );
       })
       .filter(Boolean);
   });
 
   return entries.items;
-};
+}

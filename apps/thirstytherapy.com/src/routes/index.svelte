@@ -2,12 +2,10 @@
   import HeadingPop from "../components/HeadingPop.svelte";
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
   import { DATETIME_FORMAT } from "../components/UpcomingIngredients";
-  import { fetchData } from "../components/UpcomingIngredients";
+  import { Episode, fetchData } from "../components/UpcomingIngredients";
   import { onMount } from "svelte";
 
-  // TODO type this
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let fetchingData: Promise<any[]> = new Promise(() => ({}));
+  let fetchingData: Promise<Episode[]> = new Promise(() => ({}));
 
   onMount(() => {
     fetchingData = fetchData();
