@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
   import HeadingPop from "../components/HeadingPop.svelte";
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";
   import { DATETIME_FORMAT } from "../components/UpcomingIngredients";
   import { fetchData } from "../components/UpcomingIngredients";
   import { onMount } from "svelte";
 
-  let fetchingData = Promise.resolve();
+  // TODO type this
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let fetchingData: Promise<any[]> = new Promise(() => ({}));
 
   onMount(() => {
     fetchingData = fetchData();
@@ -146,6 +148,8 @@
 
           <UpcomingIngredient {episode} />
         </div>
+      {:else}
+        <p class="mb-8 text-gray-300">No upcoming events.</p>
       {/each}
     {/await}
   </div>
