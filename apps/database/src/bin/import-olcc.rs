@@ -49,7 +49,7 @@ fn main() {
 
     let is_success = failures.is_empty();
     for failure in failures {
-        println!("{failure}");
+        eprintln!("{failure}");
     }
 
     let groups = successes
@@ -61,5 +61,7 @@ fn main() {
         println!("{}: {}", description, sizes);
     }
 
-    std::process::exit(if is_success { 0 } else { 1 })
+    if !is_success {
+        std::process::exit(1);
+    }
 }
