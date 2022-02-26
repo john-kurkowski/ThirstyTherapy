@@ -15,11 +15,8 @@ struct OlccItem {
     unit_price: f32,
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Display)]
+#[derive(Copy, Clone, Debug, Deserialize, Display, Eq, Ord, PartialEq, PartialOrd)]
 enum OlccSize {
-    #[serde(rename = "1.75 L")]
-    #[strum(serialize = "1.75 L")]
-    OnePointSevenFiveLiter,
     #[serde(rename = "200 ML")]
     #[strum(serialize = "200 ML")]
     TwoHundredMl,
@@ -35,6 +32,9 @@ enum OlccSize {
     #[serde(rename = "LITER")]
     #[strum(serialize = "LITER")]
     Liter,
+    #[serde(rename = "1.75 L")]
+    #[strum(serialize = "1.75 L")]
+    OnePointSevenFiveLiter,
 }
 
 fn main() {
@@ -57,7 +57,7 @@ fn main() {
         .group_by(|record| record.description.clone());
 
     for (description, group) in &groups {
-        let sizes = group.map(|record| record.size).join(", ");
+        let sizes = group.map(|record| record.size).max().unwrap(); // must have deserialized enums
         println!("{}: {}", description, sizes);
     }
 
