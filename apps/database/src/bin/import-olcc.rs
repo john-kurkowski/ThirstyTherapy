@@ -1,8 +1,8 @@
 use itertools::Itertools;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use strum::Display;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
 struct OlccItem {
     age: String,
@@ -15,7 +15,7 @@ struct OlccItem {
     unit_price: f32,
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Display, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Deserialize, Display, Eq, Ord, PartialEq, PartialOrd, Serialize)]
 enum OlccSize {
     #[serde(rename = "200 ML")]
     #[strum(serialize = "200 ML")]
@@ -47,7 +47,7 @@ fn main() {
         })
         .partition_result();
 
-    let is_success = failures.is_empty();
+    let is_fully_deserialized = failures.is_empty();
     for failure in failures {
         eprintln!("{failure}");
     }
@@ -56,12 +56,20 @@ fn main() {
         .iter()
         .group_by(|record| record.description.clone());
 
-    for (description, group) in &groups {
-        let sizes = group.map(|record| record.size).max().unwrap(); // must have deserialized enums
-        println!("{}: {}", description, sizes);
+    let deduped_output_rows = groups.into_iter().map(|(_description, group)| {
+        group.max_by_key(|r| r.size).unwrap() // must have deserialized enums
+    });
+
+    let mut writer = csv::Writer::from_writer(std::io::stdout());
+    let mut is_fully_serialized = true;
+    for row in deduped_output_rows {
+        if let Err(e) = writer.serialize(row) {
+            is_fully_serialized = false;
+            eprintln!("{e}");
+        }
     }
 
-    if !is_success {
+    if !(is_fully_deserialized || is_fully_serialized) {
         std::process::exit(1);
     }
 }
