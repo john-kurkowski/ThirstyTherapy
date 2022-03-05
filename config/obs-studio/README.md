@@ -6,8 +6,8 @@ revert.
 
 To export:
 
-```
-./sync
+```sh
+cargo run
 ```
 
 OBS stores in plain text streaming keys and query param auth tokens. This
