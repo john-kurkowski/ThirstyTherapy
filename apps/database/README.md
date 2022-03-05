@@ -1,8 +1,12 @@
 # Thirsty Therapy Database
 
-This folder contains code to interface with the consulting business's database of cocktails.
+This folder contains code to interface with the consulting business's database
+of cocktails.
 
 ## `import-olcc`
+
+> ⚠️ **TODO**: the database schema and therefore format of this script is still
+> under construction.
 
 ```zsh
 $ cargo run --bin import-olcc < /path/to/NumericPriceListCurrentMonth.csv
