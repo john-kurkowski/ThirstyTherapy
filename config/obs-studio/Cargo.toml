@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 glob = "^0.3.0"
 thiserror = "^1.0.30"
+serde_json = { version = "^1.0.79", features = ["float_roundtrip"] }

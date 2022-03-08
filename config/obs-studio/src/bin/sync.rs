@@ -2,6 +2,7 @@
 #![feature(unix_chown)]
 
 use glob::glob;
+use serde_json::Value;
 use std::path::Path;
 use std::process::{Command, ExitStatusError};
 use thiserror::Error;
@@ -16,6 +17,23 @@ enum CommandError {
     GlobError(#[from] glob::GlobError),
     #[error("")]
     PatternError(#[from] glob::PatternError),
+    #[error("")]
+    JsonError(#[from] serde_json::Error),
+    #[error("")]
+    Utf8Error(#[from] std::string::FromUtf8Error),
+}
+
+fn format_json(destination: &Path) -> Result<(), CommandError> {
+    let glob_all_paths = destination.join("**/*.json");
+    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
+    for path in all_paths {
+        let input_string = String::from_utf8(std::fs::read(&path)?)?;
+        let input_json: Value = serde_json::from_str(input_string.as_str())?;
+        let output_string = serde_json::to_vec_pretty(&input_json)?;
+        std::fs::write(&path, output_string)?;
+    }
+
+    Ok(())
 }
 
 fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
@@ -39,20 +57,20 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
     let base_files = source.file_name().unwrap().to_str().unwrap(); // TODO: ugh unwrap
     std::os::unix::fs::chown(base_files, Some(uid), None)?;
 
-    let glob_all_destination_files = destination.join(format!("{}/**/*", base_files));
-    let all_paths = glob(glob_all_destination_files.to_str().unwrap())?;
+    let glob_all_paths = destination.join("**/*");
+    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
     for path in all_paths {
-        std::os::unix::fs::chown(path?, Some(uid), None)?;
+        std::os::unix::fs::chown(path, Some(uid), None)?;
     }
 
     Ok(())
 }
 
 fn main_wrapped_error() -> Result<(), CommandError> {
-    let source = Path::new("/Users/thirstytherapy/Library/Application Support/obs-studio/basic");
-    let destination = std::env::current_dir()?;
-    sync_files(source, destination.as_path())
-    // TODO: format JSON
+    let source = Path::new("/Users/thirstytherapy/Library/Application Support/obs-studio/basic/");
+    let destination = std::env::current_dir()?.join("basic");
+    sync_files(source, destination.as_path())?;
+    format_json(destination.as_path())
     // TODO: exclude sensitive params
 }
 
