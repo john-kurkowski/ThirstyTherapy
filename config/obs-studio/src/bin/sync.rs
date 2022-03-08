@@ -2,6 +2,7 @@
 #![feature(unix_chown)]
 
 use glob::glob;
+use regex::Regex;
 use serde_json::Value;
 use std::path::Path;
 use std::process::{Command, ExitStatusError};
@@ -23,6 +24,40 @@ enum CommandError {
     Utf8Error(#[from] std::string::FromUtf8Error),
 }
 
+fn exclude_sensitive_params_ini(destination: &Path) -> Result<(), CommandError> {
+    let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
+
+    let glob_all_paths = destination.join("**/*.ini");
+    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
+    for path in all_paths {
+        let input_string = String::from_utf8(std::fs::read(&path)?)?;
+        let output_string = replace_re
+            .replace_all(input_string.as_str(), "")
+            .into_owned();
+        std::fs::write(&path, output_string)?;
+    }
+
+    Ok(())
+}
+
+fn exclude_sensitive_params_json(destination: &Path) -> Result<(), CommandError> {
+    let replace_re =
+        Regex::new(r#"&(password|room|tt\w+)(=[^&"]*)?|\?(password|room|tt\w+)(=[^&"]*)?&?"#)
+            .unwrap();
+
+    let glob_all_paths = destination.join("**/*.json");
+    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
+    for path in all_paths {
+        let input_string = String::from_utf8(std::fs::read(&path)?)?;
+        let output_string = replace_re
+            .replace_all(input_string.as_str(), "")
+            .into_owned();
+        std::fs::write(&path, output_string)?;
+    }
+
+    Ok(())
+}
+
 fn format_json(destination: &Path) -> Result<(), CommandError> {
     let glob_all_paths = destination.join("**/*.json");
     let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
@@ -37,6 +72,9 @@ fn format_json(destination: &Path) -> Result<(), CommandError> {
 }
 
 fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
+    // TODO: interactively sudo only this function. It may be difficult to attach the TTY at only
+    // this point. But running `sudo cargo …` is nuts.
+
     Command::new("rsync")
         .arg("--compress")
         .arg("--links")
@@ -70,8 +108,9 @@ fn main_wrapped_error() -> Result<(), CommandError> {
     let source = Path::new("/Users/thirstytherapy/Library/Application Support/obs-studio/basic/");
     let destination = std::env::current_dir()?.join("basic");
     sync_files(source, destination.as_path())?;
-    format_json(destination.as_path())
-    // TODO: exclude sensitive params
+    format_json(destination.as_path())?;
+    exclude_sensitive_params_ini(destination.as_path())?;
+    exclude_sensitive_params_json(destination.as_path())
 }
 
 fn main() {
