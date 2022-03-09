@@ -31,7 +31,13 @@ fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
     let all_paths = glob(glob_all_paths)?.collect::<Result<Vec<_>, _>>()?;
     for path in all_paths {
         let file_contents = String::from_utf8(std::fs::read(&path)?)?;
-        let new_file_contents = f(file_contents)?;
+        let mut new_file_contents = f(file_contents)?;
+
+        match new_file_contents.chars().last() {
+            Some(last) if last != '\n' => new_file_contents.push('\n'),
+            _ => (),
+        }
+
         std::fs::write(&path, new_file_contents)?;
     }
 
