@@ -10,17 +10,17 @@ use thiserror::Error;
 #[derive(Debug, Error)]
 enum CommandError {
     #[error("")]
-    ExitStatusError(#[from] ExitStatusError),
+    ExitStatus(#[from] ExitStatusError),
     #[error("")]
-    IoError(#[from] std::io::Error),
+    Io(#[from] std::io::Error),
     #[error("")]
-    GlobError(#[from] glob::GlobError),
+    Glob(#[from] glob::GlobError),
     #[error("")]
-    PatternError(#[from] glob::PatternError),
+    Pattern(#[from] glob::PatternError),
     #[error("")]
-    JsonError(#[from] serde_json::Error),
+    Json(#[from] serde_json::Error),
     #[error("")]
-    Utf8Error(#[from] std::string::FromUtf8Error),
+    Utf8(#[from] std::string::FromUtf8Error),
 }
 
 fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
@@ -115,7 +115,7 @@ fn main_wrapped_error() -> Result<(), CommandError> {
 
 fn main() {
     match main_wrapped_error() {
-        Err(CommandError::ExitStatusError(err)) => std::process::exit(err.code().unwrap_or(1)),
+        Err(CommandError::ExitStatus(err)) => std::process::exit(err.code().unwrap_or(1)),
         Err(_) => std::process::exit(1),
         _ => (),
     }
