@@ -24,51 +24,46 @@ enum CommandError {
     Utf8Error(#[from] std::string::FromUtf8Error),
 }
 
-fn exclude_sensitive_params_ini(destination: &Path) -> Result<(), CommandError> {
-    let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
-
-    let glob_all_paths = destination.join("**/*.ini");
-    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
+fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
+    glob_all_paths: &str,
+    f: F,
+) -> Result<(), CommandError> {
+    let all_paths = glob(glob_all_paths)?.collect::<Result<Vec<_>, _>>()?;
     for path in all_paths {
-        let input_string = String::from_utf8(std::fs::read(&path)?)?;
-        let output_string = replace_re
-            .replace_all(input_string.as_str(), "")
-            .into_owned();
-        std::fs::write(&path, output_string)?;
+        let file_contents = String::from_utf8(std::fs::read(&path)?)?;
+        let new_file_contents = f(file_contents)?;
+        std::fs::write(&path, new_file_contents)?;
     }
 
     Ok(())
+}
+
+fn exclude_sensitive_params_ini(destination: &Path) -> Result<(), CommandError> {
+    let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
+    foreach_glob(
+        destination.join("**/*.ini").to_str().unwrap(),
+        |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
+    )
 }
 
 fn exclude_sensitive_params_json(destination: &Path) -> Result<(), CommandError> {
     let replace_re =
         Regex::new(r#"&(password|room|tt\w+)(=[^&"]*)?|\?(password|room|tt\w+)(=[^&"]*)?&?"#)
             .unwrap();
-
-    let glob_all_paths = destination.join("**/*.json");
-    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
-    for path in all_paths {
-        let input_string = String::from_utf8(std::fs::read(&path)?)?;
-        let output_string = replace_re
-            .replace_all(input_string.as_str(), "")
-            .into_owned();
-        std::fs::write(&path, output_string)?;
-    }
-
-    Ok(())
+    foreach_glob(
+        destination.join("**/*.json").to_str().unwrap(),
+        |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
+    )
 }
 
 fn format_json(destination: &Path) -> Result<(), CommandError> {
-    let glob_all_paths = destination.join("**/*.json");
-    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
-    for path in all_paths {
-        let input_string = String::from_utf8(std::fs::read(&path)?)?;
-        let input_json: Value = serde_json::from_str(input_string.as_str())?;
-        let output_string = serde_json::to_vec_pretty(&input_json)?;
-        std::fs::write(&path, output_string)?;
-    }
-
-    Ok(())
+    foreach_glob(
+        destination.join("**/*.json").to_str().unwrap(),
+        |file_contents| {
+            let input_json: Value = serde_json::from_str(&file_contents)?;
+            serde_json::to_string_pretty(&input_json).map_err(CommandError::JsonError)
+        },
+    )
 }
 
 fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
