@@ -23,6 +23,8 @@ enum CommandError {
     Utf8(#[from] std::string::FromUtf8Error),
 }
 
+/// For all files that match the given glob, read their contents as a string, pass to the given
+/// callback, and write the result back into the file.
 fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
     glob_all_paths: &str,
     f: F,
@@ -44,24 +46,30 @@ fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
     Ok(())
 }
 
-fn exclude_sensitive_params_ini(destination: &Path) -> Result<(), CommandError> {
-    let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
-    foreach_glob(
-        destination.join("**/*.ini").to_str().unwrap(),
-        |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
-    )
+/// Exclude sensitive values from the files whose contents we mostly want. Note this is a blocklist
+/// approach. Sensitive values that aren't in this file's blocklist will still be output by this
+/// file. (It would be safer but more onerous for this file to instead maintain an allowlist).
+fn exclude_sensitive_params(destination: &Path) -> Result<(), CommandError> {
+    {
+        let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
+        foreach_glob(
+            destination.join("**/*.ini").to_str().unwrap(),
+            |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
+        )?
+    }
+
+    {
+        let replace_re =
+            Regex::new(r#"&(password|room|tt\w+)(=[^&"]*)?|\?(password|room|tt\w+)(=[^&"]*)?&?"#)
+                .unwrap();
+        foreach_glob(
+            destination.join("**/*.json").to_str().unwrap(),
+            |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
+        )
+    }
 }
 
-fn exclude_sensitive_params_json(destination: &Path) -> Result<(), CommandError> {
-    let replace_re =
-        Regex::new(r#"&(password|room|tt\w+)(=[^&"]*)?|\?(password|room|tt\w+)(=[^&"]*)?&?"#)
-            .unwrap();
-    foreach_glob(
-        destination.join("**/*.json").to_str().unwrap(),
-        |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
-    )
-}
-
+/// Format OBS's compact JSON.
 fn format_json(destination: &Path) -> Result<(), CommandError> {
     foreach_glob(
         destination.join("**/*.json").to_str().unwrap(),
@@ -72,6 +80,8 @@ fn format_json(destination: &Path) -> Result<(), CommandError> {
     )
 }
 
+/// Sync files from streaming user account for version control on this user account. Exclude some
+/// sensitive files. Requires this user account's sudo password.
 fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
     Command::new("sudo")
         .arg("rsync")
@@ -115,8 +125,7 @@ fn main_wrapped_error() -> Result<(), CommandError> {
     let destination = std::env::current_dir()?.join("basic");
     sync_files(source, destination.as_path())?;
     format_json(destination.as_path())?;
-    exclude_sensitive_params_ini(destination.as_path())?;
-    exclude_sensitive_params_json(destination.as_path())
+    exclude_sensitive_params(destination.as_path())
 }
 
 fn main() {
