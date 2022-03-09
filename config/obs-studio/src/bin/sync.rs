@@ -89,12 +89,12 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
         .status
         .exit_ok()?;
 
-    let whoami = String::from_utf8(Command::new("whoami").output()?.stdout)?;
+    let whoami = trimmed_string(Command::new("whoami").output()?.stdout)?;
 
     Command::new("sudo")
         .arg("chown")
         .arg("-R")
-        .arg(whoami.trim())
+        .arg(whoami)
         .arg(destination)
         .spawn()?
         .wait_with_output()?
@@ -102,6 +102,12 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
         .exit_ok()?;
 
     Ok(())
+}
+
+fn trimmed_string(vec: Vec<u8>) -> Result<String, std::string::FromUtf8Error> {
+    let mut s = String::from_utf8(vec)?;
+    s.truncate(s.trim_end().len());
+    Ok(s)
 }
 
 fn main_wrapped_error() -> Result<(), CommandError> {
