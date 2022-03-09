@@ -27,8 +27,9 @@ fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
     glob_all_paths: &str,
     f: F,
 ) -> Result<(), CommandError> {
-    let all_paths = glob(glob_all_paths)?.collect::<Result<Vec<_>, _>>()?;
-    for path in all_paths {
+    let all_paths = glob(glob_all_paths)?;
+    for path_result in all_paths {
+        let path = path_result?;
         let file_contents = String::from_utf8(std::fs::read(&path)?)?;
         let mut new_file_contents = f(file_contents)?;
 
