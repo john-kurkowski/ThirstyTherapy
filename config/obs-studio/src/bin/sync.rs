@@ -93,8 +93,7 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
 
     let uid = 501; // TODO: get current user id
 
-    let base_files = source.file_name().unwrap().to_str().unwrap(); // TODO: ugh unwrap
-    std::os::unix::fs::chown(base_files, Some(uid), None)?;
+    std::os::unix::fs::chown(destination, Some(uid), None)?;
 
     let glob_all_paths = destination.join("**/*");
     let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
