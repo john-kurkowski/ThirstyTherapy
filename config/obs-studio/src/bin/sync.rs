@@ -1,5 +1,4 @@
 #![feature(exit_status_error)]
-#![feature(unix_chown)]
 
 use glob::glob;
 use regex::Regex;
@@ -91,15 +90,16 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
         .status
         .exit_ok()?;
 
-    let uid = 501; // TODO: get current user id
+    let whoami = String::from_utf8(Command::new("whoami").output()?.stdout)?;
 
-    std::os::unix::fs::chown(destination, Some(uid), None)?;
-
-    let glob_all_paths = destination.join("**/*");
-    let all_paths = glob(glob_all_paths.to_str().unwrap())?.collect::<Result<Vec<_>, _>>()?;
-    for path in all_paths {
-        std::os::unix::fs::chown(path, Some(uid), None)?;
-    }
+    Command::new("chown")
+        .arg("-R")
+        .arg(whoami.trim())
+        .arg(destination)
+        .spawn()?
+        .wait_with_output()?
+        .status
+        .exit_ok()?;
 
     Ok(())
 }
