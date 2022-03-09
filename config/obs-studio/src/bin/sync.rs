@@ -72,10 +72,8 @@ fn format_json(destination: &Path) -> Result<(), CommandError> {
 }
 
 fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
-    // TODO: interactively sudo only this function. It may be difficult to attach the TTY at only
-    // this point. But running `sudo cargo …` is nuts.
-
-    Command::new("rsync")
+    Command::new("sudo")
+        .arg("rsync")
         .arg("--compress")
         .arg("--links")
         .arg("--recursive")
@@ -92,7 +90,8 @@ fn sync_files(source: &Path, destination: &Path) -> Result<(), CommandError> {
 
     let whoami = String::from_utf8(Command::new("whoami").output()?.stdout)?;
 
-    Command::new("chown")
+    Command::new("sudo")
+        .arg("chown")
         .arg("-R")
         .arg(whoami.trim())
         .arg(destination)
