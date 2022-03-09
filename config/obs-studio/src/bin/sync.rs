@@ -67,7 +67,7 @@ fn format_json(destination: &Path) -> Result<(), CommandError> {
         destination.join("**/*.json").to_str().unwrap(),
         |file_contents| {
             let input_json: Value = serde_json::from_str(&file_contents)?;
-            serde_json::to_string_pretty(&input_json).map_err(CommandError::JsonError)
+            Ok(serde_json::to_string_pretty(&input_json)?)
         },
     )
 }
