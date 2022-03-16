@@ -51,21 +51,23 @@ fn foreach_glob<F: Fn(String) -> Result<String, CommandError>>(
 /// file. (It would be safer but more onerous for this file to instead maintain an allowlist).
 fn exclude_sensitive_params(destination: &Path) -> Result<(), CommandError> {
     {
+        let glob = destination.join("**/*.ini");
         let replace_re = Regex::new(r#"(?m)^.*Token=.*$"#).unwrap();
-        foreach_glob(
-            destination.join("**/*.ini").to_str().unwrap(),
-            |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
-        )?
+
+        foreach_glob(glob.to_str().unwrap(), |file_contents| {
+            Ok(replace_re.replace_all(&file_contents, "").into_owned())
+        })?
     }
 
     {
+        let glob = destination.join("**/*.json");
         let replace_re =
             Regex::new(r#"&(password|room|tt\w+)(=[^&"]*)?|\?(password|room|tt\w+)(=[^&"]*)?&?"#)
                 .unwrap();
-        foreach_glob(
-            destination.join("**/*.json").to_str().unwrap(),
-            |file_contents| Ok(replace_re.replace_all(&file_contents, "").into_owned()),
-        )
+
+        foreach_glob(glob.to_str().unwrap(), |file_contents| {
+            Ok(replace_re.replace_all(&file_contents, "").into_owned())
+        })
     }
 }
 
@@ -132,6 +134,6 @@ fn main() {
     match main_wrapped_error() {
         Err(CommandError::ExitStatus(err)) => std::process::exit(err.code().unwrap_or(1)),
         Err(_) => std::process::exit(1),
-        _ => (),
+        Ok(()) => (),
     }
 }
