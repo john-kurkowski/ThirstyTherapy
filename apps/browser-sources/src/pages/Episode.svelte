@@ -13,7 +13,9 @@
   const isRight = urlParams.get("isRight");
 
   const fetchData = (async () => {
-    const entries: CmsResult = await (await fetchCmsPath("/entries")).json();
+    const entries: CmsResult = await (
+      await fetchCmsPath("/entries", { limit: "999" })
+    ).json();
 
     const episode: Episode = JSON.parse(
       JSON.stringify(entries.items.find((entry) => entry.sys.id === id))

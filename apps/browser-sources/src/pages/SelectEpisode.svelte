@@ -17,6 +17,7 @@
   const fetchData: Promise<Episode[]> = (async () => {
     const resp = await fetchCmsPath("/entries", {
       content_type: "episode",
+      limit: "999",
       order: "-fields.broadcast",
     });
     const entries = await resp.json();
