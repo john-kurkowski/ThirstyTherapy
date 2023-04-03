@@ -15,6 +15,8 @@ async function ignoredEslintFiles(files) {
 module.exports = {
   "*.css": ["stylelint --fix", "prettier --write"],
 
+  "*.md": ["prettier --write"],
+
   "*.sh": "shellcheck",
 
   "*.svelte": (filenames) => {
