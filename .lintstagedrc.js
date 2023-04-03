@@ -1,5 +1,16 @@
 const path = require("path");
 const pkgUp = require("pkg-up");
+const { ESLint } = require("eslint");
+
+async function ignoredEslintFiles(files) {
+  const eslint = new ESLint();
+  const isIgnored = await Promise.all(
+    files.map((file) => {
+      return eslint.isPathIgnored(file);
+    })
+  );
+  return files.filter((_, i) => !isIgnored[i]);
+}
 
 module.exports = {
   "*.css": ["stylelint --fix", "prettier --write"],
@@ -26,8 +37,12 @@ module.exports = {
     ];
   },
 
-  "*.{js,ts,tsx}": [
-    "eslint --cache --fix --max-warnings=0",
-    "prettier --write",
-  ],
+  "*.{js,ts,tsx}": async (files) => {
+    return [
+      `eslint --cache --fix --max-warnings=0 ${(
+        await ignoredEslintFiles(files)
+      ).join(" ")}`,
+      `prettier --write ${files.join(" ")}`,
+    ];
+  },
 };
