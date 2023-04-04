@@ -52,7 +52,7 @@
             </td>
             <td class="pb-2 pl-3">
               <Link to={`/episode/${entry.sys.id}${qs}`}>
-                <span class="hover:text-gray-500 text-gray-200 underline">
+                <span class="text-gray-200 underline hover:text-gray-500">
                   {entry.fields.title}
                 </span>
               </Link>

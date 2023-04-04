@@ -59,7 +59,7 @@
               {#if (entry.fields.steps || []).length}
                 <Collapsible isExpanded={state === "EXPANDED"}>
                   {#if entry.fields.subtitle}
-                    <small class="block my-1 text-gray-500">
+                    <small class="my-1 block text-gray-500">
                       {entry.fields.subtitle}
                     </small>
                   {/if}

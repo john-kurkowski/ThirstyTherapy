@@ -33,17 +33,17 @@
       <h2 class="text-xs">Sitting at the bar</h2>
 
       {#if data.length}
-        <ol class="flex mt-1">
+        <ol class="mt-1 flex">
           {#each data as entry, i}
             <li class="flex items-center text-sm {i > 0 && 'ml-4'}">
               <span aria-label="Drinking a cocktail" role="img">
                 {COCKTAIL_ICONS[i % COCKTAIL_ICONS.length]}
               </span>
 
-              <div class="flex flex-col items-center ml-1">
+              <div class="ml-1 flex flex-col items-center">
                 <img
                   alt=""
-                  class="rounded-full w-8"
+                  class="w-8 rounded-full"
                   src={entry.profile_image_url}
                 />
                 {#if canEdit}

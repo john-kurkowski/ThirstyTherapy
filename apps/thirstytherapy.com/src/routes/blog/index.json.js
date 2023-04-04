@@ -9,6 +9,8 @@ const contents = JSON.stringify(
   })
 );
 
+// Sapper boilerplate
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function get(req, res) {
   res.writeHead(200, {
     "Content-Type": "application/json",
