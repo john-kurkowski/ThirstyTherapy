@@ -50,5 +50,5 @@ doesn't have an `--all-files` flag, there is the `--diff` flag you can abuse.
 For example, linting the last 20 commits worth of changed files:
 
 ```sh
-common/autoinstallers/rush-husky/node_modules/.bin/lint-staged --diff @~20
+common/autoinstallers/rush-husky/node_modules/.bin/lint-staged --no-stash --diff @~20
 ```
