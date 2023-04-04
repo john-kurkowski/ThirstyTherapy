@@ -2,7 +2,13 @@
   /**
    * Cycles through an infinite slideshow of a handful of scenes, like a list
    * of users online right now, and branding.
-
+   *
+   * Defaults to all scenes, but can be filtered to specific scenes
+   * with the `scene` multi query param. For example, to only show the
+   * first two scenes:
+   *
+   * `/?scene=0&scene=1`
+   *
    * The usernames can be edited inline. With a valid CMS write access token
    * set, the usernames will persist to the CMS, and be automatically synced to
    * anybody else viewing this page.
@@ -37,6 +43,9 @@
   let usernamesUpdate: Promise<unknown> = Promise.resolve();
   let usernames: string[] = [];
 
+  /**
+   * TODO
+   */
   async function pollUsernames() {
     try {
       await usernamesUpdate;
@@ -87,10 +96,16 @@
     });
   });
 
+  /**
+   * Disable interaction, e.g. during animation.
+   */
   function disableInteraction() {
     canEdit = false;
   }
 
+  /**
+   * Enable interaction, e.g. after animation completes.
+   */
   function enableInteraction() {
     canEdit = true;
   }
@@ -125,6 +140,9 @@
     );
   }
 
+  /**
+   * Pause the slideshow when the user is editing.
+   */
   function handleNameEditing() {
     [sceneTimeout, usernamesFetchTimeout].forEach(function (timeout) {
       timeout?.pause();
@@ -147,6 +165,9 @@
         );
   }
 
+  /**
+   * Infinitely cycle through the slideshow scenes.
+   */
   function pollScenesSlideshow() {
     if (scenes.length > 1) {
       isVisible = !isVisible;

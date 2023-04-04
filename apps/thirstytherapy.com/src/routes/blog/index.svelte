@@ -1,5 +1,7 @@
 <script context="module">
-  // Sapper boilerplate
+  /**
+   * Sapper boilerplate
+   */
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   export function preload() {
     return this.fetch(`blog.json`)

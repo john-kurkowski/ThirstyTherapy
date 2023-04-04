@@ -14,6 +14,9 @@
   export let isAnimatable = false;
   let state: "EXPANDED" | "COMPLETE" | "COLLAPSED";
 
+  /**
+   * Rotate through the states of the button.
+   */
   function toggle(): void {
     if (state === "EXPANDED") {
       state = "COMPLETE";

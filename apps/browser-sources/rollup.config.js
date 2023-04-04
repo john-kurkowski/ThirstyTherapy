@@ -12,9 +12,15 @@ import { terser } from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
 
+/**
+ * Svelte starter kit boilerplate.
+ */
 function serve() {
   let server;
 
+  /**
+   * Svelte starter kit boilerplate.
+   */
   function toExit() {
     if (server) server.kill(0);
   }

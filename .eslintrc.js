@@ -9,4 +9,8 @@ module.exports = {
     node: true,
   },
   extends: ["eslint:recommended"],
+  plugins: ["jsdoc"],
+  rules: {
+    "jsdoc/require-jsdoc": 1,
+  },
 };

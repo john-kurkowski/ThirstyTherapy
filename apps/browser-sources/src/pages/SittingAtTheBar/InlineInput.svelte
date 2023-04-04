@@ -59,7 +59,7 @@
     on:blur={handleBlur}
   />
 {:else}
-  <span class={labelClasses} on:click={toggle}>
+  <button class={labelClasses} on:click={toggle}>
     {label}
-  </span>
+  </button>
 {/if}

@@ -38,6 +38,10 @@ export interface TwitchUser {
   profile_image_url: string;
 }
 
+/**
+ * Get the CMS client, authenticated with the given access
+ * token.
+ */
 export async function cmsClient(accessToken: string): Promise<PlainClientAPI> {
   return createClient(
     { accessToken },
@@ -48,6 +52,10 @@ export async function cmsClient(accessToken: string): Promise<PlainClientAPI> {
   );
 }
 
+/**
+ * Perform an HTTP request to the CMS API, at the given path, with the given
+ * GET params.
+ */
 export function fetchCmsPath(
   path: string,
   params?: Record<string, string>

@@ -5,7 +5,9 @@ posts.forEach((post) => {
   lookup.set(post.slug, JSON.stringify(post));
 });
 
-// Sapper boilerplate
+/**
+ * Sapper boilerplate
+ */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function get(req, res) {
   // the `slug` parameter is available because

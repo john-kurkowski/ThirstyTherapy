@@ -1,5 +1,7 @@
 <script context="module">
-  // Sapper boilerplate
+  /**
+   * Sapper boilerplate
+   */
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   export async function preload({ params }) {
     // the `slug` parameter is available because

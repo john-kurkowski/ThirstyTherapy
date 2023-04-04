@@ -15,6 +15,8 @@ const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
+// Sapper boilerplate
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const onwarn = (warning, onwarn) =>
   (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
   (warning.code === "CIRCULAR_DEPENDENCY" &&
@@ -112,6 +114,8 @@ export default {
       typescript({ sourceMap: dev }),
     ],
     external: Object.keys(pkg.dependencies).concat(
+      // Sapper boilerplate
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       require("module").builtinModules
     ),
 

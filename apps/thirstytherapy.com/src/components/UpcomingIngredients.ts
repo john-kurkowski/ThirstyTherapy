@@ -45,6 +45,11 @@ export interface Episode {
   };
 }
 
+/**
+ * Fetch data necessary to hydrate the "upcoming events" widget.
+ *
+ * Expires older events. Joins related records in memory.
+ */
 export async function fetchData(): Promise<Episode[]> {
   const episodeTooOldToDisplayDate = new Date();
   episodeTooOldToDisplayDate.setDate(episodeTooOldToDisplayDate.getDate() - 7);
