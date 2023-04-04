@@ -1,4 +1,8 @@
 <script lang="ts">
+  /**
+   * Global page settings, like the title, and surrounding template.
+   */
+
   import Router from "./Router.svelte";
   import Tailwindcss from "./Tailwindcss.svelte";
   import { pageName } from "./stores";

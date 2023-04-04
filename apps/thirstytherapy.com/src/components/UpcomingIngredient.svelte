@@ -1,3 +1,7 @@
+<!--
+  List upcoming events.
+-->
+
 <script>
   import { RICH_OPTIONS } from "./UpcomingIngredients";
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";

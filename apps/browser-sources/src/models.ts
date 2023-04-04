@@ -1,3 +1,7 @@
+/**
+ * Miscellaneous data model types.
+ */
+
 import { PlainClientAPI, createClient } from "contentful-management";
 
 const CMS_SPACE_ID = "nc2tnr0lufn7";

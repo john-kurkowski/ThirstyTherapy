@@ -3,7 +3,10 @@
    * Cycles through an infinite slideshow of a handful of scenes, like a list
    * of users online right now, and branding.
    *
-   * Defaults to all scenes, but can be filtered to specific scenes
+   * Does not show chrome, like the nav bar or admin settings. This
+   * page is intended to be embedded in a broadcast.
+   *
+   * Defaults cycling all scenes, but can be filtered to specific scenes
    * with the `scene` multi query param. For example, to only show the
    * first two scenes:
    *

@@ -1,3 +1,7 @@
+<!--
+  Give a heading a pop effect.
+-->
+
 <h2 class="pop">
   <slot />
 </h2>

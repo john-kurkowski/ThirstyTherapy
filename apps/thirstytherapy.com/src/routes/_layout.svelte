@@ -1,3 +1,7 @@
+<!--
+  Layout for all pages.
+-->
+
 <script lang="ts">
   import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte";
   import Tailwindcss from "../Tailwindcss.svelte";

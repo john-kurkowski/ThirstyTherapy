@@ -1,3 +1,7 @@
+/**
+ * Miscellaneous functions for interacting with Svelte stores.
+ */
+
 import { Readable, Writable, derived, writable } from "svelte/store";
 
 export const TWITCH_CLIENT_ID = "yrcihot9pxnayk7czuvy5jplj1r7yd";

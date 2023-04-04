@@ -1,4 +1,8 @@
 <script lang="ts">
+  /**
+   * The various routes the app can display.
+   */
+
   import Admin from "./pages/Admin.svelte";
   import Episode from "./pages/Episode.svelte";
   import SelectEpisode from "./pages/SelectEpisode.svelte";

@@ -1,4 +1,14 @@
 <script lang="ts">
+  /**
+   * The first scene in the app. It is dynamic and promotes engagement, showing
+   * the users "sitting" at the bar. The users are set manually by the operator,
+   * at their discretion, during broadcast.
+
+   * The Twitch user and chat history APIs are too sparse and this channel is
+   * too low-volume to automatically determine the user list, and it could be
+   * abused.
+   */
+
   import InlineInput from "./InlineInput.svelte";
   import Loader from "./Loader.svelte";
   import type { TwitchUser } from "../../models";

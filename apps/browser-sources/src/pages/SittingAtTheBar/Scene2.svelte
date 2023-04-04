@@ -1,4 +1,8 @@
 <script lang="ts">
+  /**
+   * Static marketing copy.
+   */
+
   const urlParams = new URLSearchParams(window.location.search);
   const isRight = urlParams.get("isRight");
 </script>

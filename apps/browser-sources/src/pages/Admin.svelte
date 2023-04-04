@@ -1,4 +1,8 @@
 <script lang="ts">
+  /**
+   * Admin-only settings page.
+   */
+
   import Header from "../components/Header.svelte";
   import { cmsManagementAccessToken, twitchClientSecret } from "../stores";
 </script>

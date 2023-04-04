@@ -1,4 +1,11 @@
 <script lang="ts">
+  /**
+   * Show the agenda items for a given episode.
+   *
+   * Does not show chrome, like the nav bar or admin settings. This
+   * component is intended to be embedded in a broadcast.
+   */
+
   import AgendaItem from "../components/AgendaItem.svelte";
   import Collapsible from "../components/Collapsible.svelte";
   import type {

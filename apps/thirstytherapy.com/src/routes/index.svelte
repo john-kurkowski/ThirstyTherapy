@@ -1,3 +1,5 @@
+<!-- The index page. -->
+
 <script lang="ts">
   import HeadingPop from "../components/HeadingPop.svelte";
   import UpcomingIngredient from "../components/UpcomingIngredient.svelte";

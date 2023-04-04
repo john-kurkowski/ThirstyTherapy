@@ -1,4 +1,10 @@
 <script lang="ts">
+  /**
+   * Show a list of episodes, with links to the episode page.
+   *
+   * This is generally the default page of the app.
+   */
+
   import Header from "../components/Header.svelte";
   import { Episode, fetchCmsPath } from "../models";
   import { Link } from "svelte-routing";

@@ -1,3 +1,7 @@
+/**
+ * Sapper boilerplate.
+ */
+
 import * as sapper from "@sapper/app";
 
 sapper.start({

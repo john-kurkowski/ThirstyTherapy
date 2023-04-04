@@ -1,3 +1,7 @@
+<!--
+  Initialize TailwindCSS. Declare other global styles.
+-->
+
 <style global lang="postcss">
   @tailwind base;
   @tailwind components;

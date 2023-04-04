@@ -1,4 +1,10 @@
 <script lang="ts">
+  /**
+   * The navigation of the app.
+   *
+   * @component Header
+   */
+
   import { Link } from "svelte-routing";
 </script>
 

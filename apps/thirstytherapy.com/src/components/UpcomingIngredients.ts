@@ -1,3 +1,7 @@
+/**
+ * Data model for the "upcoming events" widget.
+ */
+
 import type { Options } from "@contentful/rich-text-html-renderer";
 import {
   BLOCKS,
